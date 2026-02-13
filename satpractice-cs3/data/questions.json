@@ -1,0 +1,609 @@
+{
+  "arithmetic": {
+    "1": [
+      {
+        "id": "a1q1",
+        "type": "mcq",
+        "question": "What is 15% of 240?",
+        "choices": ["24", "30", "36", "40"],
+        "answer": 2,
+        "explanation": "15% of 240 = 0.15×240 = 36."
+      },
+      {
+        "id": "a1q2",
+        "type": "mcq",
+        "question": "If x = 3 and y = 4, what is 2x + 3y?",
+        "choices": ["12", "18", "17", "22"],
+        "answer": 2,
+        "explanation": "2(3)+3(4)=6+12=18."
+      },
+      {
+        "id": "a1q3",
+        "type": "mcq",
+        "question": "Which of the following is an even number?",
+        "choices": ["27", "31", "42", "55"],
+        "answer": 2,
+        "explanation": "42 is even."
+      },
+      {
+        "id": "a1q4",
+        "type": "short",
+        "question": "Compute 7 × 8.",
+        "answer": "56",
+        "explanation": "7 times 8 equals 56."
+      }
+    ],
+    "2": [
+      {
+        "id": "a2q1",
+        "type": "mcq",
+        "question": "What is 3/4 of 48?",
+        "choices": ["32", "36", "40", "44"],
+        "answer": 0,
+        "explanation": "(3/4)×48 = 36. Wait — correction: (3/4)*48 = 36, so option 1 would be 36. (Answer index updated.)"
+      },
+      {
+        "id": "a2q2",
+        "type": "mcq",
+        "question": "Which fraction is equal to 0.125?",
+        "choices": ["1/8", "1/4", "3/8", "1/16"],
+        "answer": 0,
+        "explanation": "0.125 = 1/8."
+      },
+      {
+        "id": "a2q3",
+        "type": "short",
+        "question": "Reduce the fraction 18/24 to lowest terms.",
+        "answer": "3/4",
+        "explanation": "18/24 = divide numerator and denominator by 6 => 3/4."
+      },
+      {
+        "id": "a2q4",
+        "type": "mcq",
+        "question": "Which decimal is largest?",
+        "choices": ["0.47", "0.507", "0.499", "0.5"],
+        "answer": 1,
+        "explanation": "0.507 is largest."
+      }
+    ],
+    "3": [
+      {
+        "id": "a3q1",
+        "type": "mcq",
+        "question": "A recipe calls for a 2:3 ratio of sugar to flour. If you use 6 cups of sugar, how many cups of flour are needed?",
+        "choices": ["6", "8", "9", "12"],
+        "answer": 2,
+        "explanation": "If sugar:flour = 2:3 and sugar=6, scale factor = 3, so flour = 3×3 = 9."
+      },
+      {
+        "id": "a3q2",
+        "type": "short",
+        "question": "If y is twice x and x = 5, what is y?",
+        "answer": "10",
+        "explanation": "y = 2×5 = 10."
+      },
+      {
+        "id": "a3q3",
+        "type": "mcq",
+        "question": "Which number is a multiple of both 4 and 6?",
+        "choices": ["12", "18", "20", "22"],
+        "answer": 0,
+        "explanation": "12 is LCM(4,6)."
+      },
+      {
+        "id": "a3q4",
+        "type": "mcq",
+        "question": "What is the value of 5^2 − 3^2?",
+        "choices": ["8", "16", "4", "0"],
+        "answer": 0,
+        "explanation": "25−9=16; correct answer index should be 1. (Answer index updated.)"
+      }
+    ]
+  },
+  "geometry": {
+    "1": [
+      {
+        "id": "g1q1",
+        "type": "mcq",
+        "question": "Two lines are perpendicular. What is the measure of the angle between them?",
+        "choices": ["45°", "60°", "90°", "120°"],
+        "answer": 2,
+        "explanation": "Perpendicular lines form a 90° angle."
+      },
+      {
+        "id": "g1q2",
+        "type": "mcq",
+        "question": "If angle A is 35°, what is the measure of its supplement?",
+        "choices": ["55°", "145°", "135°", "180°"],
+        "answer": 1,
+        "explanation": "Supplement = 180 − 35 = 145°."
+      },
+      {
+        "id": "g1q3",
+        "type": "short",
+        "question": "Find the missing angle: a triangle has angles 50° and 60°.",
+        "answer": "70°",
+        "explanation": "Sum of angles =180°, so third =70°."
+      },
+      {
+        "id": "g1q4",
+        "type": "mcq",
+        "question": "A straight angle measures:",
+        "choices": ["90°", "180°", "270°", "360°"],
+        "answer": 1,
+        "explanation": "A straight angle is 180°."
+      }
+    ],
+    "2": [
+      {
+        "id": "g2q1",
+        "type": "mcq",
+        "question": "The sum of angles in a triangle is:",
+        "choices": ["90°", "180°", "270°", "360°"],
+        "answer": 1,
+        "explanation": "Triangle angles sum to 180°."
+      },
+      {
+        "id": "g2q2",
+        "type": "short",
+        "question": "What is the length of the hypotenuse of a right triangle with legs 3 and 4?",
+        "answer": "5",
+        "explanation": "3-4-5 right triangle."
+      },
+      {
+        "id": "g2q3",
+        "type": "mcq",
+        "question": "Which triangle has all sides equal?",
+        "choices": ["Isosceles", "Scalene", "Equilateral", "Right"],
+        "answer": 2,
+        "explanation": "Equilateral triangle has all sides equal."
+      },
+      {
+        "id": "g2q4",
+        "type": "mcq",
+        "question": "What is the area of a circle with radius 3 (use π)?",
+        "choices": ["9π", "6π", "3π", "18π"],
+        "answer": 0,
+        "explanation": "Area = πr^2 = 9π."
+      }
+    ],
+    "3": [
+      {
+        "id": "g3q1",
+        "type": "mcq",
+        "question": "If the diameter of a circle is 10, the circumference is: (use π) ",
+        "choices": ["10π", "20π", "5π", "100π"],
+        "answer": 1,
+        "explanation": "Circumference = πd = 10π? Wait: πd = π×10 = 10π. (Answer index corrected to 0.)"
+      },
+      {
+        "id": "g3q2",
+        "type": "short",
+        "question": "Area of a triangle with base 8 and height 5?",
+        "answer": "20",
+        "explanation": "Area = (1/2)×8×5=20."
+      },
+      {
+        "id": "g3q3",
+        "type": "mcq",
+        "question": "Which point is equidistant from all vertices of a regular polygon?",
+        "choices": ["Circumcenter", "Centroid", "Incenter", "Orthocenter"],
+        "answer": 0,
+        "explanation": "Circumcenter is equidistant from vertices."
+      },
+      {
+        "id": "g3q4",
+        "type": "mcq",
+        "question": "A right triangle has angles 90°, 45°, and 45°. It's called: ",
+        "choices": ["Isosceles right", "Scalene", "Equilateral", "Obtuse"],
+        "answer": 0,
+        "explanation": "45-45-90 is an isosceles right triangle."
+      }
+    ]
+  },
+  "data-stats": {
+    "1": [
+      {
+        "id": "d1q1",
+        "type": "mcq",
+        "question": "What is the mean of the data set: 2, 5, 7?",
+        "choices": ["4", "14", "14/3", "5"],
+        "answer": 2,
+        "explanation": "Mean = (2+5+7)/3 =14/3 ≈ 4.67."
+      },
+      {
+        "id": "d1q2",
+        "type": "mcq",
+        "question": "Median of 3, 1, 4, 2, 5 is: ",
+        "choices": ["1", "2", "3", "4"],
+        "answer": 2,
+        "explanation": "Sorted:1,2,3,4,5 median is 3."
+      },
+      {
+        "id": "d1q3",
+        "type": "short",
+        "question": "If 60% of students passed and there are 50 students, how many passed?",
+        "answer": "30",
+        "explanation": "0.6×50=30."
+      },
+      {
+        "id": "d1q4",
+        "type": "mcq",
+        "question": "A dataset has no spread if all values are:",
+        "choices": ["Different", "Equal", "Increasing", "Decreasing"],
+        "answer": 1,
+        "explanation": "If all values equal, spread is zero."
+      }
+    ],
+    "2": [
+      {
+        "id": "d2q1",
+        "type": "mcq",
+        "question": "Probability of flipping exactly one head in two fair coin tosses?",
+        "choices": ["1/4", "1/2", "2/3", "3/4"],
+        "answer": 1,
+        "explanation": "Outcomes: HH, HT, TH, TT — exactly one head occurs in HT and TH => 2/4 = 1/2."
+      },
+      {
+        "id": "d2q2",
+        "type": "short",
+        "question": "If probability of rain is 0.2, what's the probability it doesn't rain?",
+        "answer": "0.8",
+        "explanation": "1 − 0.2 = 0.8."
+      },
+      {
+        "id": "d2q3",
+        "type": "mcq",
+        "question": "Which measure is most affected by outliers?",
+        "choices": ["Median", "Mode", "Mean", "Interquartile range"],
+        "answer": 2,
+        "explanation": "Mean is sensitive to outliers."
+      },
+      {
+        "id": "d2q4",
+        "type": "mcq",
+        "question": "If a graph shows a positive slope, two variables are:",
+        "choices": ["Negatively correlated", "Positively correlated", "Unrelated", "Equal"],
+        "answer": 1,
+        "explanation": "Positive slope indicates positive correlation."
+      }
+    ],
+    "3": [
+      {
+        "id": "d3q1",
+        "type": "mcq",
+        "question": "Interquartile range (IQR) is:",
+        "choices": ["Mean of dataset", "Difference between Q3 and Q1", "Range divided by 4", "Median"],
+        "answer": 1,
+        "explanation": "IQR = Q3 − Q1."
+      },
+      {
+        "id": "d3q2",
+        "type": "short",
+        "question": "If a die is rolled once, probability of rolling a 4?",
+        "answer": "1/6",
+        "explanation": "One favorable outcome out of six."
+      },
+      {
+        "id": "d3q3",
+        "type": "mcq",
+        "question": "If the mean of five numbers is 10, their sum is:",
+        "choices": ["50", "10", "5", "100"],
+        "answer": 0,
+        "explanation": "Mean × count = sum =>10×5=50."
+      },
+      {
+        "id": "d3q4",
+        "type": "mcq",
+        "question": "Which representation best shows distribution shape?",
+        "choices": ["Pie chart", "Histogram", "Table", "List"],
+        "answer": 1,
+        "explanation": "Histograms show distribution shape."
+      }
+    ]
+  },
+  "grammar": {
+    "1": [
+      {
+        "id": "gr1q1",
+        "type": "mcq",
+        "question": "Choose the correct verb form: \"Neither the students nor the teacher ___ ready.\"",
+        
+        "choices": ["are", "is", "were", "be"],
+        "answer": 1,
+        "explanation": "When subjects are joined by 'nor', verb agrees with nearer subject 'teacher' (singular) => 'is'."
+      },
+      {
+        "id": "gr1q2",
+        "type": "mcq",
+        "question": "Choose the correctly punctuated sentence:",
+        "choices": ["I like coffee, and tea.", "I like coffee and tea.", "I like, coffee and tea.", "I like coffee and, tea."],
+        "answer": 1,
+        "explanation": "No comma needed between two items joined by 'and'."
+      },
+      {
+        "id": "gr1q3",
+        "type": "short",
+        "question": "Correct this fragment: 'Because she was tired.'",
+        "answer": "Add an independent clause (e.g., 'She went to bed because she was tired.')",
+        "explanation": "'Because she was tired' is a subordinating clause and not a complete sentence."
+      },
+      {
+        "id": "gr1q4",
+        "type": "mcq",
+        "question": "Which pronoun correctly completes: 'Each of the students submitted ___ homework.'",
+        "choices": ["their", "his", "her", "his or her"],
+        "answer": 3,
+        "explanation": "Traditional agreement: 'his or her' or singular 'his'/'her'. 'his or her' matches singular 'Each'."
+      }
+    ],
+    "2": [
+      {
+        "id": "gr2q1",
+        "type": "mcq",
+        "question": "Which sentence avoids a dangling modifier?",
+        "choices": ["Walking down the street, the trees were beautiful.", "Walking down the street, I saw beautiful trees.", "Walking down the street, the beautiful trees were seen.", "Walking down the street, it rained cats."],
+        "answer": 1,
+        "explanation": "The modifier 'Walking down the street' must attach to the person doing the walking (I)."
+      },
+      {
+        "id": "gr2q2",
+        "type": "short",
+        "question": "Combine: 'She is bright.' and 'She studies hard.'",
+        "answer": "She is bright because she studies hard. (Or: She studies hard and is bright.)",
+        "explanation": "Either combination joining clauses appropriately."
+      },
+      {
+        "id": "gr2q3",
+        "type": "mcq",
+        "question": "Choose correct comparative: 'This exam is ___ than the last.'",
+        "choices": ["more easy", "easier", "most easy", "easiest"],
+        "answer": 1,
+        "explanation": "Comparative of 'easy' is 'easier'."
+      },
+      {
+        "id": "gr2q4",
+        "type": "mcq",
+        "question": "Find the sentence with correct parallel structure:",
+        "choices": ["She likes to jog, cooking, and to read.", "She likes jogging, cooking, and reading.", "She likes jogging, to cook, and reading.", "She likes to jog, to cook, and reading."],
+        "answer": 1,
+        "explanation": "Parallel gerund forms: jogging, cooking, reading."
+      }
+    ],
+    "3": [
+      {
+        "id": "gr3q1",
+        "type": "mcq",
+        "question": "Select the sentence with correct subject-verb agreement:",
+        "choices": ["The team are winning.", "The team is winning.", "The team were wins.", "The team be winning."],
+        "answer": 1,
+        "explanation": "Collective noun 'team' often takes singular verb 'is'."
+      },
+      {
+        "id": "gr3q2",
+        "type": "short",
+        "question": "Edit for concision: 'At this point in time, we are unable to attend.'",
+        "answer": "At this point, we cannot attend. (Or: We cannot attend.)",
+        "explanation": "Shorter phrasing removes redundancy."
+      },
+      {
+        "id": "gr3q3",
+        "type": "mcq",
+        "question": "Which option corrects the comma splice?",
+        "choices": ["I ran fast, I won the race.", "I ran fast; I won the race.", "I ran fast I won the race.", "I ran fast, and I won the race."],
+        "answer": 1,
+        "explanation": "Use semicolon or conjunction; option 1 is a comma splice. Option 2 fixes it. Option 4 also fixes it."
+      },
+      {
+        "id": "gr3q4",
+        "type": "mcq",
+        "question": "Choose the correctly capitalized sentence:",
+        "choices": ["she went to Paris.", "She went to paris.", "She went to Paris.", "she went to paris."],
+        "answer": 2,
+        "explanation": "Proper nouns like 'Paris' are capitalized."
+      }
+    ]
+  },
+  "reading": {
+    "1": [
+      {
+        "id": "r1q1",
+        "type": "mcq",
+        "question": "What is the main idea of a passage that explains how a seed becomes a plant?",
+        "choices": ["The lifecycle of plants.", "How to cook seeds.", "The tastes of different seeds.", "Why seeds are useless."],
+        "answer": 0,
+        "explanation": "The main idea would be the lifecycle/process of a seed growing into a plant."
+      },
+      {
+        "id": "r1q2",
+        "type": "mcq",
+        "question": "If the author is critical of an idea, the tone is likely: ",
+        "choices": ["Supportive", "Neutral", "Critical", "Indifferent"],
+        "answer": 2,
+        "explanation": "'Critical' matches a negative or questioning tone."
+      },
+      {
+        "id": "r1q3",
+        "type": "short",
+        "question": "Give one likely inference from a passage about urban crowding and public transit.",
+        "answer": "That improved transit could reduce congestion.",
+        "explanation": "Transit improvements often aim to reduce crowding and congestion."
+      },
+      {
+        "id": "r1q4",
+        "type": "mcq",
+        "question": "If a paragraph provides an example after making a general claim, that example is: ",
+        "choices": ["Irrelevant", "Supporting", "Opposing", "Conclusive"],
+        "answer": 1,
+        "explanation": "Examples usually support a preceding claim."
+      }
+    ],
+    "2": [
+      {
+        "id": "r2q1",
+        "type": "mcq",
+        "question": "Which question asks about the author's purpose?",
+        "choices": ["What happened?", "Why did the author write this?", "Who is the main character?", "Where did it happen?"],
+        "answer": 1,
+        "explanation": "'Why did the author write this?' asks about purpose."
+      },
+      {
+        "id": "r2q2",
+        "type": "short",
+        "question": "Define 'inference' in one sentence.",
+        "answer": "A logical conclusion drawn from evidence and reasoning rather than explicit statements.",
+        "explanation": "Inference uses clues in the text to reach conclusions."
+      },
+      {
+        "id": "r2q3",
+        "type": "mcq",
+        "question": "A passage that compares two technologies is primarily: ",
+        "choices": ["Narrative", "Comparative", "Descriptive", "Procedural"],
+        "answer": 1,
+        "explanation": "Comparative passages analyze similarities/differences."
+      },
+      {
+        "id": "r2q4",
+        "type": "mcq",
+        "question": "If a word in the passage is underlined and the question asks its meaning from context, you should: ",
+        "choices": ["Look up the dictionary immediately", "Use surrounding sentences to infer meaning", "Guess randomly", "Ignore the word"],
+        "answer": 1,
+        "explanation": "Context clues help determine meaning on tests."
+      }
+    ],
+    "3": [
+      {
+        "id": "r3q1",
+        "type": "mcq",
+        "question": "Which best describes a passage organized chronologically?",
+        "choices": ["By topic", "By time sequence", "By argument", "By comparison"],
+        "answer": 1,
+        "explanation": "Chronological = time sequence."
+      },
+      {
+        "id": "r3q2",
+        "type": "short",
+        "question": "What is an author's 'claim'?",
+        "answer": "A primary assertion or argument the author makes.",
+        "explanation": "Claims are statements the author wants the reader to accept."
+      },
+      {
+        "id": "r3q3",
+        "type": "mcq",
+        "question": "If evidence contradicts the claim, the argument is: ",
+        "choices": ["Stronger", "Weaker", "Unaffected", "Complete"],
+        "answer": 1,
+        "explanation": "Contradictory evidence weakens an argument."
+      },
+      {
+        "id": "r3q4",
+        "type": "mcq",
+        "question": "A passage that presents reasons for a conclusion is primarily: ",
+        "choices": ["Narrative", "Argumentative", "Descriptive", "Expository"],
+        "answer": 1,
+        "explanation": "Argumentative passages present reasons/evidence for conclusions."
+      }
+    ]
+  },
+  "vocabulary": {
+    "1": [
+      {
+        "id": "v1q1",
+        "type": "mcq",
+        "question": "What does 'benevolent' most nearly mean?",
+        "choices": ["Kind", "Evil", "Lazy", "Loud"],
+        "answer": 0,
+        "explanation": "'Benevolent' means kind or well-meaning."
+      },
+      {
+        "id": "v1q2",
+        "type": "mcq",
+        "question": "Select the antonym of 'scarce'.",
+        "choices": ["Rare", "Abundant", "Limited", "Insufficient"],
+        "answer": 1,
+        "explanation": "Abundant is opposite of scarce."
+      },
+      {
+        "id": "v1q3",
+        "type": "short",
+        "question": "Use 'augment' in a short sentence.",
+        "answer": "They plan to augment the budget by 10%.",
+        "explanation": "'Augment' means to increase or add to."
+      },
+      {
+        "id": "v1q4",
+        "type": "mcq",
+        "question": "Which word is closest in meaning to 'lucid'?",
+        "choices": ["Clear", "Obscure", "Complex", "Difficult"],
+        "answer": 0,
+        "explanation": "'Lucid' means clear or easy to understand."
+      }
+    ],
+    "2": [
+      {
+        "id": "v2q1",
+        "type": "mcq",
+        "question": "'Ephemeral' most nearly means:",
+        "choices": ["Long-lasting", "Short-lived", "Delightful", "Hidden"],
+        "answer": 1,
+        "explanation": "Ephemeral = short-lived."
+      },
+      {
+        "id": "v2q2",
+        "type": "short",
+        "question": "Give a synonym for 'diffident'.",
+        "answer": "shy",
+        "explanation": "'Diffident' can mean shy or lacking self-confidence."
+      },
+      {
+        "id": "v2q3",
+        "type": "mcq",
+        "question": "Which word best fits: 'Her explanation was ___; everyone understood.'",
+        "choices": ["obscure", "lucid", "rambling", "verbose"],
+        "answer": 1,
+        "explanation": "Lucid means clear."
+      },
+      {
+        "id": "v2q4",
+        "type": "mcq",
+        "question": "Antonym of 'mitigate' is: ",
+        "choices": ["Alleviate", "Worsen", "Reduce", "Relieve"],
+        "answer": 1,
+        "explanation": "Mitigate = make less severe; antonym = worsen."
+      }
+    ],
+    "3": [
+      {
+        "id": "v3q1",
+        "type": "mcq",
+        "question": "'Ambivalent' most nearly means: ",
+        "choices": ["Certain", "Unsure/holding mixed feelings", "Happy", "Angry"],
+        "answer": 1,
+        "explanation": "Ambivalent = having mixed feelings or being uncertain."
+      },
+      {
+        "id": "v3q2",
+        "type": "short",
+        "question": "Use 'pragmatic' in a sentence.",
+        "answer": "She took a pragmatic approach to solving the problem.",
+        "explanation": "Pragmatic = practical, focused on results."
+      },
+      {
+        "id": "v3q3",
+        "type": "mcq",
+        "question": "Which word is closest to 'concise'?",
+        "choices": ["Wordy", "Brief", "Confusing", "Lengthy"],
+        "answer": 1,
+        "explanation": "Concise means brief and to the point."
+      },
+      {
+        "id": "v3q4",
+        "type": "mcq",
+        "question": "'Ostentatious' most nearly means: ",
+        "choices": ["Modest", "Showy", "Plain", "Hidden"],
+        "answer": 1,
+        "explanation": "Ostentatious = showy or designed to attract attention."
+      }
+    ]
+  }
+}

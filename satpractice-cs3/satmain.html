@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Planner</title>
+    <link rel="stylesheet" href="satmain.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">SAT Planner</div>
+            <button class="settings-btn" id="settingsBtn">⚙</button>
+        </div>
+    </nav>
+
+    <!-- Settings Overlay -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <div class="settings-title">Settings</div>
+            <button class="close-btn" id="closeBtn">×</button>
+        </div>
+        <div class="settings-section">
+            <label class="settings-label">Theme</label>
+            <div class="settings-options">
+                <button class="option-btn active" data-theme="forest">Forest</button>
+                <button class="option-btn" data-theme="black">Black</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Master the SAT</h1>
+                <p>Learn at your own pace with structured lessons</p>
+            </div>
+        </section>
+
+        <!-- Topics Grid -->
+        <section class="topics-section">
+            <h2>Topics</h2>
+            <div class="topics-grid">
+                <a href="topics/arithmetic.html" class="topic-card">
+                    <div class="topic-icon">A</div>
+                    <h3>Arithmetic</h3>
+                    <p>24 Lessons</p>
+                </a>
+                <a href="topics/geometry.html" class="topic-card">
+                    <div class="topic-icon">G</div>
+                    <h3>Geometry</h3>
+                    <p>18 Lessons</p>
+                </a>
+                <a href="topics/data-stats.html" class="topic-card">
+                    <div class="topic-icon">D</div>
+                    <h3>Data & Stats</h3>
+                    <p>15 Lessons</p>
+                </a>
+                <a href="topics/grammar.html" class="topic-card">
+                    <div class="topic-icon">Gr</div>
+                    <h3>Grammar</h3>
+                    <p>22 Lessons</p>
+                </a>
+                <a href="topics/reading.html" class="topic-card">
+                    <div class="topic-icon">R</div>
+                    <h3>Reading</h3>
+                    <p>30 Lessons</p>
+                </a>
+                <a href="topics/vocabulary.html" class="topic-card">
+                    <div class="topic-icon">V</div>
+                    <h3>Vocabulary</h3>
+                    <p>40 Lessons</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Lessons Grid -->
+        <!-- <section class="lessons-section">
+            <h2>Today's Lessons</h2>
+            <div id="lessonsGrid" class="lessons-grid"></div>
+        </section> -->
+    </div>
+
+
+
+    <script>
+        // Settings Panel
+        const settingsBtn = document.getElementById('settingsBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const settingsOverlay = document.getElementById('settingsOverlay');
+
+        settingsBtn.addEventListener('click', () => {
+            settingsPanel.classList.add('open');
+            settingsOverlay.classList.add('open');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            settingsPanel.classList.remove('open');
+            settingsOverlay.classList.remove('open');
+        });
+
+        settingsOverlay.addEventListener('click', () => {
+            settingsPanel.classList.remove('open');
+            settingsOverlay.classList.remove('open');
+        });
+
+        // Theme system
+        const THEME_KEY = 'satPlannerTheme';
+        
+        const themes = {
+            forest: {
+                bg: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.shutterstock.com/image-photo/dark-creepy-snow-cold-forest-600nw-1921136801.jpg') center/cover no-repeat fixed",
+                textColor: '#e8eef2',
+                primaryColor: '#80deea',
+                secondaryColor: '#b3e5fc',
+                navBg: 'rgba(0, 0, 0, 0.6)'
+            },
+            black: {
+                bg: 'linear-gradient(135deg, #0a0a0a, #1a1a1a)',
+                textColor: '#e8eef2',
+                primaryColor: '#60a5fa',
+                secondaryColor: '#3b82f6',
+                navBg: 'rgba(0, 0, 0, 0.9)'
+            }
+        };
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName] || themes.forest;
+            document.documentElement.style.setProperty('--bg-color', theme.bg);
+            document.documentElement.style.setProperty('--text-color', theme.textColor);
+            document.documentElement.style.setProperty('--primary-color', theme.primaryColor);
+            document.documentElement.style.setProperty('--secondary-color', theme.secondaryColor);
+            localStorage.setItem(THEME_KEY, themeName);
+        }
+
+        // Load theme from localStorage or default to forest
+        window.addEventListener('load', () => {
+            const savedTheme = localStorage.getItem(THEME_KEY) || 'forest';
+            applyTheme(savedTheme);
+            
+            // Update active button
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-theme') === savedTheme) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            initLessonsFromStorage();
+        });
+
+        // Theme button event listeners
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const themeName = btn.getAttribute('data-theme');
+                applyTheme(themeName);
+                
+                document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Lesson/Topic progress system
+        const LESSONS_KEY = 'satPlannerTopics';
+
+        const defaultTopics = [
+            { id: 'arithmetic', name: 'Arithmetic', progress: 28 },
+            { id: 'geometry', name: 'Geometry', progress: 44 },
+            { id: 'data-stats', name: 'Data & Stats', progress: 55 },
+            { id: 'grammar', name: 'Grammar', progress: 22 },
+            { id: 'reading', name: 'Reading', progress: 65 },
+            { id: 'vocabulary', name: 'Vocabulary', progress: 72 }
+        ];
+
+        function loadTopics() {
+            try {
+                const raw = localStorage.getItem(LESSONS_KEY);
+                if (!raw) return defaultTopics.slice();
+                const parsed = JSON.parse(raw);
+                const map = {};
+                parsed.forEach(t => map[t.id] = t);
+                return defaultTopics.map(d => ({ ...d, ...(map[d.id] || {}) }));
+            } catch (e) {
+                return defaultTopics.slice();
+            }
+        }
+
+        function saveTopics(topics) {
+            localStorage.setItem(LESSONS_KEY, JSON.stringify(topics));
+        }
+
+        function initLessonsFromStorage() {
+            const topics = loadTopics();
+            renderLessons(topics);
+        }
+
+        function renderLessons(topics) {
+            const container = document.getElementById('lessonsGrid');
+            if (!container) return;
+
+            topics.forEach(t => t.importance = Math.max(0, 100 - (t.progress || 0)));
+            topics.sort((a, b) => b.importance - a.importance);
+
+            const lowest = topics.reduce((min, t) => t.progress < min.progress ? t : min, topics[0]);
+
+            container.innerHTML = '';
+
+            topics.forEach(topic => {
+                const card = document.createElement('div');
+                card.className = 'lesson-card';
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('data-topic', topic.id);
+
+                const size = Math.round(180 + topic.importance * 0.8);
+                card.style.width = size + 'px';
+                card.style.height = size + 'px';
+
+                card.innerHTML = `
+                    <div class="lesson-content">
+                        <div class="lesson-title">${topic.name}</div>
+                    </div>
+                    <div class="lesson-overlay">
+                        <div class="progress-label">${topic.progress}%</div>
+                        <button class="practice-btn" data-topic="${topic.id}">Practice</button>
+                    </div>
+                `;
+
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const active = document.activeElement;
+                        if (active && active.classList.contains('practice-btn')) {
+                            active.click();
+                        } else {
+                            window.location.href = `topics/${topic.id}.html`;
+                        }
+                    }
+                });
+
+                card.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.practice-btn');
+                    if (btn) return;
+                    window.location.href = `topics/${topic.id}.html`;
+                });
+
+                container.appendChild(card);
+            });
+
+            container.querySelectorAll('.practice-btn').forEach(b => {
+                b.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    const id = b.getAttribute('data-topic');
+                    handlePractice(id);
+                });
+            });
+
+            saveTopics(topics);
+        }
+
+        function handlePractice(topicId) {
+            const topics = loadTopics();
+            const t = topics.find(x => x.id === topicId);
+            if (!t) return;
+            t.progress = Math.min(100, (t.progress || 0) + 2);
+            saveTopics(topics);
+            renderLessons(topics);
+        }
+    </script>
+</body>
+</html>

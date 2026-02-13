@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lesson — SAT Planner</title>
+    <link rel="stylesheet" href="../satmain.css">
+    <style>
+        :root { --bg-color: linear-gradient(#040404, #111); }
+        .lesson-view { max-width:900px; margin:40px auto; padding:24px; }
+        .lesson-meta { margin-bottom:12px; color:var(--text-color); }
+        .lesson-body { background: rgba(255,255,255,0.03); padding:18px; border-radius:10px; }
+        .back-link { display:inline-block; margin-top:16px; color:var(--primary-color); }
+    </style>
+</head>
+<body>
+    <div class="container lesson-view">
+        <div class="section-header">
+            <div id="lessonTitle" class="section-title">Lesson</div>
+            <div id="lessonSubtitle" class="section-subtitle">Topic lesson viewer</div>
+        </div>
+
+        <div class="progress-card">
+            <div class="lesson-meta" id="lessonMeta">Loading...</div>
+            <div class="lesson-body" id="lessonBody">
+                <p>This is a placeholder lesson viewer. Replace with lesson content or embed your lesson editor.</p>
+            </div>
+
+            <a id="backLink" class="back-link" href="../satmain.html">← Back</a>
+        </div>
+    </div>
+
+    <script>
+        const LESSONS_KEY = 'satPlannerTopics';
+
+        function getQueryParams() {
+            const params = {};
+            location.search.slice(1).split('&').forEach(pair => {
+                if (!pair) return;
+                const [k,v] = pair.split('=');
+                params[decodeURIComponent(k)] = decodeURIComponent(v || '');
+            });
+            return params;
+        }
+
+        function loadTopicsState() {
+            try {
+                const raw = localStorage.getItem(LESSONS_KEY);
+                if (!raw) return [];
+                return JSON.parse(raw);
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveTopicsState(list) {
+            localStorage.setItem(LESSONS_KEY, JSON.stringify(list));
+        }
+
+        function ensureTopicInState(topicId) {
+            const list = loadTopicsState();
+            let found = list.find(t=>t.id===topicId);
+            if (!found) {
+                found = { id: topicId, progress: 0 };
+                list.push(found);
+                saveTopicsState(list);
+            }
+            return found;
+        }
+
+        function incrementTopicProgress(topicId, amount) {
+            const list = loadTopicsState();
+            let item = list.find(t=>t.id===topicId);
+            if (!item) {
+                item = { id: topicId, progress: 0 };
+                list.push(item);
+            }
+            item.progress = Math.min(100, (item.progress || 0) + amount);
+            saveTopicsState(list);
+            return item.progress;
+        }
+
+        const params = getQueryParams();
+        const topic = params.topic || 'unknown';
+        const lesson = params.lesson || '1';
+
+        const titleEl = document.getElementById('lessonTitle');
+        const subtitleEl = document.getElementById('lessonSubtitle');
+        const metaEl = document.getElementById('lessonMeta');
+        const bodyEl = document.getElementById('lessonBody');
+        const backLink = document.getElementById('backLink');
+
+        const prettyTopic = topic.replace(/-/g, ' ').replace(/\b\w/g, c=>c.toUpperCase());
+        titleEl.textContent = `${prettyTopic} — Lesson ${lesson}`;
+        subtitleEl.textContent = `Topic: ${prettyTopic}`;
+        metaEl.textContent = `Topic ID: ${topic} · Lesson ${lesson}`;
+        backLink.href = `${topic}.html`;
+
+        // Load questions for this topic/lesson
+        fetch('../data/questions.json').then(r=>r.json()).then(data=>{
+            const topicData = data[topic] || {};
+            const questions = topicData[lesson] || [];
+            renderQuiz(questions);
+            ensureTopicInState(topic);
+        }).catch(err=>{
+            bodyEl.innerHTML = '<p>Could not load questions. Check that <code>data/questions.json</code> exists.</p>';
+            console.error(err);
+        });
+
+        function renderQuiz(questions) {
+            if (!questions || questions.length === 0) {
+                bodyEl.innerHTML = '<p>No questions found for this lesson yet.</p>';
+                return;
+            }
+
+            let idx = 0;
+            const container = document.createElement('div');
+            container.className = 'quiz-container';
+
+            const qEl = document.createElement('div');
+            qEl.className = 'quiz-question';
+
+            const choicesEl = document.createElement('div');
+            choicesEl.className = 'quiz-choices';
+
+            const feedbackEl = document.createElement('div');
+            feedbackEl.className = 'quiz-feedback';
+
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next';
+            nextBtn.style.display = 'none';
+            nextBtn.className = 'practice-btn';
+
+            container.appendChild(qEl);
+            container.appendChild(choicesEl);
+            container.appendChild(feedbackEl);
+            container.appendChild(nextBtn);
+            bodyEl.innerHTML = '';
+            bodyEl.appendChild(container);
+
+            function showQuestion(i) {
+                const item = questions[i];
+                qEl.textContent = `${i+1}. ${item.question}`;
+                feedbackEl.textContent = '';
+                choicesEl.innerHTML = '';
+                nextBtn.style.display = 'none';
+
+                if (item.type === 'mcq') {
+                    item.choices.forEach((c, ci)=>{
+                        const b = document.createElement('button');
+                        b.className = 'choice-btn';
+                        b.textContent = String.fromCharCode(65+ci) + '. ' + c;
+                        b.dataset.index = ci;
+                        b.addEventListener('click', () => handleChoice(b, item, ci));
+                        choicesEl.appendChild(b);
+                    });
+                } else if (item.type === 'short') {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.className = 'short-input';
+                    input.placeholder = 'Type your answer here';
+                    const submit = document.createElement('button');
+                    submit.textContent = 'Submit';
+                    submit.className = 'practice-btn';
+                    submit.addEventListener('click', () => handleShort(input.value, item));
+                    choicesEl.appendChild(input);
+                    choicesEl.appendChild(submit);
+                }
+            }
+
+            function handleChoice(btn, item, ci) {
+                // disable all
+                const all = choicesEl.querySelectorAll('button');
+                all.forEach(x=>x.disabled=true);
+                const correct = Number(item.answer) === Number(ci);
+                if (correct) {
+                    feedbackEl.textContent = 'Correct! ' + (item.explanation || '');
+                    incrementTopicProgress(topic, 2);
+                } else {
+                    const correctText = (item.type === 'mcq' && item.choices && item.choices[item.answer]) ? item.choices[item.answer] : '';
+                    feedbackEl.textContent = `Incorrect. Correct: ${correctText}. ${item.explanation||''}`;
+                }
+                nextBtn.style.display = 'inline-block';
+            }
+
+            function handleShort(value, item) {
+                const v = String(value||'').trim().toLowerCase();
+                const ans = String(item.answer||'').trim().toLowerCase();
+                const correct = v === ans;
+                if (correct) {
+                    feedbackEl.textContent = 'Correct! ' + (item.explanation||'');
+                    incrementTopicProgress(topic, 2);
+                } else {
+                    feedbackEl.textContent = `Answer: ${item.answer}. ${item.explanation||''}`;
+                }
+                const inputs = choicesEl.querySelectorAll('input, button');
+                inputs.forEach(x=>x.disabled=true);
+                nextBtn.style.display = 'inline-block';
+            }
+
+            nextBtn.addEventListener('click', ()=>{
+                idx++;
+                if (idx >= questions.length) {
+                    showSummary();
+                } else {
+                    showQuestion(idx);
+                }
+            });
+
+            function showSummary() {
+                const state = loadTopicsState();
+                const t = state.find(x=>x.id===topic) || { progress:0 };
+                container.innerHTML = `<div class="quiz-complete"><h3>Lesson complete</h3><p>Your current progress in ${prettyTopic}: ${t.progress || 0}%</p><p>${questions.length} questions attempted.</p></div>`;
+                const back = document.createElement('a');
+                back.textContent = 'Back to Topic';
+                back.className = 'back-link';
+                back.href = `${topic}.html`;
+                container.appendChild(back);
+                const home = document.createElement('a');
+                home.textContent = 'Back to Home';
+                home.className = 'back-link';
+                home.href = '../satmain.html';
+                container.appendChild(home);
+            }
+
+            // start
+            showQuestion(idx);
+        }
+    </script>
+</body>
+</html>
