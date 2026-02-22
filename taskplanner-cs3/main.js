@@ -1,4 +1,4 @@
-import { doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.currentUserUid && window.db) {
             const userDocRef = doc(window.db, "users", window.currentUserUid);
             try {
-                await updateDoc(userDocRef, {
+                await setDoc(userDocRef, {
                     tasks: tasks
                 });
             } catch (error) {
