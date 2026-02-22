@@ -10,6 +10,54 @@
 </head>
 <body>
   <p>If you are not redirected automatically, <a href="taskplanner-cs3/main_page.html">click here to open Task Planner</a>.</p>
+
+  <!-- Firebase SDKs for login system below -->
+
+  <script type="module">
+
+  // Import the functions you need from the SDKs you need
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCN8wH8WMmXtFSN8yFAVrizTS7IqLQzWKg",
+
+    authDomain: "steazyplanner.firebaseapp.com",
+
+    projectId: "steazyplanner",
+
+    storageBucket: "steazyplanner.firebasestorage.app",
+
+    messagingSenderId: "231639329077",
+
+    appId: "1:231639329077:web:4242cb4d5f9ff81b9fc47c",
+
+    measurementId: "G-7GWFDHKKER"
+
+  };
+
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+</script>
+
 </body>
 </html>
 <!-- new repo commit test -->
+
