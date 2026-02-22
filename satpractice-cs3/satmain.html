@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="satmain.css">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">SAT Planner</div>
@@ -15,10 +14,8 @@
         </div>
     </nav>
 
-    <!-- Settings Overlay -->
     <div class="settings-overlay" id="settingsOverlay"></div>
 
-    <!-- Settings Panel -->
     <div class="settings-panel" id="settingsPanel">
         <div class="settings-header">
             <div class="settings-title">Settings</div>
@@ -33,9 +30,7 @@
         </div>
     </div>
 
-    <!-- Main Container -->
     <div class="main-container">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Master the SAT</h1>
@@ -43,7 +38,6 @@
             </div>
         </section>
 
-        <!-- Topics Grid -->
         <section class="topics-section">
             <h2>Topics</h2>
             <div class="topics-grid">
@@ -80,16 +74,30 @@
             </div>
         </section>
 
-        <!-- Lessons Grid -->
-        <!-- <section class="lessons-section">
-            <h2>Today's Lessons</h2>
-            <div id="lessonsGrid" class="lessons-grid"></div>
-        </section> -->
-    </div>
+        </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
+        const firebaseConfig = {
+            apiKey: "AIzaSyCN8wH8WMmXtFSN8yFAVrizTS7IqLQzWKg",
+            authDomain: "steazyplanner.firebaseapp.com",
+            projectId: "steazyplanner",
+            storageBucket: "steazyplanner.firebasestorage.app",
+            messagingSenderId: "231639329077",
+            appId: "1:231639329077:web:4242cb4d5f9ff81b9fc47c",
+            measurementId: "G-7GWFDHKKER"
+        };
 
-    <script>
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUserUid = null;
+        let currentTopics = []; // State variable to hold active topics data
+
         // Settings Panel
         const settingsBtn = document.getElementById('settingsBtn');
         const closeBtn = document.getElementById('closeBtn');
@@ -140,7 +148,7 @@
             localStorage.setItem(THEME_KEY, themeName);
         }
 
-        // Load theme from localStorage or default to forest
+        // Load theme from localStorage
         window.addEventListener('load', () => {
             const savedTheme = localStorage.getItem(THEME_KEY) || 'forest';
             applyTheme(savedTheme);
@@ -152,8 +160,6 @@
                     btn.classList.add('active');
                 }
             });
-            
-            initLessonsFromStorage();
         });
 
         // Theme button event listeners
@@ -168,8 +174,6 @@
         });
 
         // Lesson/Topic progress system
-        const LESSONS_KEY = 'satPlannerTopics';
-
         const defaultTopics = [
             { id: 'arithmetic', name: 'Arithmetic', progress: 28 },
             { id: 'geometry', name: 'Geometry', progress: 44 },
@@ -179,36 +183,59 @@
             { id: 'vocabulary', name: 'Vocabulary', progress: 72 }
         ];
 
-        function loadTopics() {
-            try {
-                const raw = localStorage.getItem(LESSONS_KEY);
-                if (!raw) return defaultTopics.slice();
-                const parsed = JSON.parse(raw);
-                const map = {};
-                parsed.forEach(t => map[t.id] = t);
-                return defaultTopics.map(d => ({ ...d, ...(map[d.id] || {}) }));
-            } catch (e) {
-                return defaultTopics.slice();
+        // Route Protection and Data Loading
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                // If accessed directly without logging in, redirect to login page
+                window.location.replace('../index.html');
+            } else {
+                currentUserUid = user.uid;
+                await initLessonsFromFirestore();
             }
+        });
+
+        async function initLessonsFromFirestore() {
+            try {
+                const docRef = doc(db, "users", currentUserUid);
+                const docSnap = await getDoc(docRef);
+                
+                if (docSnap.exists() && docSnap.data().satTopics && docSnap.data().satTopics.length > 0) {
+                    const savedTopics = docSnap.data().satTopics;
+                    // Merge saved progress with defaults to ensure structure is intact
+                    const map = {};
+                    savedTopics.forEach(t => map[t.id] = t);
+                    currentTopics = defaultTopics.map(d => ({ ...d, ...(map[d.id] || {}) }));
+                } else {
+                    // No data exists yet, use default topics
+                    currentTopics = defaultTopics.slice();
+                }
+            } catch (error) {
+                console.error("Error fetching SAT topics:", error);
+                currentTopics = defaultTopics.slice();
+            }
+            
+            renderLessons(currentTopics);
         }
 
-        function saveTopics(topics) {
-            localStorage.setItem(LESSONS_KEY, JSON.stringify(topics));
-        }
-
-        function initLessonsFromStorage() {
-            const topics = loadTopics();
-            renderLessons(topics);
+        async function saveTopicsToFirestore(topicsToSave) {
+            if (!currentUserUid) return;
+            
+            const docRef = doc(db, "users", currentUserUid);
+            try {
+                await updateDoc(docRef, {
+                    satTopics: topicsToSave
+                });
+            } catch (error) {
+                console.error("Error saving SAT topics:", error);
+            }
         }
 
         function renderLessons(topics) {
             const container = document.getElementById('lessonsGrid');
-            if (!container) return;
+            if (!container) return; // Returns early if you keep the section commented out in HTML
 
             topics.forEach(t => t.importance = Math.max(0, 100 - (t.progress || 0)));
             topics.sort((a, b) => b.importance - a.importance);
-
-            const lowest = topics.reduce((min, t) => t.progress < min.progress ? t : min, topics[0]);
 
             container.innerHTML = '';
 
@@ -255,23 +282,25 @@
             });
 
             container.querySelectorAll('.practice-btn').forEach(b => {
-                b.addEventListener('click', (ev) => {
+                b.addEventListener('click', async (ev) => {
                     ev.stopPropagation();
                     const id = b.getAttribute('data-topic');
-                    handlePractice(id);
+                    await handlePractice(id);
                 });
             });
-
-            saveTopics(topics);
         }
 
-        function handlePractice(topicId) {
-            const topics = loadTopics();
-            const t = topics.find(x => x.id === topicId);
+        async function handlePractice(topicId) {
+            const t = currentTopics.find(x => x.id === topicId);
             if (!t) return;
+            
             t.progress = Math.min(100, (t.progress || 0) + 2);
-            saveTopics(topics);
-            renderLessons(topics);
+            
+            // Re-render UI immediately for responsiveness
+            renderLessons(currentTopics);
+            
+            // Save to database in the background
+            await saveTopicsToFirestore(currentTopics);
         }
     </script>
 </body>

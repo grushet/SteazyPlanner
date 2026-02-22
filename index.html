@@ -3,61 +3,122 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Task Planner — Redirect</title>
-  <!-- Redirect to the Task Planner home page -->
-  <meta http-equiv="refresh" content="0;url=taskplanner-cs3/main_page.html">
-  <script>window.location.replace('taskplanner-cs3/main_page.html');</script>
+  <title>SteazyPlanner — Login</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #1a1a1a;
+      color: #e8eef2;
+    }
+    .auth-container {
+      background: rgba(0,0,0,0.45);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    h2 { margin: 0 0 10px 0; text-align: center; }
+    input {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: white;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    #login-btn { background-color: #80deea; color: #1a1a1a; }
+    #register-btn { background-color: transparent; border: 1px solid #80deea; color: #80deea; }
+    #error-message { color: #ff6b6b; font-size: 0.85rem; text-align: center; min-height: 20px; }
+  </style>
 </head>
 <body>
-  <p>If you are not redirected automatically, <a href="taskplanner-cs3/main_page.html">click here to open Task Planner</a>.</p>
 
-  <!-- Firebase SDKs for login system below -->
+  <div class="auth-container">
+    <h2>SteazyPlanner</h2>
+    <input type="email" id="email" placeholder="Email address" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <div id="error-message"></div>
+    <button id="login-btn">Log In</button>
+    <button id="register-btn">Create Account</button>
+  </div>
 
   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-  // Import the functions you need from the SDKs you need
+    const firebaseConfig = {
+      apiKey: "AIzaSyCN8wH8WMmXtFSN8yFAVrizTS7IqLQzWKg",
+      authDomain: "steazyplanner.firebaseapp.com",
+      projectId: "steazyplanner",
+      storageBucket: "steazyplanner.firebasestorage.app",
+      messagingSenderId: "231639329077",
+      appId: "1:231639329077:web:4242cb4d5f9ff81b9fc47c",
+      measurementId: "G-7GWFDHKKER"
+    };
 
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    const errorMessage = document.getElementById('error-message');
 
-  // TODO: Add SDKs for Firebase products that you want to use
+    // Handle Registration
+    registerBtn.addEventListener('click', async () => {
+      try {
+        errorMessage.textContent = "";
+        const userCredential = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+        
+        // Create initial database document for the new user
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          tasks: [],
+          satTopics: [] // Will store SAT progress
+        });
+        
+      } catch (error) {
+        errorMessage.textContent = error.message.replace("Firebase: ", "");
+      }
+    });
 
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    // Handle Login
+    loginBtn.addEventListener('click', async () => {
+      try {
+        errorMessage.textContent = "";
+        await signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
+      } catch (error) {
+        errorMessage.textContent = "Invalid email or password.";
+      }
+    });
 
-
-  // Your web app's Firebase configuration
-
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-  const firebaseConfig = {
-
-    apiKey: "AIzaSyCN8wH8WMmXtFSN8yFAVrizTS7IqLQzWKg",
-
-    authDomain: "steazyplanner.firebaseapp.com",
-
-    projectId: "steazyplanner",
-
-    storageBucket: "steazyplanner.firebasestorage.app",
-
-    messagingSenderId: "231639329077",
-
-    appId: "1:231639329077:web:4242cb4d5f9ff81b9fc47c",
-
-    measurementId: "G-7GWFDHKKER"
-
-  };
-
-
-  // Initialize Firebase
-
-  const app = initializeApp(firebaseConfig);
-
-  const analytics = getAnalytics(app);
-
-</script>
+    // Monitor Authentication State
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Redirect to main planner only if successfully logged in
+        window.location.replace('taskplanner-cs3/main_page.html');
+      }
+    });
+  </script>
 
 </body>
 </html>
-<!-- new repo commit test -->
-

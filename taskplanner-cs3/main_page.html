@@ -84,6 +84,7 @@
                 <a href="#" class="nav-link" data-target="page-calendar">Calendar</a>
                 <a href="#" class="nav-link" data-target="page-pomodoro">Pomodoro Timer</a>
                 <a href="#" class="nav-link" data-target="page-sat">SAT Helper</a>
+                <a href="#" id="logout-btn" class="nav-link" style="color: #ff6b6b; margin-top: 20px;">Log Out</a>
             </nav>
         </aside>
 
@@ -178,6 +179,59 @@
             </section>
         </section>
     </div>
-    <script src="main.js" defer></script>
+    <script type="module" src="main.js" defer></script>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCN8wH8WMmXtFSN8yFAVrizTS7IqLQzWKg",
+        authDomain: "steazyplanner.firebaseapp.com",
+        projectId: "steazyplanner",
+        storageBucket: "steazyplanner.firebasestorage.app",
+        messagingSenderId: "231639329077",
+        appId: "1:231639329077:web:4242cb4d5f9ff81b9fc47c",
+        measurementId: "G-7GWFDHKKER"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    export const db = getFirestore(app);
+
+    // Make db and uid globally available for main.js to use
+    window.db = db;
+    window.currentUserUid = null;
+
+    // Route Protection and Data Loading
+    onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+            // User is not logged in, kick them back to the login page
+            window.location.replace('../index.html');
+        } else {
+            // User is logged in, store their ID
+            window.currentUserUid = user.uid;
+            
+            // Fetch their specific data from Firestore
+            const docRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(docRef);
+            
+            if (docSnap.exists()) {
+                const userData = docSnap.data();
+                // Dispatch a custom event to tell main.js the data is ready
+                const event = new CustomEvent('userDataLoaded', { detail: userData });
+                window.dispatchEvent(event);
+            }
+        }
+    });
+
+    // Handle Logout
+    document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        signOut(auth);
+    });
+    </script>
+
 </body>
 </html>
