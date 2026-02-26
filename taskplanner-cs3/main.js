@@ -51,6 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Close all open menus
+    function closeAllMenus() {
+        const allMenus = document.querySelectorAll('.task-menu-container, .subtask-menu-container');
+        allMenus.forEach(menu => menu.classList.add('hidden'));
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', () => {
+        closeAllMenus();
+    });
+
     // Navigation: show/hide pages and set active link
     const links = document.querySelectorAll('.nav-link[data-target]');
     const pages = document.querySelectorAll('.page');
@@ -517,16 +528,46 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             li.appendChild(addSubtaskBtn);
             
-            // delete button (at the end - rightmost)
+            // three-dot menu button (at the end - rightmost)
+            const menuBtn = document.createElement('button');
+            menuBtn.type = 'button';
+            menuBtn.className = 'task-menu-btn';
+            menuBtn.textContent = '⋯';
+            menuBtn.title = 'More options';
+            
+            // create menu container
+            const menuContainer = document.createElement('div');
+            menuContainer.className = 'task-menu-container hidden';
+            
+            const editBtn = document.createElement('button');
+            editBtn.type = 'button';
+            editBtn.className = 'task-menu-option';
+            editBtn.textContent = 'Edit';
+            editBtn.addEventListener('click', () => {
+                closeAllMenus();
+                startEditingTaskName(task, li);
+            });
+            
             const deleteBtn = document.createElement('button');
             deleteBtn.type = 'button';
-            deleteBtn.className = 'task-delete-btn';
-            deleteBtn.textContent = '✕';
-            deleteBtn.title = 'Delete task';
+            deleteBtn.className = 'task-menu-option delete-option';
+            deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', () => {
+                closeAllMenus();
                 showDeleteConfirm(task.id);
             });
-            li.appendChild(deleteBtn);
+            
+            menuContainer.appendChild(editBtn);
+            menuContainer.appendChild(deleteBtn);
+            
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAllMenus();
+                menuContainer.classList.remove('hidden');
+            });
+            
+            li.appendChild(menuBtn);
+            li.appendChild(menuContainer);
             
             // Subtasks container (rendered below the main task row)
             const subtasksContainer = document.createElement('div');
@@ -569,6 +610,41 @@ document.addEventListener('DOMContentLoaded', () => {
             renderTasks();
         }
 
+        input.addEventListener('blur', commit);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+        });
+    }
+
+    function startEditingTaskName(task, liElement) {
+        const label = liElement.querySelector('.task-label');
+        if (!label) return;
+        
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'task-name-editor';
+        input.value = task.text;
+        
+        label.replaceWith(input);
+        input.focus();
+        input.select();
+        
+        function commit() {
+            const newText = (input.value || '').trim();
+            if (newText && newText !== task.text) {
+                task.text = newText;
+                saveTasks();
+                renderTasks();
+            } else {
+                renderTasks();
+            }
+        }
+        
+        function cancel() {
+            renderTasks();
+        }
+        
         input.addEventListener('blur', commit);
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') { e.preventDefault(); commit(); }
@@ -755,20 +831,50 @@ document.addEventListener('DOMContentLoaded', () => {
             dateElement = add;
         }
         
+        // three-dot menu button for subtask
+        const menuBtn = document.createElement('button');
+        menuBtn.type = 'button';
+        menuBtn.className = 'subtask-menu-btn';
+        menuBtn.textContent = '⋯';
+        menuBtn.title = 'More options';
+        
+        // create menu container
+        const menuContainer = document.createElement('div');
+        menuContainer.className = 'subtask-menu-container hidden';
+        
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.className = 'subtask-menu-option';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => {
+            closeAllMenus();
+            startEditingSubtaskName(parentTaskId, subtask, subtaskEl);
+        });
+        
         const deleteBtn = document.createElement('button');
         deleteBtn.type = 'button';
-        deleteBtn.className = 'subtask-delete-btn';
-        deleteBtn.textContent = '✕';
-        deleteBtn.title = 'Delete subtask';
+        deleteBtn.className = 'subtask-menu-option delete-option';
+        deleteBtn.textContent = 'Delete';
         deleteBtn.addEventListener('click', () => {
+            closeAllMenus();
             deleteSubtask(parentTaskId, subtask.id);
+        });
+        
+        menuContainer.appendChild(editBtn);
+        menuContainer.appendChild(deleteBtn);
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeAllMenus();
+            menuContainer.classList.remove('hidden');
         });
         
         subtaskEl.appendChild(checkbox);
         subtaskEl.appendChild(label);
         subtaskEl.appendChild(impSelect);
         subtaskEl.appendChild(dateElement);
-        subtaskEl.appendChild(deleteBtn);
+        subtaskEl.appendChild(menuBtn);
+        subtaskEl.appendChild(menuContainer);
         
         return subtaskEl;
     }
@@ -890,6 +996,42 @@ document.addEventListener('DOMContentLoaded', () => {
         saveTasks();
         renderTasks();
     }
+
+    function startEditingSubtaskName(parentTaskId, subtask, subtaskEl) {
+        const label = subtaskEl.querySelector('.subtask-label');
+        if (!label) return;
+        
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'subtask-name-editor';
+        input.value = subtask.text;
+        
+        label.replaceWith(input);
+        input.focus();
+        input.select();
+        
+        function commit() {
+            const newText = (input.value || '').trim();
+            if (newText && newText !== subtask.text) {
+                subtask.text = newText;
+                saveTasks();
+                renderTasks();
+            } else {
+                renderTasks();
+            }
+        }
+        
+        function cancel() {
+            renderTasks();
+        }
+        
+        input.addEventListener('blur', commit);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+        });
+    }
+
     function parseDateYMD(ymd) {
         if (!ymd) return null;
         const parts = String(ymd).split('-');
