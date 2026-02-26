@@ -20,6 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const minuteEl = document.getElementById('minute');
     if (minuteEl) minuteEl.textContent = pad(now.getMinutes());
 
+    // Delete confirmation modal setup
+    const deleteConfirmModal = document.getElementById('delete-confirm-modal');
+    const deleteConfirmCancel = document.getElementById('delete-confirm-cancel');
+    const deleteConfirmYes = document.getElementById('delete-confirm-yes');
+    let pendingDeleteId = null;
+
+    function showDeleteConfirm(taskId) {
+        pendingDeleteId = taskId;
+        deleteConfirmModal.classList.remove('hidden');
+    }
+
+    function hideDeleteConfirm() {
+        deleteConfirmModal.classList.add('hidden');
+        pendingDeleteId = null;
+    }
+
+    deleteConfirmCancel.addEventListener('click', hideDeleteConfirm);
+    deleteConfirmYes.addEventListener('click', () => {
+        if (pendingDeleteId) {
+            deleteTask(pendingDeleteId);
+        }
+        hideDeleteConfirm();
+    });
+
+    // Close modal on background click
+    deleteConfirmModal.addEventListener('click', (e) => {
+        if (e.target === deleteConfirmModal) {
+            hideDeleteConfirm();
+        }
+    });
+
     // Navigation: show/hide pages and set active link
     const links = document.querySelectorAll('.nav-link[data-target]');
     const pages = document.querySelectorAll('.page');
@@ -465,6 +496,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 add.addEventListener('click', () => startEditingDate(task));
                 li.appendChild(add);
             }
+            
+            // delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.type = 'button';
+            deleteBtn.className = 'task-delete-btn';
+            deleteBtn.textContent = '✕';
+            deleteBtn.title = 'Delete task';
+            deleteBtn.addEventListener('click', () => {
+                showDeleteConfirm(task.id);
+            });
+            li.appendChild(deleteBtn);
             taskListEl.appendChild(li);
         });
     }
@@ -593,6 +635,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx = tasks.findIndex(t => String(t.id) === String(id));
         if (idx === -1) return;
         tasks[idx].completed = !!completed;
+        saveTasks();
+        renderTasks();
+        renderCalendar();
+        renderDayTasks();
+    }
+
+    function deleteTask(id) {
+        const idx = tasks.findIndex(t => String(t.id) === String(id));
+        if (idx === -1) return;
+        tasks.splice(idx, 1);
         saveTasks();
         renderTasks();
         renderCalendar();
