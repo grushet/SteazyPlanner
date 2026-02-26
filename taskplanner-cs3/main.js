@@ -384,6 +384,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const userData = e.detail;
         tasks = userData.tasks || [];
         
+        // Ensure all tasks and subtasks have required properties
+        tasks.forEach(task => {
+            if (!task.subtasks) task.subtasks = [];
+            task.subtasks.forEach(subtask => {
+                if (!subtask.importance) subtask.importance = null;
+                if (!subtask.dueDate) subtask.dueDate = null;
+            });
+        });
+        
         // Re-render everything once data arrives
         renderTasks();
         renderCalendar();
@@ -497,7 +506,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.appendChild(add);
             }
             
-            // delete button
+            // add subtask button
+            if (!task.subtasks) task.subtasks = [];
+            const addSubtaskBtn = document.createElement('button');
+            addSubtaskBtn.type = 'button';
+            addSubtaskBtn.className = 'add-subtask-btn-inline';
+            addSubtaskBtn.textContent = '+ Subtask';
+            addSubtaskBtn.addEventListener('click', () => {
+                startAddingSubtask(task.id, li);
+            });
+            li.appendChild(addSubtaskBtn);
+            
+            // delete button (at the end - rightmost)
             const deleteBtn = document.createElement('button');
             deleteBtn.type = 'button';
             deleteBtn.className = 'task-delete-btn';
@@ -507,6 +527,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 showDeleteConfirm(task.id);
             });
             li.appendChild(deleteBtn);
+            
+            // Subtasks container (rendered below the main task row)
+            const subtasksContainer = document.createElement('div');
+            subtasksContainer.className = 'subtasks-container';
+            
+            // Render existing subtasks
+            task.subtasks.forEach(subtask => {
+                const subtaskEl = renderSubtask(subtask, task.id);
+                subtasksContainer.appendChild(subtaskEl);
+            });
+            
+            li.appendChild(subtasksContainer);
             taskListEl.appendChild(li);
         });
     }
@@ -651,7 +683,213 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDayTasks();
     }
 
-    // helpers: parse YYYY-MM-DD to local Date (avoid timezone shift)
+    function renderSubtask(subtask, parentTaskId) {
+        const subtaskEl = document.createElement('div');
+        subtaskEl.className = 'subtask-item';
+        if (subtask.completed) subtaskEl.classList.add('completed');
+        if (subtask.importance === 'high') subtaskEl.classList.add('importance-high');
+        else if (subtask.importance === 'low') subtaskEl.classList.add('importance-low');
+        subtaskEl.dataset.subtaskId = subtask.id;
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'subtask-checkbox';
+        checkbox.checked = !!subtask.completed;
+        checkbox.addEventListener('change', () => {
+            toggleSubtask(parentTaskId, subtask.id, checkbox.checked);
+        });
+        
+        const label = document.createElement('span');
+        label.className = 'subtask-label';
+        label.textContent = subtask.text;
+        
+        // importance dropdown
+        const impSelect = document.createElement('select');
+        impSelect.className = 'subtask-importance-select';
+        impSelect.dataset.id = subtask.id;
+        
+        const noneOpt = document.createElement('option');
+        noneOpt.value = '';
+        noneOpt.textContent = '—';
+        noneOpt.selected = !subtask.importance;
+        impSelect.appendChild(noneOpt);
+        
+        const highOpt = document.createElement('option');
+        highOpt.value = 'high';
+        highOpt.textContent = 'High';
+        highOpt.selected = subtask.importance === 'high';
+        impSelect.appendChild(highOpt);
+        
+        const medOpt = document.createElement('option');
+        medOpt.value = 'med';
+        medOpt.textContent = 'Med';
+        medOpt.selected = subtask.importance === 'med';
+        impSelect.appendChild(medOpt);
+        
+        const lowOpt = document.createElement('option');
+        lowOpt.value = 'low';
+        lowOpt.textContent = 'Low';
+        lowOpt.selected = subtask.importance === 'low';
+        impSelect.appendChild(lowOpt);
+        
+        impSelect.addEventListener('change', (e) => {
+            const newImp = e.target.value || null;
+            updateSubtaskImportance(parentTaskId, subtask.id, newImp);
+        });
+        
+        // date badge or 'add date' affordance
+        let dateElement;
+        if (subtask.dueDate) {
+            const badge = document.createElement('span');
+            badge.className = 'subtask-date-badge';
+            badge.title = new Date(subtask.dueDate).toLocaleDateString();
+            badge.textContent = formatTaskDateDisplay(subtask.dueDate);
+            badge.addEventListener('click', () => startEditingSubtaskDate(parentTaskId, subtask.id, subtaskEl));
+            dateElement = badge;
+        } else {
+            const add = document.createElement('button');
+            add.type = 'button';
+            add.className = 'subtask-date-add';
+            add.textContent = '+ Date';
+            add.addEventListener('click', () => startEditingSubtaskDate(parentTaskId, subtask.id, subtaskEl));
+            dateElement = add;
+        }
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'subtask-delete-btn';
+        deleteBtn.textContent = '✕';
+        deleteBtn.title = 'Delete subtask';
+        deleteBtn.addEventListener('click', () => {
+            deleteSubtask(parentTaskId, subtask.id);
+        });
+        
+        subtaskEl.appendChild(checkbox);
+        subtaskEl.appendChild(label);
+        subtaskEl.appendChild(impSelect);
+        subtaskEl.appendChild(dateElement);
+        subtaskEl.appendChild(deleteBtn);
+        
+        return subtaskEl;
+    }
+
+    function startAddingSubtask(parentTaskId, taskItemEl) {
+        const subtasksContainer = taskItemEl.querySelector('.subtasks-container');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'New subtask...';
+        input.className = 'subtask-input';
+        
+        subtasksContainer.insertBefore(input, subtasksContainer.firstChild);
+        input.focus();
+        
+        let isCommitted = false;
+        
+        function commit() {
+            if (isCommitted) return; // Prevent double commits
+            isCommitted = true;
+            
+            const text = (input.value || '').trim();
+            if (text) {
+                addSubtask(parentTaskId, text);
+            } else {
+                cancel();
+            }
+        }
+        
+        function cancel() {
+            if (!isCommitted && subtasksContainer.contains(input)) {
+                subtasksContainer.removeChild(input);
+            }
+        }
+        
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+        });
+        input.addEventListener('blur', () => { setTimeout(commit, 50); });
+    }
+
+    function addSubtask(parentTaskId, text) {
+        const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
+        if (!parentTask) return;
+        if (!parentTask.subtasks) parentTask.subtasks = [];
+        
+        const subtask = { id: Date.now(), text: text, completed: false, importance: null, dueDate: null };
+        parentTask.subtasks.push(subtask);
+        saveTasks();
+        renderTasks();
+    }
+
+    function toggleSubtask(parentTaskId, subtaskId, completed) {
+        const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
+        if (!parentTask) return;
+        
+        const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
+        if (!subtask) return;
+        
+        subtask.completed = !!completed;
+        saveTasks();
+        renderTasks();
+    }
+
+    function updateSubtaskImportance(parentTaskId, subtaskId, importance) {
+        const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
+        if (!parentTask) return;
+        
+        const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
+        if (!subtask) return;
+        
+        subtask.importance = importance;
+        saveTasks();
+        renderTasks();
+    }
+
+    function startEditingSubtaskDate(parentTaskId, subtaskId, subtaskEl) {
+        const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
+        if (!parentTask) return;
+        
+        const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
+        if (!subtask) return;
+        
+        const existingDateEl = subtaskEl.querySelector('.subtask-date-badge, .subtask-date-add');
+        const input = document.createElement('input');
+        input.type = 'date';
+        input.className = 'subtask-date-editor';
+        input.value = subtask.dueDate || '';
+        
+        if (existingDateEl) existingDateEl.replaceWith(input);
+        input.focus();
+        
+        function commit() {
+            const val = input.value || null;
+            subtask.dueDate = val;
+            saveTasks();
+            renderTasks();
+        }
+        
+        function cancel() {
+            renderTasks();
+        }
+        
+        input.addEventListener('blur', commit);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') { e.preventDefault(); commit(); }
+            if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+        });
+    }
+
+    function deleteSubtask(parentTaskId, subtaskId) {
+        const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
+        if (!parentTask) return;
+        
+        const idx = parentTask.subtasks.findIndex(st => String(st.id) === String(subtaskId));
+        if (idx === -1) return;
+        
+        parentTask.subtasks.splice(idx, 1);
+        saveTasks();
+        renderTasks();
+    }
     function parseDateYMD(ymd) {
         if (!ymd) return null;
         const parts = String(ymd).split('-');
