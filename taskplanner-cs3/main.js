@@ -264,70 +264,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addBtn.addEventListener('click', startAddInline);
 
-        const matches = tasks.filter(t => t.dueDate === selectedDate);
-        if (!matches.length) {
+        // collect both tasks and subtasks matching the selected date
+        const allMatches = [];
+        tasks.forEach(task => {
+            if (task.dueDate === selectedDate) {
+                allMatches.push({ type: 'task', task, subtask: null });
+            }
+            if (task.subtasks) {
+                task.subtasks.forEach(subtask => {
+                    if (subtask.dueDate === selectedDate) {
+                        allMatches.push({ type: 'subtask', task, subtask });
+                    }
+                });
+            }
+        });
+
+        if (!allMatches.length) {
             const p = document.createElement('div');
             p.className = 'no-tasks';
             p.textContent = isToday ? 'No tasks scheduled for today' : 'No tasks scheduled for this day';
             container.appendChild(p);
         } else {
             const ul = document.createElement('ul');
-            matches.forEach(task => {
+            allMatches.forEach(item => {
                 const li = document.createElement('li');
-                // reflect completed state in the row so we can style it (cross-out, dim, etc.)
-                li.className = 'day-task-item' + (task.completed ? ' completed' : '');
-                if (task.importance === 'high') li.classList.add('importance-high');
-                else if (task.importance === 'low') li.classList.add('importance-low');
-                
-                const cb = document.createElement('input');
-                cb.type = 'checkbox';
-                cb.className = 'task-checkbox';
-                cb.dataset.id = task.id;
-                cb.checked = !!task.completed;
-                const lbl = document.createElement('span');
-                lbl.className = 'task-label';
-                lbl.textContent = task.text;
-                li.appendChild(cb);
-                li.appendChild(lbl);
-                
-                // importance dropdown for day task view
-                const impSelect = document.createElement('select');
-                impSelect.className = 'task-importance-select';
-                impSelect.dataset.id = task.id;
-                
-                const noneOpt = document.createElement('option');
-                noneOpt.value = '';
-                noneOpt.textContent = '—';
-                noneOpt.selected = !task.importance;
-                impSelect.appendChild(noneOpt);
-                
-                const highOpt = document.createElement('option');
-                highOpt.value = 'high';
-                highOpt.textContent = 'High';
-                highOpt.selected = task.importance === 'high';
-                impSelect.appendChild(highOpt);
-                
-                const medOpt = document.createElement('option');
-                medOpt.value = 'med';
-                medOpt.textContent = 'Med';
-                medOpt.selected = task.importance === 'med';
-                impSelect.appendChild(medOpt);
-                
-                const lowOpt = document.createElement('option');
-                lowOpt.value = 'low';
-                lowOpt.textContent = 'Low';
-                lowOpt.selected = task.importance === 'low';
-                impSelect.appendChild(lowOpt);
-                
-                impSelect.addEventListener('change', (e) => {
-                    const newImp = e.target.value || null;
-                    task.importance = newImp;
-                    saveTasks();
-                    renderTasks();
-                    renderDayTasks();
-                });
-                li.appendChild(impSelect);
-                
+                if (item.type === 'task') {
+                    const task = item.task;
+                    li.className = 'day-task-item' + (task.completed ? ' completed' : '');
+                    if (task.importance === 'high') li.classList.add('importance-high');
+                    else if (task.importance === 'low') li.classList.add('importance-low');
+                    const cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.className = 'task-checkbox';
+                    cb.dataset.id = task.id;
+                    cb.checked = !!task.completed;
+                    const lbl = document.createElement('span');
+                    lbl.className = 'task-label';
+                    lbl.textContent = task.text;
+                    lbl.tabIndex = 0;
+                    lbl.addEventListener('click', () => startEditingTaskName(task, li));
+                    lbl.addEventListener('keydown', e => {
+                        if (e.key === 'Enter') { e.preventDefault(); startEditingTaskName(task, li); }
+                    });
+                    li.appendChild(cb);
+                    li.appendChild(lbl);
+                    // importance dropdown
+                    const impSelect = document.createElement('select');
+                    impSelect.className = 'task-importance-select';
+                    impSelect.dataset.id = task.id;
+                    const noneOpt = document.createElement('option'); noneOpt.value = ''; noneOpt.textContent = '—'; noneOpt.selected = !task.importance; impSelect.appendChild(noneOpt);
+                    const highOpt = document.createElement('option'); highOpt.value = 'high'; highOpt.textContent = 'High'; highOpt.selected = task.importance === 'high'; impSelect.appendChild(highOpt);
+                    const medOpt = document.createElement('option'); medOpt.value = 'med'; medOpt.textContent = 'Med'; medOpt.selected = task.importance === 'med'; impSelect.appendChild(medOpt);
+                    const lowOpt = document.createElement('option'); lowOpt.value = 'low'; lowOpt.textContent = 'Low'; lowOpt.selected = task.importance === 'low'; impSelect.appendChild(lowOpt);
+                    impSelect.addEventListener('change', (e) => {
+                        const newImp = e.target.value || null;
+                        task.importance = newImp;
+                        saveTasks();
+                        renderTasks();
+                        renderDayTasks();
+                    });
+                    li.appendChild(impSelect);
+                } else {
+                    const subtask = item.subtask;
+                    li.className = 'day-task-item day-subtask-item' + (subtask.completed ? ' completed' : '');
+                    if (subtask.importance === 'high') li.classList.add('importance-high');
+                    else if (subtask.importance === 'low') li.classList.add('importance-low');
+                    const cb = document.createElement('input');
+                    cb.type = 'checkbox';
+                    cb.className = 'subtask-checkbox';
+                    cb.dataset.parentTaskId = item.task.id;
+                    cb.dataset.subtaskId = subtask.id;
+                    cb.checked = !!subtask.completed;
+                    const lbl = document.createElement('span');
+                    lbl.className = 'task-label';
+                    lbl.textContent = subtask.text;
+                    lbl.tabIndex = 0;
+                    lbl.addEventListener('click', () => startEditingSubtaskName(item.task.id, subtask, li));
+                    lbl.addEventListener('keydown', e => {
+                        if (e.key === 'Enter') { e.preventDefault(); startEditingSubtaskName(item.task.id, subtask, li); }
+                    });
+                    li.appendChild(cb);
+                    li.appendChild(lbl);
+                    const impSelect = document.createElement('select');
+                    impSelect.className = 'task-importance-select';
+                    impSelect.dataset.parentTaskId = item.task.id;
+                    impSelect.dataset.subtaskId = subtask.id;
+                    const noneOpt = document.createElement('option'); noneOpt.value = ''; noneOpt.textContent = '—'; noneOpt.selected = !subtask.importance; impSelect.appendChild(noneOpt);
+                    const highOpt = document.createElement('option'); highOpt.value = 'high'; highOpt.textContent = 'High'; highOpt.selected = subtask.importance === 'high'; impSelect.appendChild(highOpt);
+                    const medOpt = document.createElement('option'); medOpt.value = 'med'; medOpt.textContent = 'Med'; medOpt.selected = subtask.importance === 'med'; impSelect.appendChild(medOpt);
+                    const lowOpt = document.createElement('option'); lowOpt.value = 'low'; lowOpt.textContent = 'Low'; lowOpt.selected = subtask.importance === 'low'; impSelect.appendChild(lowOpt);
+                    impSelect.addEventListener('change', (e) => {
+                        const newImp = e.target.value || null;
+                        subtask.importance = newImp;
+                        saveTasks();
+                        renderTasks();
+                        renderDayTasks();
+                    });
+                    li.appendChild(impSelect);
+                }
                 ul.appendChild(li);
             });
             container.appendChild(ul);
@@ -365,6 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
 
     prevMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
@@ -445,11 +480,21 @@ document.addEventListener('DOMContentLoaded', () => {
             checkbox.checked = !!task.completed;
             checkbox.className = 'task-checkbox';
 
-            // label
-            const label = document.createElement('label');
-            label.htmlFor = checkbox.id;
+            // task name display (clicking now edits instead of toggling)
+            const label = document.createElement('span');
             label.textContent = task.text;
             label.className = 'task-label';
+            label.tabIndex = 0; // make keyboard-focusable
+            // clicking the name opens inline editor
+            label.addEventListener('click', () => {
+                startEditingTaskName(task, li);
+            });
+            label.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    startEditingTaskName(task, li);
+                }
+            });
 
             li.appendChild(checkbox);
             li.appendChild(label);
@@ -778,6 +823,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const label = document.createElement('span');
         label.className = 'subtask-label';
         label.textContent = subtask.text;
+        label.tabIndex = 0;
+        label.addEventListener('click', () => {
+            startEditingSubtaskName(parentTaskId, subtask, subtaskEl);
+        });
+        label.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                startEditingSubtaskName(parentTaskId, subtask, subtaskEl);
+            }
+        });
         
         // importance dropdown
         const impSelect = document.createElement('select');

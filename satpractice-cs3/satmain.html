@@ -7,78 +7,170 @@
     <link rel="stylesheet" href="satmain.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-brand">SAT Planner</div>
-            <button class="settings-btn" id="settingsBtn">⚙</button>
+            <div class="nav-brand">
+                SAT Planner
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#dashboard" class="nav-link" data-page="dashboard">Dashboard</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="auth-btn" id="authBtn">Login</button>
+            </div>
         </div>
     </nav>
 
-    <div class="settings-overlay" id="settingsOverlay"></div>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-word">Master</span>
+                            <span class="title-word neon">Your</span>
+                            <span class="title-word">Future</span>
+                        </h1>
+                        <p class="hero-subtitle">Achieve excellence on your SAT exam with our intelligent platform</p>
+                        <button class="cta-btn hero-cta" id="startBtn">Get Started</button>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="floating-card card-1">
+                            <div class="card-icon">▲</div>
+                            <div class="card-text">Progress Tracking</div>
+                        </div>
+                        <div class="floating-card card-2">
+                            <div class="card-icon">●</div>
+                            <div class="card-text">Smart Practice</div>
+                        </div>
+                        <div class="floating-card card-3">
+                            <div class="card-icon">→</div>
+                            <div class="card-text">Score Boost</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="scroll-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </section>
 
+            <section class="feature-section section-purple feature-1">
+                <div class="feature-card">
+                    <div class="feature-icon">01</div>
+                    <h2>Comprehensive Learning</h2>
+                    <p>Dive deep into all SAT topics with structured lessons that break down complex concepts into digestible chunks.</p>
+                    <ul class="feature-list">
+                        <li>Video tutorials & detailed guides</li>
+                        <li>Interactive practice problems</li>
+                        <li>Real exam-style questions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="feature-section section-black feature-2">
+                <div class="feature-card">
+                    <div class="feature-icon">02</div>
+                    <h2>Realistic Practice Exams</h2>
+                    <p>Experience actual SAT conditions with full-length timed tests that match the real exam format exactly.</p>
+                    <ul class="feature-list">
+                        <li>Timed full-length tests</li>
+                        <li>Instant score reports</li>
+                        <li>Detailed performance breakdown</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="feature-section section-purple feature-3">
+                <div class="feature-card">
+                    <div class="feature-icon">03</div>
+                    <h2>Smart Analytics</h2>
+                    <p>Understand your strengths and weaknesses with AI-powered insights that guide your study strategy.</p>
+                    <ul class="feature-list">
+                        <li>Visual progress tracking</li>
+                        <li>Personalized recommendations</li>
+                        <li>Topic mastery indicators</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="feature-section section-black feature-4">
+                <div class="feature-card">
+                    <div class="feature-icon">04</div>
+                    <h2>Expert Test Strategies</h2>
+                    <p>Learn proven tactics from top test prep instructors to maximize your score on exam day.</p>
+                    <ul class="feature-list">
+                        <li>Section-specific strategies</li>
+                        <li>Time management techniques</li>
+                        <li>Common mistakes to avoid</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="feature-section section-purple feature-5">
+                <div class="feature-card cta-card">
+                    <h2>Ready to Transform Your SAT Score?</h2>
+                    <p>Join thousands of students who've achieved their target scores with our platform.</p>
+                    <button class="cta-btn" id="startBtn">Start Learning Today</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <section class="hero">
+                <h1>Dashboard</h1>
+                <p>Your SAT Study Hub</p>
+            </section>
+
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="stats-section">
+                    <div class="stat-card">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Days Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Questions Solved</div>
+                    </div>
+                </div>
+
+                <!-- Topics Grid -->
+                <div class="topics-section">
+                    <h2>Study Topics</h2>
+                    <div class="topics-grid" id="topicsGrid">
+                        <!-- Topics will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Settings Panel -->
+    <div class="settings-overlay" id="settingsOverlay"></div>
     <div class="settings-panel" id="settingsPanel">
         <div class="settings-header">
-            <div class="settings-title">Settings</div>
+            <h2>Settings</h2>
             <button class="close-btn" id="closeBtn">×</button>
-        </div>
-        <div class="settings-section">
-            <label class="settings-label">Theme</label>
-            <div class="settings-options">
-                <button class="option-btn active" data-theme="forest">Forest</button>
-                <button class="option-btn" data-theme="black">Black</button>
-            </div>
         </div>
     </div>
 
-    <div class="main-container">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Master the SAT</h1>
-                <p>Learn at your own pace with structured lessons</p>
-            </div>
-        </section>
-
-        <section class="topics-section">
-            <h2>Topics</h2>
-            <div class="topics-grid">
-                <a href="topics/arithmetic.html" class="topic-card">
-                    <div class="topic-icon">A</div>
-                    <h3>Arithmetic</h3>
-                    <p>24 Lessons</p>
-                </a>
-                <a href="topics/geometry.html" class="topic-card">
-                    <div class="topic-icon">G</div>
-                    <h3>Geometry</h3>
-                    <p>18 Lessons</p>
-                </a>
-                <a href="topics/data-stats.html" class="topic-card">
-                    <div class="topic-icon">D</div>
-                    <h3>Data & Stats</h3>
-                    <p>15 Lessons</p>
-                </a>
-                <a href="topics/grammar.html" class="topic-card">
-                    <div class="topic-icon">Gr</div>
-                    <h3>Grammar</h3>
-                    <p>22 Lessons</p>
-                </a>
-                <a href="topics/reading.html" class="topic-card">
-                    <div class="topic-icon">R</div>
-                    <h3>Reading</h3>
-                    <p>30 Lessons</p>
-                </a>
-                <a href="topics/vocabulary.html" class="topic-card">
-                    <div class="topic-icon">V</div>
-                    <h3>Vocabulary</h3>
-                    <p>40 Lessons</p>
-                </a>
-            </div>
-        </section>
-
-        </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
         import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -96,84 +188,8 @@
         const db = getFirestore(app);
 
         let currentUserUid = null;
-        let currentTopics = []; // State variable to hold active topics data
+        let currentTopics = [];
 
-        // Settings Panel
-        const settingsBtn = document.getElementById('settingsBtn');
-        const closeBtn = document.getElementById('closeBtn');
-        const settingsPanel = document.getElementById('settingsPanel');
-        const settingsOverlay = document.getElementById('settingsOverlay');
-
-        settingsBtn.addEventListener('click', () => {
-            settingsPanel.classList.add('open');
-            settingsOverlay.classList.add('open');
-        });
-
-        closeBtn.addEventListener('click', () => {
-            settingsPanel.classList.remove('open');
-            settingsOverlay.classList.remove('open');
-        });
-
-        settingsOverlay.addEventListener('click', () => {
-            settingsPanel.classList.remove('open');
-            settingsOverlay.classList.remove('open');
-        });
-
-        // Theme system
-        const THEME_KEY = 'satPlannerTheme';
-        
-        const themes = {
-            forest: {
-                bg: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.shutterstock.com/image-photo/dark-creepy-snow-cold-forest-600nw-1921136801.jpg') center/cover no-repeat fixed",
-                textColor: '#e8eef2',
-                primaryColor: '#80deea',
-                secondaryColor: '#b3e5fc',
-                navBg: 'rgba(0, 0, 0, 0.6)'
-            },
-            black: {
-                bg: 'linear-gradient(135deg, #0a0a0a, #1a1a1a)',
-                textColor: '#e8eef2',
-                primaryColor: '#60a5fa',
-                secondaryColor: '#3b82f6',
-                navBg: 'rgba(0, 0, 0, 0.9)'
-            }
-        };
-
-        function applyTheme(themeName) {
-            const theme = themes[themeName] || themes.forest;
-            document.documentElement.style.setProperty('--bg-color', theme.bg);
-            document.documentElement.style.setProperty('--text-color', theme.textColor);
-            document.documentElement.style.setProperty('--primary-color', theme.primaryColor);
-            document.documentElement.style.setProperty('--secondary-color', theme.secondaryColor);
-            localStorage.setItem(THEME_KEY, themeName);
-        }
-
-        // Load theme from localStorage
-        window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem(THEME_KEY) || 'forest';
-            applyTheme(savedTheme);
-            
-            // Update active button
-            document.querySelectorAll('.option-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-theme') === savedTheme) {
-                    btn.classList.add('active');
-                }
-            });
-        });
-
-        // Theme button event listeners
-        document.querySelectorAll('.option-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const themeName = btn.getAttribute('data-theme');
-                applyTheme(themeName);
-                
-                document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            });
-        });
-
-        // Lesson/Topic progress system
         const defaultTopics = [
             { id: 'arithmetic', name: 'Arithmetic', progress: 28 },
             { id: 'geometry', name: 'Geometry', progress: 44 },
@@ -183,124 +199,144 @@
             { id: 'vocabulary', name: 'Vocabulary', progress: 72 }
         ];
 
-        // Route Protection and Data Loading
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                // If accessed directly without logging in, redirect to login page
-                window.location.replace('../index.html');
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageName = link.getAttribute('data-page');
+                showPage(pageName);
+                
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageName + '-page').classList.add('active');
+            
+            if (pageName === 'dashboard' && !currentUserUid) {
+                showPage('home');
+                alert('Please login first');
+            }
+        }
+
+        // Auth
+        const authBtn = document.getElementById('authBtn');
+        const startBtn = document.getElementById('startBtn');
+
+        authBtn.addEventListener('click', () => {
+            if (currentUserUid) {
+                signOut(auth).then(() => {
+                    updateAuthUI();
+                });
             } else {
-                currentUserUid = user.uid;
-                await initLessonsFromFirestore();
+                window.location.href = '../index.html';
             }
         });
 
-        async function initLessonsFromFirestore() {
+        startBtn.addEventListener('click', () => {
+            if (currentUserUid) {
+                showPage('dashboard');
+            } else {
+                window.location.href = '../index.html';
+            }
+        });
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUserUid = user.uid;
+                await loadTopicsFromFirestore();
+                updateAuthUI();
+            } else {
+                currentUserUid = null;
+                updateAuthUI();
+            }
+        });
+
+        function updateAuthUI() {
+            if (currentUserUid) {
+                authBtn.textContent = 'Logout';
+                document.querySelector('[data-page="dashboard"]').style.display = 'inline-block';
+            } else {
+                authBtn.textContent = 'Login';
+                document.querySelector('[data-page="dashboard"]').style.display = 'none';
+                if (document.querySelector('.page.active').id === 'dashboard-page') {
+                    showPage('home');
+                }
+            }
+        }
+
+        async function loadTopicsFromFirestore() {
             try {
                 const docRef = doc(db, "users", currentUserUid);
                 const docSnap = await getDoc(docRef);
                 
-                if (docSnap.exists() && docSnap.data().satTopics && docSnap.data().satTopics.length > 0) {
-                    const savedTopics = docSnap.data().satTopics;
-                    // Merge saved progress with defaults to ensure structure is intact
+                if (docSnap.exists() && docSnap.data().satTopics) {
+                    const saved = docSnap.data().satTopics;
                     const map = {};
-                    savedTopics.forEach(t => map[t.id] = t);
+                    saved.forEach(t => map[t.id] = t);
                     currentTopics = defaultTopics.map(d => ({ ...d, ...(map[d.id] || {}) }));
                 } else {
-                    // No data exists yet, use default topics
-                    currentTopics = defaultTopics.slice();
+                    currentTopics = JSON.parse(JSON.stringify(defaultTopics));
                 }
             } catch (error) {
-                console.error("Error fetching SAT topics:", error);
-                currentTopics = defaultTopics.slice();
+                console.error("Error loading topics:", error);
+                currentTopics = JSON.parse(JSON.stringify(defaultTopics));
             }
             
-            renderLessons(currentTopics);
+            renderDashboard();
         }
 
-        async function saveTopicsToFirestore(topicsToSave) {
+        async function saveTopicsToFirestore() {
             if (!currentUserUid) return;
-            
             const docRef = doc(db, "users", currentUserUid);
             try {
-                await updateDoc(docRef, {
-                    satTopics: topicsToSave
-                });
+                await updateDoc(docRef, { satTopics: currentTopics });
             } catch (error) {
-                console.error("Error saving SAT topics:", error);
+                console.error("Error saving topics:", error);
             }
         }
 
-        function renderLessons(topics) {
-            const container = document.getElementById('lessonsGrid');
-            if (!container) return; // Returns early if you keep the section commented out in HTML
+        function renderDashboard() {
+            const grid = document.getElementById('topicsGrid');
+            if (!grid) return;
 
-            topics.forEach(t => t.importance = Math.max(0, 100 - (t.progress || 0)));
-            topics.sort((a, b) => b.importance - a.importance);
+            grid.innerHTML = '';
+            const sorted = [...currentTopics].sort((a, b) => b.progress - a.progress);
 
-            container.innerHTML = '';
-
-            topics.forEach(topic => {
+            sorted.forEach(topic => {
                 const card = document.createElement('div');
-                card.className = 'lesson-card';
-                card.setAttribute('role', 'button');
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('data-topic', topic.id);
-
-                const size = Math.round(180 + topic.importance * 0.8);
-                card.style.width = size + 'px';
-                card.style.height = size + 'px';
+                card.className = 'topic-card';
+                
+                const progressPercent = topic.progress || 0;
+                const remaining = 100 - progressPercent;
 
                 card.innerHTML = `
-                    <div class="lesson-content">
-                        <div class="lesson-title">${topic.name}</div>
+                    <div class="topic-header">
+                        <h3>${topic.name}</h3>
                     </div>
-                    <div class="lesson-overlay">
-                        <div class="progress-label">${topic.progress}%</div>
-                        <button class="practice-btn" data-topic="${topic.id}">Practice</button>
+                    <div class="progress-ring">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" class="progress-circle-bg"></circle>
+                            <circle cx="60" cy="60" r="54" class="progress-circle" style="stroke-dashoffset: ${remaining * 3.4}"></circle>
+                        </svg>
+                        <div class="progress-text">${progressPercent}%</div>
                     </div>
+                    <button class="btn btn-outline" data-topic="${topic.id}">Practice</button>
                 `;
 
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const active = document.activeElement;
-                        if (active && active.classList.contains('practice-btn')) {
-                            active.click();
-                        } else {
-                            window.location.href = `topics/${topic.id}.html`;
-                        }
+                card.querySelector('.btn').addEventListener('click', async () => {
+                    const t = currentTopics.find(x => x.id === topic.id);
+                    if (t) {
+                        t.progress = Math.min(100, t.progress + 5);
+                        renderDashboard();
+                        await saveTopicsToFirestore();
                     }
                 });
 
-                card.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.practice-btn');
-                    if (btn) return;
-                    window.location.href = `topics/${topic.id}.html`;
-                });
-
-                container.appendChild(card);
+                grid.appendChild(card);
             });
-
-            container.querySelectorAll('.practice-btn').forEach(b => {
-                b.addEventListener('click', async (ev) => {
-                    ev.stopPropagation();
-                    const id = b.getAttribute('data-topic');
-                    await handlePractice(id);
-                });
-            });
-        }
-
-        async function handlePractice(topicId) {
-            const t = currentTopics.find(x => x.id === topicId);
-            if (!t) return;
-            
-            t.progress = Math.min(100, (t.progress || 0) + 2);
-            
-            // Re-render UI immediately for responsiveness
-            renderLessons(currentTopics);
-            
-            // Save to database in the background
-            await saveTopicsToFirestore(currentTopics);
         }
     </script>
 </body>

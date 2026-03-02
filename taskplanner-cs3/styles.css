@@ -346,7 +346,7 @@ html, body {height:100%}
 
 
 /* Task list visuals */
-.task-list { list-style:none; padding:0; margin:12px 0 0 0; max-width:720px; }
+.task-list { list-style:none; padding:0; margin:12px 0 0 0; max-width:1750px; }
 .task-item{
     display:flex;
     align-items:center;
@@ -700,6 +700,7 @@ html, body {height:100%}
     font-size: 0.95rem;
     color: #d0d0d0;
     word-break: break-word;
+    cursor: pointer;
 }
 
 .subtask-importance-select {
