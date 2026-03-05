@@ -145,7 +145,9 @@
                 choicesEl.innerHTML = '';
                 nextBtn.style.display = 'none';
 
-                if (item.type === 'mcq') {
+                // treat missing or verbose type as multiple choice (mcq)
+                const t = item.type || 'mcq';
+                if (t === 'mcq' || t === 'multiple-choice') {
                     item.choices.forEach((c, ci)=>{
                         const b = document.createElement('button');
                         b.className = 'choice-btn';
@@ -154,7 +156,7 @@
                         b.addEventListener('click', () => handleChoice(b, item, ci));
                         choicesEl.appendChild(b);
                     });
-                } else if (item.type === 'short') {
+                } else if (t === 'short') {
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.className = 'short-input';
@@ -177,7 +179,8 @@
                     feedbackEl.textContent = 'Correct! ' + (item.explanation || '');
                     incrementTopicProgress(topic, 2);
                 } else {
-                    const correctText = (item.type === 'mcq' && item.choices && item.choices[item.answer]) ? item.choices[item.answer] : '';
+                    const isMCQ = item.type === 'mcq' || item.type === 'multiple-choice';
+                    const correctText = (isMCQ && item.choices && item.choices[item.answer]) ? item.choices[item.answer] : '';
                     feedbackEl.textContent = `Incorrect. Correct: ${correctText}. ${item.explanation||''}`;
                 }
                 nextBtn.style.display = 'inline-block';

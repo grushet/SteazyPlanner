@@ -252,6 +252,10 @@
                 currentUserUid = null;
                 updateAuthUI();
             }
+            // Check hash for initial page
+            if (window.location.hash === '#dashboard') {
+                showPage('dashboard');
+            }
         });
 
         function updateAuthUI() {
@@ -326,13 +330,9 @@
                     <button class="btn btn-outline" data-topic="${topic.id}">Practice</button>
                 `;
 
-                card.querySelector('.btn').addEventListener('click', async () => {
-                    const t = currentTopics.find(x => x.id === topic.id);
-                    if (t) {
-                        t.progress = Math.min(100, t.progress + 5);
-                        renderDashboard();
-                        await saveTopicsToFirestore();
-                    }
+                card.querySelector('.btn').addEventListener('click', () => {
+                    // navigate to the topic page where lessons and practice reside
+                    window.location.href = `topics/${topic.id}.html`;
                 });
 
                 grid.appendChild(card);

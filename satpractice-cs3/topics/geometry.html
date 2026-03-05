@@ -10,6 +10,7 @@
         .topic-hero { max-width: 900px; margin: 40px auto; padding: 24px; }
         .lessons-list { margin-top: 20px; display: grid; gap: 12px; }
         .lesson-item { background: rgba(255,255,255,0.06); padding: 14px; border-radius: 10px; }
+        .lesson-item.disabled { opacity: 0.5; pointer-events: none; }
         .back-link { display:inline-block; margin-top:16px; color:var(--primary-color); }
     </style>
 </head>
@@ -21,9 +22,9 @@
         </div>
 
         <div class="progress-card">
-            <!-- <div class="lessons-list"></div> -->
+            <div class="lessons-list"></div>
 
-            <a class="back-link" href="../satmain.html">← Back to Home</a>
+            <a class="back-link" href="../satmain.html#dashboard">← Back to Dashboard</a>
         </div>
     </div>
 
@@ -35,30 +36,32 @@
             .then(r => r.json())
             .then(data => {
                 const topicData = data[TOPIC_ID] || {};
-                const lessons = Object.keys(topicData).sort((a, b) => parseInt(a) - parseInt(b));
-                
-                if (lessons.length === 0) {
-                    lessonsList.innerHTML = '<p>No lessons available yet.</p>';
-                    return;
-                }
+                const maxLessons = 10; // ensure at least 10 lessons displayed
 
-                lessons.forEach(lessonNum => {
-                    const questions = topicData[lessonNum] || [];
+                for (let i = 1; i <= maxLessons; i++) {
+                    const questions = topicData[i] || [];
                     const questionCount = questions.length;
                     const item = document.createElement('a');
-                    item.href = `lesson.html?topic=${TOPIC_ID}&lesson=${lessonNum}`;
-                    item.className = 'lesson-item';
+                    item.href = questionCount
+                        ? `lesson.html?topic=${TOPIC_ID}&lesson=${i}`
+                        : '#';
+                    item.className = 'lesson-item' + (questionCount ? '' : ' disabled');
                     item.innerHTML = `
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <div>
-                                <strong>Lesson ${lessonNum}</strong>
-                                <div style="font-size: 0.9em; color: var(--text-color); opacity: 0.7;">${questionCount} Questions</div>
+                                <strong>Lesson ${i}</strong>
+                                <div style="font-size: 0.9em; color: var(--text-color); opacity: 0.7;">
+                                    ${questionCount} Questions${questionCount === 0 ? ' (coming soon)' : ''}
+                                </div>
                             </div>
                             <div style="color: var(--primary-color);">→</div>
                         </div>
                     `;
+                    if (questionCount === 0) {
+                        item.addEventListener('click', e => e.preventDefault());
+                    }
                     lessonsList.appendChild(item);
-                });
+                }
             })
             .catch(err => {
                 lessonsList.innerHTML = '<p>Could not load lessons.</p>';
