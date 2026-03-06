@@ -1,10 +1,11 @@
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-// new repo commit test
+
+    // new repo commit test
 
     // Populate the date/time spans if present
+    //example of how to use git
     const now = new Date();
     const pad = n => String(n).padStart(2, '0');
 
@@ -370,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function addTaskWithDate(text, ymd) {
             const trimmed = String(text || '').trim();
             if (!trimmed) return;
-            
+
             // Parse keywords from task text
             const { cleanText, dueDate: parsedDate } = parseTaskKeywords(trimmed);
             if (!cleanText) return; // if all text was keywords, skip
@@ -399,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
 
     prevMonthBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
@@ -429,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('userDataLoaded', (e) => {
         const userData = e.detail;
         tasks = userData.tasks || [];
-        
+
         // Ensure all tasks and subtasks have required properties
         tasks.forEach(task => {
             if (!task.subtasks) task.subtasks = [];
@@ -438,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!subtask.dueDate) subtask.dueDate = null;
             });
         });
-        
+
         // Re-render everything once data arrives
         renderTasks();
         renderCalendar();
@@ -449,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function saveTasks() {
         // Optional: Keep localStorage as a backup
         localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
-        
+
         if (window.currentUserUid && window.db) {
             const userDocRef = doc(window.db, "users", window.currentUserUid);
             try {
@@ -498,36 +499,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
             li.appendChild(checkbox);
             li.appendChild(label);
-            
+
             // importance dropdown
             const impSelect = document.createElement('select');
             impSelect.className = 'task-importance-select';
             impSelect.dataset.id = task.id;
-            
+
             const noneOpt = document.createElement('option');
             noneOpt.value = '';
             noneOpt.textContent = '—';
             noneOpt.selected = !task.importance;
             impSelect.appendChild(noneOpt);
-            
+
             const highOpt = document.createElement('option');
             highOpt.value = 'high';
             highOpt.textContent = 'High';
             highOpt.selected = task.importance === 'high';
             impSelect.appendChild(highOpt);
-            
+
             const medOpt = document.createElement('option');
             medOpt.value = 'med';
             medOpt.textContent = 'Med';
             medOpt.selected = task.importance === 'med';
             impSelect.appendChild(medOpt);
-            
+
             const lowOpt = document.createElement('option');
             lowOpt.value = 'low';
             lowOpt.textContent = 'Low';
             lowOpt.selected = task.importance === 'low';
             impSelect.appendChild(lowOpt);
-            
+
             impSelect.addEventListener('change', (e) => {
                 const newImp = e.target.value || null;
                 task.importance = newImp;
@@ -535,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderTasks();
             });
             li.appendChild(impSelect);
-            
+
             // date badge or 'add date' affordance
             if (task.dueDate) {
                 const badge = document.createElement('span');
@@ -543,12 +544,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 badge.tabIndex = 0;
                 badge.title = new Date(task.dueDate).toLocaleDateString();
                 badge.textContent = formatTaskDateDisplay(task.dueDate);
-                
+
                 // Apply red color if task is overdue
                 if (isTaskOverdue(task)) {
                     badge.style.color = '#ff6b6b';
                 }
-                
+
                 // click or Enter on badge to edit
                 badge.addEventListener('click', () => startEditingDate(task));
                 badge.addEventListener('keydown', (e) => { if (e.key === 'Enter') startEditingDate(task); });
@@ -561,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 add.addEventListener('click', () => startEditingDate(task));
                 li.appendChild(add);
             }
-            
+
             // add subtask button
             if (!task.subtasks) task.subtasks = [];
             const addSubtaskBtn = document.createElement('button');
@@ -572,18 +573,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 startAddingSubtask(task.id, li);
             });
             li.appendChild(addSubtaskBtn);
-            
+
             // three-dot menu button (at the end - rightmost)
             const menuBtn = document.createElement('button');
             menuBtn.type = 'button';
             menuBtn.className = 'task-menu-btn';
             menuBtn.textContent = '⋯';
             menuBtn.title = 'More options';
-            
+
             // create menu container
             const menuContainer = document.createElement('div');
             menuContainer.className = 'task-menu-container hidden';
-            
+
             const editBtn = document.createElement('button');
             editBtn.type = 'button';
             editBtn.className = 'task-menu-option';
@@ -592,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllMenus();
                 startEditingTaskName(task, li);
             });
-            
+
             const deleteBtn = document.createElement('button');
             deleteBtn.type = 'button';
             deleteBtn.className = 'task-menu-option delete-option';
@@ -601,29 +602,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllMenus();
                 showDeleteConfirm(task.id);
             });
-            
+
             menuContainer.appendChild(editBtn);
             menuContainer.appendChild(deleteBtn);
-            
+
             menuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 closeAllMenus();
                 menuContainer.classList.remove('hidden');
             });
-            
+
             li.appendChild(menuBtn);
             li.appendChild(menuContainer);
-            
+
             // Subtasks container (rendered below the main task row)
             const subtasksContainer = document.createElement('div');
             subtasksContainer.className = 'subtasks-container';
-            
+
             // Render existing subtasks
             task.subtasks.forEach(subtask => {
                 const subtaskEl = renderSubtask(subtask, task.id);
                 subtasksContainer.appendChild(subtaskEl);
             });
-            
+
             li.appendChild(subtasksContainer);
             taskListEl.appendChild(li);
         });
@@ -665,16 +666,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function startEditingTaskName(task, liElement) {
         const label = liElement.querySelector('.task-label');
         if (!label) return;
-        
+
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'task-name-editor';
         input.value = task.text;
-        
+
         label.replaceWith(input);
         input.focus();
         input.select();
-        
+
         function commit() {
             const newText = (input.value || '').trim();
             if (newText && newText !== task.text) {
@@ -685,11 +686,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderTasks();
             }
         }
-        
+
         function cancel() {
             renderTasks();
         }
-        
+
         input.addEventListener('blur', commit);
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') { e.preventDefault(); commit(); }
@@ -771,7 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addTask(text) {
         const trimmed = String(text || '').trim();
         if (!trimmed) return;
-        
+
         // Parse keywords from task text
         const { cleanText, dueDate } = parseTaskKeywords(trimmed);
         if (!cleanText) return; // if all text was keywords, skip
@@ -811,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (subtask.importance === 'high') subtaskEl.classList.add('importance-high');
         else if (subtask.importance === 'low') subtaskEl.classList.add('importance-low');
         subtaskEl.dataset.subtaskId = subtask.id;
-        
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = 'subtask-checkbox';
@@ -819,7 +820,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.addEventListener('change', () => {
             toggleSubtask(parentTaskId, subtask.id, checkbox.checked);
         });
-        
+
         const label = document.createElement('span');
         label.className = 'subtask-label';
         label.textContent = subtask.text;
@@ -833,41 +834,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 startEditingSubtaskName(parentTaskId, subtask, subtaskEl);
             }
         });
-        
+
         // importance dropdown
         const impSelect = document.createElement('select');
         impSelect.className = 'subtask-importance-select';
         impSelect.dataset.id = subtask.id;
-        
+
         const noneOpt = document.createElement('option');
         noneOpt.value = '';
         noneOpt.textContent = '—';
         noneOpt.selected = !subtask.importance;
         impSelect.appendChild(noneOpt);
-        
+
         const highOpt = document.createElement('option');
         highOpt.value = 'high';
         highOpt.textContent = 'High';
         highOpt.selected = subtask.importance === 'high';
         impSelect.appendChild(highOpt);
-        
+
         const medOpt = document.createElement('option');
         medOpt.value = 'med';
         medOpt.textContent = 'Med';
         medOpt.selected = subtask.importance === 'med';
         impSelect.appendChild(medOpt);
-        
+
         const lowOpt = document.createElement('option');
         lowOpt.value = 'low';
         lowOpt.textContent = 'Low';
         lowOpt.selected = subtask.importance === 'low';
         impSelect.appendChild(lowOpt);
-        
+
         impSelect.addEventListener('change', (e) => {
             const newImp = e.target.value || null;
             updateSubtaskImportance(parentTaskId, subtask.id, newImp);
         });
-        
+
         // date badge or 'add date' affordance
         let dateElement;
         if (subtask.dueDate) {
@@ -885,18 +886,18 @@ document.addEventListener('DOMContentLoaded', () => {
             add.addEventListener('click', () => startEditingSubtaskDate(parentTaskId, subtask.id, subtaskEl));
             dateElement = add;
         }
-        
+
         // three-dot menu button for subtask
         const menuBtn = document.createElement('button');
         menuBtn.type = 'button';
         menuBtn.className = 'subtask-menu-btn';
         menuBtn.textContent = '⋯';
         menuBtn.title = 'More options';
-        
+
         // create menu container
         const menuContainer = document.createElement('div');
         menuContainer.className = 'subtask-menu-container hidden';
-        
+
         const editBtn = document.createElement('button');
         editBtn.type = 'button';
         editBtn.className = 'subtask-menu-option';
@@ -905,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAllMenus();
             startEditingSubtaskName(parentTaskId, subtask, subtaskEl);
         });
-        
+
         const deleteBtn = document.createElement('button');
         deleteBtn.type = 'button';
         deleteBtn.className = 'subtask-menu-option delete-option';
@@ -914,23 +915,23 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAllMenus();
             deleteSubtask(parentTaskId, subtask.id);
         });
-        
+
         menuContainer.appendChild(editBtn);
         menuContainer.appendChild(deleteBtn);
-        
+
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             closeAllMenus();
             menuContainer.classList.remove('hidden');
         });
-        
+
         subtaskEl.appendChild(checkbox);
         subtaskEl.appendChild(label);
         subtaskEl.appendChild(impSelect);
         subtaskEl.appendChild(dateElement);
         subtaskEl.appendChild(menuBtn);
         subtaskEl.appendChild(menuContainer);
-        
+
         return subtaskEl;
     }
 
@@ -940,16 +941,16 @@ document.addEventListener('DOMContentLoaded', () => {
         input.type = 'text';
         input.placeholder = 'New subtask...';
         input.className = 'subtask-input';
-        
+
         subtasksContainer.insertBefore(input, subtasksContainer.firstChild);
         input.focus();
-        
+
         let isCommitted = false;
-        
+
         function commit() {
             if (isCommitted) return; // Prevent double commits
             isCommitted = true;
-            
+
             const text = (input.value || '').trim();
             if (text) {
                 addSubtask(parentTaskId, text);
@@ -957,13 +958,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancel();
             }
         }
-        
+
         function cancel() {
             if (!isCommitted && subtasksContainer.contains(input)) {
                 subtasksContainer.removeChild(input);
             }
         }
-        
+
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') { e.preventDefault(); commit(); }
             if (e.key === 'Escape') { e.preventDefault(); cancel(); }
@@ -975,7 +976,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
         if (!parentTask) return;
         if (!parentTask.subtasks) parentTask.subtasks = [];
-        
+
         const subtask = { id: Date.now(), text: text, completed: false, importance: null, dueDate: null };
         parentTask.subtasks.push(subtask);
         saveTasks();
@@ -985,10 +986,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleSubtask(parentTaskId, subtaskId, completed) {
         const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
         if (!parentTask) return;
-        
+
         const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
         if (!subtask) return;
-        
+
         subtask.completed = !!completed;
         saveTasks();
         renderTasks();
@@ -997,10 +998,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSubtaskImportance(parentTaskId, subtaskId, importance) {
         const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
         if (!parentTask) return;
-        
+
         const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
         if (!subtask) return;
-        
+
         subtask.importance = importance;
         saveTasks();
         renderTasks();
@@ -1009,30 +1010,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function startEditingSubtaskDate(parentTaskId, subtaskId, subtaskEl) {
         const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
         if (!parentTask) return;
-        
+
         const subtask = parentTask.subtasks.find(st => String(st.id) === String(subtaskId));
         if (!subtask) return;
-        
+
         const existingDateEl = subtaskEl.querySelector('.subtask-date-badge, .subtask-date-add');
         const input = document.createElement('input');
         input.type = 'date';
         input.className = 'subtask-date-editor';
         input.value = subtask.dueDate || '';
-        
+
         if (existingDateEl) existingDateEl.replaceWith(input);
         input.focus();
-        
+
         function commit() {
             const val = input.value || null;
             subtask.dueDate = val;
             saveTasks();
             renderTasks();
         }
-        
+
         function cancel() {
             renderTasks();
         }
-        
+
         input.addEventListener('blur', commit);
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') { e.preventDefault(); commit(); }
@@ -1043,10 +1044,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteSubtask(parentTaskId, subtaskId) {
         const parentTask = tasks.find(t => String(t.id) === String(parentTaskId));
         if (!parentTask) return;
-        
+
         const idx = parentTask.subtasks.findIndex(st => String(st.id) === String(subtaskId));
         if (idx === -1) return;
-        
+
         parentTask.subtasks.splice(idx, 1);
         saveTasks();
         renderTasks();
@@ -1055,16 +1056,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function startEditingSubtaskName(parentTaskId, subtask, subtaskEl) {
         const label = subtaskEl.querySelector('.subtask-label');
         if (!label) return;
-        
+
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'subtask-name-editor';
         input.value = subtask.text;
-        
+
         label.replaceWith(input);
         input.focus();
         input.select();
-        
+
         function commit() {
             const newText = (input.value || '').trim();
             if (newText && newText !== subtask.text) {
@@ -1075,11 +1076,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderTasks();
             }
         }
-        
+
         function cancel() {
             renderTasks();
         }
-        
+
         input.addEventListener('blur', commit);
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') { e.preventDefault(); commit(); }
@@ -1101,7 +1102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
         const day = (d.getDay() + 6) % 7; // 0=Mondayshift
         d.setDate(d.getDate() - day);
-        d.setHours(0,0,0,0);
+        d.setHours(0, 0, 0, 0);
         return d;
     }
 
@@ -1109,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const d = parseDateYMD(ymd);
         if (!d) return '';
         const today = new Date();
-        
+
         // Normalize dates to compare just the day part
         const todayYMD = ymdFromDate(today);
         const yesterday = new Date(today);
@@ -1118,7 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
         const tomorrowYMD = ymdFromDate(tomorrow);
-        
+
         // Check for Today, Tomorrow, Yesterday
         if (ymd === todayYMD) {
             return 'Today';
@@ -1127,18 +1128,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (ymd === yesterdayYMD) {
             return 'Yesterday';
         }
-        
+
         // For other dates, show weekday if in same week, otherwise show month/day
         const inSameWeek = startOfWeekMon(d).getTime() === startOfWeekMon(today).getTime();
         const day = d.getDay(); // 0 Sun .. 6 Sat
-        const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        const weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         if (inSameWeek && day >= 1 && day <= 5) {
             return weekdayNames[day];
         }
         // else show month day
         return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     }
-    
+
     function isTaskOverdue(task) {
         // A task is overdue if it's not completed and the due date is in the past
         if (task.completed || !task.dueDate) return false;
@@ -1214,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function saveSettings() {
-            try { localStorage.setItem(POMO_SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {}
+            try { localStorage.setItem(POMO_SETTINGS_KEY, JSON.stringify(settings)); } catch (e) { }
         }
 
         function loadState() {
@@ -1228,7 +1229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function saveState() {
-            try { localStorage.setItem(POMO_STATE_KEY, JSON.stringify(state)); } catch (e) {}
+            try { localStorage.setItem(POMO_STATE_KEY, JSON.stringify(state)); } catch (e) { }
         }
 
         function formatTime(sec) {
