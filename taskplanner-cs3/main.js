@@ -614,6 +614,49 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(menuBtn);
             li.appendChild(menuContainer);
             
+            // Draggable divider between task and subtasks
+            const divider = document.createElement('div');
+            divider.className = 'subtask-divider';
+            divider.dataset.taskId = task.id;
+            
+            let isDragging = false;
+            let startY = 0;
+            let startHeight = 0;
+            
+            divider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startY = e.clientY;
+                startHeight = subtasksContainer.offsetHeight;
+                divider.classList.add('dragging');
+                document.body.style.cursor = 'row-resize';
+                document.body.style.userSelect = 'none';
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging || divider.dataset.taskId !== task.id) return;
+                
+                const deltaY = e.clientY - startY;
+                const newHeight = Math.max(0, startHeight + deltaY);
+                
+                subtasksContainer.style.maxHeight = newHeight + 'px';
+                if (newHeight === 0) {
+                    subtasksContainer.style.overflow = 'hidden';
+                } else {
+                    subtasksContainer.style.overflow = 'auto';
+                }
+            });
+            
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    divider.classList.remove('dragging');
+                    document.body.style.cursor = 'default';
+                    document.body.style.userSelect = 'auto';
+                }
+            });
+            
+            li.appendChild(divider);
+            
             // Subtasks container (rendered below the main task row)
             const subtasksContainer = document.createElement('div');
             subtasksContainer.className = 'subtasks-container';
@@ -1188,10 +1231,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const POMO_SETTINGS_KEY = 'pomoSettings';
         const POMO_STATE_KEY = 'pomoState';
 
-        const btnStart = document.getElementById('pomo-start');
-        const btnPause = document.getElementById('pomo-pause');
+        const btnPlayPause = document.getElementById('pomo-play-pause');
         const btnReset = document.getElementById('pomo-reset');
-        const btnSkip = document.getElementById('pomo-skip');
         // circular progress elements (if present)
         const progressCircle = document.querySelector('.progress-ring__progress');
         const pomoModeEl = document.getElementById('pomo-mode');
@@ -1203,7 +1244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayTotal = document.getElementById('pomo-total');
 
         let settings = { work: 25, short: 5, long: 15, sessions: 4 };
-        let state = { mode: 'work', remaining: settings.work * 60, currentSession: 0, running: false };
+        let state = { mode: 'work', remaining: 25 * 60, currentSession: 0, running: false };
         let intervalId = null;
 
         function loadSettings() {
@@ -1262,6 +1303,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        function updatePlayPauseIcon() {
+            const playIcon = document.querySelector('.play-icon');
+            const pauseIcon = document.querySelector('.pause-icon');
+            if (state.running) {
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+            } else {
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+            }
+        }
+
         function updateUI() {
             pomoTimerEl.textContent = formatTime(state.remaining);
             // update center mode label
@@ -1277,6 +1330,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const total = state.mode === 'work' ? settings.work * 60 : (state.mode === 'short' ? settings.short * 60 : settings.long * 60);
                 updateCircle(state.remaining, total, state.mode);
             }
+            // update play/pause icon
+            updatePlayPauseIcon();
             // disable inputs while running
             const disabled = !!state.running;
             [inputWork, inputShort, inputLong, inputSessions].forEach(i => { if (i) i.disabled = disabled; });
@@ -1312,6 +1367,14 @@ document.addEventListener('DOMContentLoaded', () => {
             state.running = false;
             updateUI();
             saveState();
+        }
+
+        function toggleTimer() {
+            if (state.running) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
         }
 
         function resetTimer() {
@@ -1353,24 +1416,9 @@ document.addEventListener('DOMContentLoaded', () => {
             saveState();
         }
 
-        function skipPhase() {
-            // Immediately end current period and move to next. Auto-starts next period.
-            if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-            state.running = false;
-            saveState();
-            // set remaining to 0 so handlePeriodEnd treats it as finished
-            state.remaining = 0;
-            handlePeriodEnd();
-        }
-
         // Wire UI events
-        btnStart && btnStart.addEventListener('click', (e) => { e.preventDefault(); startTimer(); });
-        btnPause && btnPause.addEventListener('click', (e) => { e.preventDefault(); pauseTimer(); });
+        btnPlayPause && btnPlayPause.addEventListener('click', (e) => { e.preventDefault(); toggleTimer(); });
         btnReset && btnReset.addEventListener('click', (e) => { e.preventDefault(); resetTimer(); });
-        btnSkip && btnSkip.addEventListener('click', (e) => { e.preventDefault(); skipPhase(); });
 
         [inputWork, inputShort, inputLong, inputSessions].forEach(inp => {
             if (!inp) return;
@@ -1395,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (inputShort) inputShort.value = settings.short;
         if (inputLong) inputLong.value = settings.long;
         if (inputSessions) inputSessions.value = settings.sessions;
-        if (!state.remaining) setRemainingFromMode();
+        if (!state.remaining || state.remaining < 60) setRemainingFromMode();
         updateUI();
     }
 
