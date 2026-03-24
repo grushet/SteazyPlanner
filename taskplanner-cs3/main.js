@@ -95,6 +95,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevMonthBtn = document.getElementById('prev-month');
     const nextMonthBtn = document.getElementById('next-month');
 
+    // Collect all items (tasks + subtasks) for a given date string
+    function getItemsForDate(dateStr) {
+        const items = [];
+        if (!tasks) return items;
+        tasks.forEach(task => {
+            if (task.dueDate === dateStr) {
+                items.push({ completed: !!task.completed });
+            }
+            if (task.subtasks) {
+                task.subtasks.forEach(sub => {
+                    if (sub.dueDate === dateStr) {
+                        items.push({ completed: !!sub.completed });
+                    }
+                });
+            }
+        });
+        return items;
+    }
+
+    function markDayIndicator(dayDiv) {
+        const items = getItemsForDate(dayDiv.dataset.date);
+        if (!items.length) {
+            dayDiv.classList.add('no-task');
+        } else if (items.every(i => i.completed)) {
+            dayDiv.classList.add('tasks-completed');
+        } else {
+            dayDiv.classList.add('has-task');
+        }
+    }
+
     function renderCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
@@ -119,17 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dayDiv.className = 'calendar-day other-month';
             dayDiv.textContent = dayNum;
             dayDiv.dataset.date = ymdFromDate(dateObj);
-            // mark whether there are tasks for this date and whether they're all completed
-            if (tasks) {
-                const matches = tasks.filter(t => t.dueDate === dayDiv.dataset.date);
-                if (!matches.length) {
-                    dayDiv.classList.add('no-task');
-                } else if (matches.every(t => t.completed)) {
-                    dayDiv.classList.add('tasks-completed');
-                } else {
-                    dayDiv.classList.add('has-task');
-                }
-            }
+            markDayIndicator(dayDiv);
             calendarDaysEl.appendChild(dayDiv);
         }
 
@@ -140,16 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dayDiv.className = 'calendar-day';
             dayDiv.textContent = day;
             dayDiv.dataset.date = ymdFromDate(dateObj);
-            if (tasks) {
-                const matches = tasks.filter(t => t.dueDate === dayDiv.dataset.date);
-                if (!matches.length) {
-                    dayDiv.classList.add('no-task');
-                } else if (matches.every(t => t.completed)) {
-                    dayDiv.classList.add('tasks-completed');
-                } else {
-                    dayDiv.classList.add('has-task');
-                }
-            }
+            markDayIndicator(dayDiv);
 
             // Highlight today
             if (day === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
@@ -173,16 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dayDiv.className = 'calendar-day other-month';
             dayDiv.textContent = day;
             dayDiv.dataset.date = ymdFromDate(dateObj);
-            if (tasks) {
-                const matches = tasks.filter(t => t.dueDate === dayDiv.dataset.date);
-                if (!matches.length) {
-                    dayDiv.classList.add('no-task');
-                } else if (matches.every(t => t.completed)) {
-                    dayDiv.classList.add('tasks-completed');
-                } else {
-                    dayDiv.classList.add('has-task');
-                }
-            }
+            markDayIndicator(dayDiv);
             calendarDaysEl.appendChild(dayDiv);
         }
 
@@ -394,7 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const t = e.target;
             if (t && t.matches('input[type="checkbox"].task-checkbox')) {
                 toggleTask(t.dataset.id, t.checked);
-                // toggleTask will call renderTasks() and save; re-render day tasks
+                renderCalendar();
+                renderDayTasks();
+            } else if (t && t.matches('input[type="checkbox"].subtask-checkbox')) {
+                toggleSubtask(t.dataset.parentTaskId, t.dataset.subtaskId, t.checked);
+                renderCalendar();
                 renderDayTasks();
             }
         });
@@ -603,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', () => {
                 closeAllMenus();
-                showDeleteConfirm(task.id);
+                deleteTask(task.id);
             });
             
             menuContainer.appendChild(editBtn);
@@ -1039,6 +1045,8 @@ document.addEventListener('DOMContentLoaded', () => {
         subtask.completed = !!completed;
         saveTasks();
         renderTasks();
+        renderCalendar();
+        renderDayTasks();
     }
 
     function updateSubtaskImportance(parentTaskId, subtaskId, importance) {
