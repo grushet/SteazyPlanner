@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('userDataLoaded', (e) => {
         const userData = e.detail;
         tasks = userData.tasks || [];
-        
+
         // Ensure all tasks and subtasks have required properties
         tasks.forEach(task => {
             if (!task.subtasks) task.subtasks = [];
@@ -438,7 +438,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!subtask.dueDate) subtask.dueDate = null;
             });
         });
-        
+
+        // Store pomodoro data from Firestore for later use
+        window._firestorePomodoroState = userData.pomodoroState || null;
+        window._firestorePomodoroSettings = userData.pomodoroSettings || null;
+
         // Re-render everything once data arrives
         renderTasks();
         renderCalendar();
@@ -455,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 await setDoc(userDocRef, {
                     tasks: tasks
-                });
+                }, { merge: true });
             } catch (error) {
                 console.error("Error updating database:", error);
             }
@@ -1248,28 +1252,49 @@ document.addEventListener('DOMContentLoaded', () => {
         let intervalId = null;
 
         function loadSettings() {
-            try {
-                const raw = localStorage.getItem(POMO_SETTINGS_KEY);
-                if (raw) settings = Object.assign(settings, JSON.parse(raw));
-            } catch (e) { /* ignore */ }
+            // Prefer Firestore data, fall back to localStorage
+            if (window._firestorePomodoroSettings) {
+                settings = Object.assign(settings, window._firestorePomodoroSettings);
+            } else {
+                try {
+                    const raw = localStorage.getItem(POMO_SETTINGS_KEY);
+                    if (raw) settings = Object.assign(settings, JSON.parse(raw));
+                } catch (e) { /* ignore */ }
+            }
         }
 
         function saveSettings() {
             try { localStorage.setItem(POMO_SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {}
+            if (window.currentUserUid && window.db) {
+                const userDocRef = doc(window.db, "users", window.currentUserUid);
+                setDoc(userDocRef, { pomodoroSettings: { ...settings } }, { merge: true })
+                    .catch(err => console.error("Error saving pomo settings:", err));
+            }
         }
 
         function loadState() {
-            try {
-                const raw = localStorage.getItem(POMO_STATE_KEY);
-                if (raw) {
-                    const s = JSON.parse(raw);
-                    state = Object.assign(state, s);
-                }
-            } catch (e) { /* ignore */ }
+            // Prefer Firestore data, fall back to localStorage
+            if (window._firestorePomodoroState) {
+                state = Object.assign(state, window._firestorePomodoroState);
+                state.running = false; // never auto-resume a running timer
+            } else {
+                try {
+                    const raw = localStorage.getItem(POMO_STATE_KEY);
+                    if (raw) {
+                        const s = JSON.parse(raw);
+                        state = Object.assign(state, s);
+                    }
+                } catch (e) { /* ignore */ }
+            }
         }
 
         function saveState() {
             try { localStorage.setItem(POMO_STATE_KEY, JSON.stringify(state)); } catch (e) {}
+            if (window.currentUserUid && window.db) {
+                const userDocRef = doc(window.db, "users", window.currentUserUid);
+                setDoc(userDocRef, { pomodoroState: { ...state } }, { merge: true })
+                    .catch(err => console.error("Error saving pomo state:", err));
+            }
         }
 
         function formatTime(sec) {
@@ -1386,6 +1411,9 @@ document.addEventListener('DOMContentLoaded', () => {
             saveState();
         }
 
+        const workEndSound = new Audio('workEndAlarm.mp3');
+        const breakEndSound = new Audio('breakEndAlarm.mp3');
+
         function handlePeriodEnd() {
             // simple visual flash using body class
             document.body.classList.add('pomo-flash');
@@ -1393,6 +1421,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // remember which mode just finished (work/short/long)
             const finishedMode = state.mode;
+
+            // play the appropriate alarm
+            if (finishedMode === 'work') {
+                workEndSound.currentTime = 0;
+                workEndSound.play();
+            } else {
+                breakEndSound.currentTime = 0;
+                breakEndSound.play();
+            }
 
             if (finishedMode === 'work') {
                 state.currentSession = (state.currentSession || 0) + 1;
