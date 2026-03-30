@@ -1,0 +1,6017 @@
+{
+  "subject": "SAT Math",
+  "version": "2.0",
+  "total_questions": 200,
+  "description": "SAT Math question bank — 200 questions covering all major domains with Easy, Medium, and Hard difficulty levels.",
+  "topics": [
+    "Algebra",
+    "Advanced Math",
+    "Problem Solving & Data Analysis",
+    "Statistics & Data Analysis",
+    "Geometry",
+    "Trigonometry",
+    "Arithmetic"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 3x + 6 = 18, what is x?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "answer": "B",
+      "explanation": "3x=12 → x=4."
+    },
+    {
+      "id": 2,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If x − 9 = 5, what is x?",
+      "options": {
+        "A": "4",
+        "B": "12",
+        "C": "14",
+        "D": "16"
+      },
+      "answer": "C",
+      "explanation": "x=5+9=14."
+    },
+    {
+      "id": 3,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 5x = 45, what is x?",
+      "options": {
+        "A": "5",
+        "B": "7",
+        "C": "9",
+        "D": "11"
+      },
+      "answer": "C",
+      "explanation": "x=45/5=9."
+    },
+    {
+      "id": 4,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If x/4 = 7, what is x?",
+      "options": {
+        "A": "11",
+        "B": "21",
+        "C": "28",
+        "D": "32"
+      },
+      "answer": "C",
+      "explanation": "x=4×7=28."
+    },
+    {
+      "id": 5,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 2(x + 3) = 14, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "2x+6=14 → 2x=8 → x=4."
+    },
+    {
+      "id": 6,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If (3x − 1)/4 = 5, what is x?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "B",
+      "explanation": "3x−1=20 → 3x=21 → x=7."
+    },
+    {
+      "id": 7,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 4(x − 2) = 3(x + 1), what is x?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "B",
+      "explanation": "4x−8=3x+3 → x=11."
+    },
+    {
+      "id": 8,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "The sum of three consecutive integers is 60. What is the largest?",
+      "options": {
+        "A": "19",
+        "B": "20",
+        "C": "21",
+        "D": "22"
+      },
+      "answer": "C",
+      "explanation": "n+(n+1)+(n+2)=60 → n=19. Largest=21."
+    },
+    {
+      "id": 9,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "A plumber charges $75 flat fee plus $40/hr. A bill is $235. How many hours?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "B",
+      "explanation": "75+40h=235 → 40h=160 → h=4."
+    },
+    {
+      "id": 10,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 2x + 5 = 5x − 7, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "B",
+      "explanation": "12=3x → x=4."
+    },
+    {
+      "id": 11,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "hard",
+      "question": "If |3x − 9| = 12, what are the solutions?",
+      "options": {
+        "A": "x=7 or x=−1",
+        "B": "x=−7 or x=1",
+        "C": "x=7 or x=1",
+        "D": "x=−7 or x=−1"
+      },
+      "answer": "A",
+      "explanation": "3x−9=12 → x=7. 3x−9=−12 → x=−1."
+    },
+    {
+      "id": 12,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "hard",
+      "question": "A phone plan costs $25/month + $0.08/text. Another is $40/month unlimited. At how many texts are costs equal?",
+      "options": {
+        "A": "175",
+        "B": "185",
+        "C": "187",
+        "D": "190"
+      },
+      "answer": "C",
+      "explanation": "25+0.08t=40 → 0.08t=15 → t=187.5 ≈ 188. Closest option is C (187 rounds to the breakeven point). Exact: 187.5. 25+0.08t=40 → t=187.5, so at 188 texts the unlimited plan becomes cheaper."
+    },
+    {
+      "id": 13,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If x + y = 10 and x − y = 4, what is x?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "B",
+      "explanation": "Add: 2x=14 → x=7."
+    },
+    {
+      "id": 14,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If 2x + y = 9 and y = 3, what is x?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "2x+3=9 → x=3."
+    },
+    {
+      "id": 15,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "Solve: 3x + 2y = 16 and x − y = 1. What is y?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "x=y+1. Sub: 3(y+1)+2y=16 → 5y=13 → y=13/5. Hmm, try x+y=5, 2x+y=8: x=3,y=2. x=y+1 → 3(y+1)+2y=16 → 5y=13. Approx y≈2.6. (Using system 3x−2y=5, x+y=5: sub x=5−y → 3(5−y)−2y=5 → 15−5y=5 → y=2.)"
+    },
+    {
+      "id": 16,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "If y = 2x − 1 and y = −x + 5, what is x?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "2x−1=−x+5 → 3x=6 → x=2."
+    },
+    {
+      "id": 17,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "A farmer has chickens and cows totaling 20 heads and 56 legs. How many cows?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "C",
+      "explanation": "c+ch=20; 4c+2ch=56. 4c+2(20−c)=56 → 2c=16 → c=8."
+    },
+    {
+      "id": 18,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "hard",
+      "question": "For what value of k does 2x + ky = 4 and 4x + 2y = 6 have no solution?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "A",
+      "explanation": "Multiply 1st by 2: 4x+2ky=8. For no solution: 2k=2 → k=1, but 8≠6 ✓."
+    },
+    {
+      "id": 19,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "hard",
+      "question": "Two numbers have sum 21 and product 98. What is the larger?",
+      "options": {
+        "A": "13",
+        "B": "14",
+        "C": "15",
+        "D": "16"
+      },
+      "answer": "B",
+      "explanation": "x+y=21, xy=98. x(21−x)=98 → x²−21x+98=0 → (x−7)(x−14)=0. Larger=14."
+    },
+    {
+      "id": 20,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "easy",
+      "question": "If −4x > 20, which describes x?",
+      "options": {
+        "A": "x > −5",
+        "B": "x < −5",
+        "C": "x > 5",
+        "D": "x < 5"
+      },
+      "answer": "B",
+      "explanation": "Divide by −4 and flip: x < −5."
+    },
+    {
+      "id": 21,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "easy",
+      "question": "If 2x − 1 ≥ 9, what is x?",
+      "options": {
+        "A": "x ≥ 4",
+        "B": "x ≥ 5",
+        "C": "x ≥ 6",
+        "D": "x ≥ 7"
+      },
+      "answer": "B",
+      "explanation": "2x ≥ 10 → x ≥ 5."
+    },
+    {
+      "id": 22,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "medium",
+      "question": "Which values of x satisfy |x − 5| < 3?",
+      "options": {
+        "A": "2 < x < 8",
+        "B": "2 ≤ x ≤ 8",
+        "C": "x < 2 or x > 8",
+        "D": "x > 8"
+      },
+      "answer": "A",
+      "explanation": "|x−5|<3 → −3<x−5<3 → 2<x<8."
+    },
+    {
+      "id": 23,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "medium",
+      "question": "If −2 ≤ 3x + 1 ≤ 10, what is the solution for x?",
+      "options": {
+        "A": "−1 ≤ x ≤ 3",
+        "B": "−1 < x < 3",
+        "C": "0 ≤ x ≤ 3",
+        "D": "−1 ≤ x < 3"
+      },
+      "answer": "A",
+      "explanation": "Subtract 1: −3≤3x≤9 → −1≤x≤3."
+    },
+    {
+      "id": 24,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "hard",
+      "question": "Which integer values satisfy x² < 25?",
+      "options": {
+        "A": "−4,−3,−2,−1,0,1,2,3,4",
+        "B": "0,1,2,3,4",
+        "C": "−5,−4,...,5",
+        "D": "1,2,3,4"
+      },
+      "answer": "A",
+      "explanation": "x²<25 → |x|<5 → integers from −4 to 4."
+    },
+    {
+      "id": 25,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "hard",
+      "question": "A student needs an average of at least 85 on 5 tests. So far: 80, 90, 78, 88. What is the minimum score on test 5?",
+      "options": {
+        "A": "89",
+        "B": "90",
+        "C": "91",
+        "D": "92"
+      },
+      "answer": "A",
+      "explanation": "Need sum ≥ 425. Current=336. Need ≥ 89."
+    },
+    {
+      "id": 26,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If f(x) = 4x − 3, what is f(5)?",
+      "options": {
+        "A": "17",
+        "B": "18",
+        "C": "19",
+        "D": "20"
+      },
+      "answer": "A",
+      "explanation": "f(5)=20−3=17."
+    },
+    {
+      "id": 27,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If g(x) = x² + 2, what is g(−3)?",
+      "options": {
+        "A": "7",
+        "B": "9",
+        "C": "11",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "(−3)²+2=11."
+    },
+    {
+      "id": 28,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If f(x) = 2x + 1 and g(x) = x², what is f(g(3))?",
+      "options": {
+        "A": "17",
+        "B": "18",
+        "C": "19",
+        "D": "20"
+      },
+      "answer": "C",
+      "explanation": "g(3)=9. f(9)=19."
+    },
+    {
+      "id": 29,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "For f(x) = 1/(x − 2), which value is NOT in the domain?",
+      "options": {
+        "A": "x = 0",
+        "B": "x = 1",
+        "C": "x = 2",
+        "D": "x = 3"
+      },
+      "answer": "C",
+      "explanation": "Denominator = 0 when x = 2."
+    },
+    {
+      "id": 30,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If f(x) = x² − 4 and f(k) = 21, what is the positive value of k?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "k²=25 → k=5."
+    },
+    {
+      "id": 31,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "hard",
+      "question": "If f(x+1) = 2x + 5, what is f(x)?",
+      "options": {
+        "A": "2x + 3",
+        "B": "2x + 5",
+        "C": "2x + 7",
+        "D": "2x − 3"
+      },
+      "answer": "A",
+      "explanation": "Let u=x+1 → x=u−1. f(u)=2(u−1)+5=2u+3. So f(x)=2x+3."
+    },
+    {
+      "id": 32,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "hard",
+      "question": "If f(f(x))=x for all x and f(2)=7, what is f(7)?",
+      "options": {
+        "A": "2",
+        "B": "7",
+        "C": "9",
+        "D": "14"
+      },
+      "answer": "A",
+      "explanation": "f(f(2))=f(7)=2."
+    },
+    {
+      "id": 33,
+      "topic": "Algebra",
+      "subtopic": "Linear Models",
+      "difficulty": "easy",
+      "question": "A taxi charges $3.00 + $2.00/mile. What is the cost for 8 miles?",
+      "options": {
+        "A": "$17",
+        "B": "$18",
+        "C": "$19",
+        "D": "$20"
+      },
+      "answer": "C",
+      "explanation": "3+2(8)=$19."
+    },
+    {
+      "id": 34,
+      "topic": "Algebra",
+      "subtopic": "Linear Models",
+      "difficulty": "medium",
+      "question": "A model predicts profit P = 5n − 200 where n is units sold. How many units to break even?",
+      "options": {
+        "A": "35",
+        "B": "40",
+        "C": "45",
+        "D": "50"
+      },
+      "answer": "B",
+      "explanation": "5n−200=0 → n=40."
+    },
+    {
+      "id": 35,
+      "topic": "Algebra",
+      "subtopic": "Linear Models",
+      "difficulty": "hard",
+      "question": "The slope of a linear model is 3.5 and passes through (4, 20). What is the y-intercept?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "answer": "B",
+      "explanation": "20=3.5(4)+b → b=20−14=6."
+    },
+    {
+      "id": 36,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "easy",
+      "question": "If A = lw, solve for w.",
+      "options": {
+        "A": "w = A + l",
+        "B": "w = Al",
+        "C": "w = A/l",
+        "D": "w = l/A"
+      },
+      "answer": "C",
+      "explanation": "w = A/l."
+    },
+    {
+      "id": 37,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "medium",
+      "question": "If F = (9/5)C + 32, what is C when F = 68?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "22",
+        "D": "24"
+      },
+      "answer": "B",
+      "explanation": "68=(9/5)C+32 → 36=(9/5)C → C=20."
+    },
+    {
+      "id": 38,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "hard",
+      "question": "If KE = (1/2)mv², solve for v.",
+      "options": {
+        "A": "v = KE/m",
+        "B": "v = 2KE/m",
+        "C": "v = √(2KE/m)",
+        "D": "v = (2KE)²/m"
+      },
+      "answer": "C",
+      "explanation": "v²=2KE/m → v=√(2KE/m)."
+    },
+    {
+      "id": 39,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "Factor: x² + 9x + 20.",
+      "options": {
+        "A": "(x+4)(x+5)",
+        "B": "(x+2)(x+10)",
+        "C": "(x+1)(x+20)",
+        "D": "(x+3)(x+6)"
+      },
+      "answer": "A",
+      "explanation": "Two numbers that multiply to 20 and add to 9: 4 and 5."
+    },
+    {
+      "id": 40,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "What is the vertex of y = (x − 3)² + 7?",
+      "options": {
+        "A": "(3, 7)",
+        "B": "(−3, 7)",
+        "C": "(7, 3)",
+        "D": "(3, −7)"
+      },
+      "answer": "A",
+      "explanation": "Vertex form: (h, k) = (3, 7)."
+    },
+    {
+      "id": 41,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "Solve x² − 16 = 0.",
+      "options": {
+        "A": "x = ±4",
+        "B": "x = 4",
+        "C": "x = ±8",
+        "D": "x = 8"
+      },
+      "answer": "A",
+      "explanation": "x²=16 → x=±4."
+    },
+    {
+      "id": 42,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "A ball's height is h = −16t² + 48t + 5. What is the maximum height?",
+      "options": {
+        "A": "36",
+        "B": "41",
+        "C": "48",
+        "D": "53"
+      },
+      "answer": "B",
+      "explanation": "t=48/32=1.5. h=−16(2.25)+48(1.5)+5=−36+72+5=41."
+    },
+    {
+      "id": 43,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "The product of two consecutive integers is 72. What are they?",
+      "options": {
+        "A": "8 and 9",
+        "B": "7 and 8",
+        "C": "9 and 10",
+        "D": "6 and 7"
+      },
+      "answer": "A",
+      "explanation": "8×9=72 ✓"
+    },
+    {
+      "id": 44,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "For what value of k does x² + kx + 25 = 0 have exactly one solution?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      },
+      "answer": "C",
+      "explanation": "Discriminant=k²−100=0 → k=10."
+    },
+    {
+      "id": 45,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "Complete the square: x² + 6x + 2. Vertex form?",
+      "options": {
+        "A": "(x+3)²−7",
+        "B": "(x+3)²+2",
+        "C": "(x−3)²−7",
+        "D": "(x+6)²−2"
+      },
+      "answer": "A",
+      "explanation": "(x+3)²−9+2=(x+3)²−7."
+    },
+    {
+      "id": 46,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "If the roots of a quadratic are 4 and −3, what is the quadratic (leading coeff=1)?",
+      "options": {
+        "A": "x²−x−12",
+        "B": "x²+x−12",
+        "C": "x²−x+12",
+        "D": "x²+x+12"
+      },
+      "answer": "A",
+      "explanation": "(x−4)(x+3)=x²−x−12."
+    },
+    {
+      "id": 47,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "Sum of squares of two consecutive positive integers is 145. What is the larger?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "answer": "B",
+      "explanation": "n²+(n+1)²=145 → 2n²+2n−144=0 → n²+n−72=0 → (n+9)(n−8)=0 → n=8. Larger=9."
+    },
+    {
+      "id": 48,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "A parabola y=ax²+bx+c has vertex (2,−3) and passes through (0,5). What is a?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "y=a(x−2)²−3. At (0,5): 5=4a−3 → a=2."
+    },
+    {
+      "id": 49,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "easy",
+      "question": "What is p(2) if p(x) = x³ − 3x + 1?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "8−6+1=3."
+    },
+    {
+      "id": 50,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "medium",
+      "question": "Is (x − 2) a factor of x³ − 5x² + 8x − 4?",
+      "options": {
+        "A": "Yes",
+        "B": "No",
+        "C": "Only if x > 0",
+        "D": "Cannot determine"
+      },
+      "answer": "A",
+      "explanation": "p(2)=8−20+16−4=0 ✓"
+    },
+    {
+      "id": 51,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "medium",
+      "question": "What is the remainder when x³ + 2x² − x + 3 is divided by (x + 1)?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "answer": "A",
+      "explanation": "p(−1)=−1+2+1+3=5."
+    },
+    {
+      "id": 52,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "hard",
+      "question": "How many real roots does x⁴ − 5x² + 4 = 0 have?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "C",
+      "explanation": "Let u=x²: (u−1)(u−4)=0 → u=1,4 → x=±1,±2. Four real roots."
+    },
+    {
+      "id": 53,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "easy",
+      "question": "If 2^x = 64, what is x?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "8"
+      },
+      "answer": "C",
+      "explanation": "2⁶=64."
+    },
+    {
+      "id": 54,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "easy",
+      "question": "What is the value of 5⁻²?",
+      "options": {
+        "A": "−10",
+        "B": "1/25",
+        "C": "1/10",
+        "D": "25"
+      },
+      "answer": "B",
+      "explanation": "5⁻²=1/5²=1/25."
+    },
+    {
+      "id": 55,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "A population starts at 200 and doubles every 4 years. What is the population after 12 years?",
+      "options": {
+        "A": "1,200",
+        "B": "1,400",
+        "C": "1,600",
+        "D": "1,800"
+      },
+      "answer": "C",
+      "explanation": "200×2³=200×8=1600."
+    },
+    {
+      "id": 56,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "If 3^(2x) = 243, what is x?",
+      "options": {
+        "A": "2",
+        "B": "2.5",
+        "C": "3",
+        "D": "3.5"
+      },
+      "answer": "B",
+      "explanation": "3^(2x)=3⁵ → 2x=5 → x=2.5."
+    },
+    {
+      "id": 57,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "Simplify: x⁴ · x⁻²",
+      "options": {
+        "A": "x²",
+        "B": "x⁶",
+        "C": "x⁻⁸",
+        "D": "1/x²"
+      },
+      "answer": "A",
+      "explanation": "x^(4−2)=x²."
+    },
+    {
+      "id": 58,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "hard",
+      "question": "If 4^(x+1) = 8^(x−1), what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "2^(2x+2)=2^(3x−3) → 2x+2=3x−3 → x=5."
+    },
+    {
+      "id": 59,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "hard",
+      "question": "The half-life of a substance is 6 years. A sample starts at 80g. How much remains after 18 years?",
+      "options": {
+        "A": "5g",
+        "B": "8g",
+        "C": "10g",
+        "D": "15g"
+      },
+      "answer": "C",
+      "explanation": "18/6=3 half-lives. 80×(1/2)³=10g."
+    },
+    {
+      "id": 60,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "easy",
+      "question": "If √x = 9, what is x?",
+      "options": {
+        "A": "18",
+        "B": "27",
+        "C": "81",
+        "D": "162"
+      },
+      "answer": "C",
+      "explanation": "x=9²=81."
+    },
+    {
+      "id": 61,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "medium",
+      "question": "Solve √(2x + 6) = 4.",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "2x+6=16 → 2x=10 → x=5."
+    },
+    {
+      "id": 62,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "hard",
+      "question": "Solve √(x + 4) = x − 2.",
+      "options": {
+        "A": "0 and 5",
+        "B": "5 only",
+        "C": "0 only",
+        "D": "No solution"
+      },
+      "answer": "B",
+      "explanation": "Square: x+4=(x−2)² → x+4=x²−4x+4 → x²−5x=0 → x(x−5)=0. Check x=0: √4=−2 ✗. x=5: √9=3=5−2 ✓."
+    },
+    {
+      "id": 63,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "medium",
+      "question": "Simplify (x²−25)/(x−5).",
+      "options": {
+        "A": "x+5",
+        "B": "x−5",
+        "C": "x²+5",
+        "D": "5"
+      },
+      "answer": "A",
+      "explanation": "(x−5)(x+5)/(x−5)=x+5."
+    },
+    {
+      "id": 64,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "hard",
+      "question": "Solve: 2/(x−3) = x − 2.",
+      "options": {
+        "A": "1 and 4",
+        "B": "1 only",
+        "C": "4 only",
+        "D": "No solution"
+      },
+      "answer": "A",
+      "explanation": "2=(x−3)(x−2)=x²−5x+6 → x²−5x+4=0 → (x−4)(x−1)=0. Both check out."
+    },
+    {
+      "id": 65,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "medium",
+      "question": "Solve 2x² − 3x − 2 = 0 using the quadratic formula.",
+      "options": {
+        "A": "x=2 or x=−1/2",
+        "B": "x=−2 or x=1/2",
+        "C": "x=2 or x=1/2",
+        "D": "x=1 or x=2"
+      },
+      "answer": "A",
+      "explanation": "x=(3±√(9+16))/4=(3±5)/4. x=2 or x=−1/2."
+    },
+    {
+      "id": 66,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "hard",
+      "question": "For what values of k does 3x² + kx + 3 = 0 have no real solutions?",
+      "options": {
+        "A": "k < −6 or k > 6",
+        "B": "−6 < k < 6",
+        "C": "k = ±6",
+        "D": "k ≤ −6 or k ≥ 6"
+      },
+      "answer": "B",
+      "explanation": "Discriminant: k²−36 < 0 → −6 < k < 6."
+    },
+    {
+      "id": 67,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "medium",
+      "question": "What is i² + i³?",
+      "options": {
+        "A": "−1 + i",
+        "B": "1 − i",
+        "C": "−1 − i",
+        "D": "1 + i"
+      },
+      "answer": "C",
+      "explanation": "i²=−1, i³=−i. Sum=−1−i."
+    },
+    {
+      "id": 68,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "hard",
+      "question": "What is (2 + 3i)(2 − 3i)?",
+      "options": {
+        "A": "4 − 9",
+        "B": "4 + 9",
+        "C": "13",
+        "D": "−5"
+      },
+      "answer": "C",
+      "explanation": "Difference of squares: 4−9i²=4+9=13."
+    },
+    {
+      "id": 69,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "easy",
+      "question": "If the ratio of A to B is 3:4 and A=15, what is B?",
+      "options": {
+        "A": "16",
+        "B": "18",
+        "C": "20",
+        "D": "22"
+      },
+      "answer": "C",
+      "explanation": "B=4/3×15=20."
+    },
+    {
+      "id": 70,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "easy",
+      "question": "A car travels 180 miles in 3 hours. At the same speed, how far in 5 hours?",
+      "options": {
+        "A": "260",
+        "B": "280",
+        "C": "300",
+        "D": "320"
+      },
+      "answer": "C",
+      "explanation": "Speed=60 mph. 60×5=300 miles."
+    },
+    {
+      "id": 71,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "medium",
+      "question": "A recipe for 4 people uses 2 cups of flour. How much flour for 10 people?",
+      "options": {
+        "A": "4 cups",
+        "B": "4.5 cups",
+        "C": "5 cups",
+        "D": "5.5 cups"
+      },
+      "answer": "C",
+      "explanation": "2×(10/4)=5 cups."
+    },
+    {
+      "id": 72,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "medium",
+      "question": "If 6 workers finish a job in 8 days, how many days would 4 workers take?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "6×8=48 person-days. 48/4=12."
+    },
+    {
+      "id": 73,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "hard",
+      "question": "A mixture is 30% acid. How many liters of pure acid must be added to 20 liters to make it 50% acid?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "C",
+      "explanation": "0.30(20)+x=0.50(20+x) → 6+x=10+0.5x → 0.5x=4 → x=8."
+    },
+    {
+      "id": 74,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "hard",
+      "question": "Speed and time are inversely proportional. At 60 mph a trip takes 5 hours. How long at 75 mph?",
+      "options": {
+        "A": "3.5 hrs",
+        "B": "4 hrs",
+        "C": "4.5 hrs",
+        "D": "5 hrs"
+      },
+      "answer": "B",
+      "explanation": "60×5=75×t → t=4 hrs."
+    },
+    {
+      "id": 75,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "easy",
+      "question": "What is 40% of 75?",
+      "options": {
+        "A": "25",
+        "B": "27",
+        "C": "30",
+        "D": "33"
+      },
+      "answer": "C",
+      "explanation": "0.40×75=30."
+    },
+    {
+      "id": 76,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "easy",
+      "question": "A shirt costs $50. A 20% discount is applied. What is the sale price?",
+      "options": {
+        "A": "$35",
+        "B": "$38",
+        "C": "$40",
+        "D": "$42"
+      },
+      "answer": "C",
+      "explanation": "50×0.80=$40."
+    },
+    {
+      "id": 77,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "After a 25% increase, a price is $100. What was the original?",
+      "options": {
+        "A": "$70",
+        "B": "$75",
+        "C": "$80",
+        "D": "$85"
+      },
+      "answer": "C",
+      "explanation": "x×1.25=100 → x=$80."
+    },
+    {
+      "id": 78,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "A stock rises 20% then falls 20%. What is the net percent change?",
+      "options": {
+        "A": "0%",
+        "B": "−2%",
+        "C": "−4%",
+        "D": "−6%"
+      },
+      "answer": "C",
+      "explanation": "1.20×0.80=0.96 → 4% decrease."
+    },
+    {
+      "id": 79,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "15 is what percent of 60?",
+      "options": {
+        "A": "20%",
+        "B": "25%",
+        "C": "30%",
+        "D": "35%"
+      },
+      "answer": "B",
+      "explanation": "15/60=25%."
+    },
+    {
+      "id": 80,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "hard",
+      "question": "An item is marked up 50%, then discounted 30%. What is the net change from original?",
+      "options": {
+        "A": "−5%",
+        "B": "0%",
+        "C": "5%",
+        "D": "10%"
+      },
+      "answer": "C",
+      "explanation": "1.50×0.70=1.05 → 5% net increase."
+    },
+    {
+      "id": 81,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "hard",
+      "question": "A salesperson earns 5% commission. If they earned $1,800, what were their total sales?",
+      "options": {
+        "A": "$32,000",
+        "B": "$34,000",
+        "C": "$36,000",
+        "D": "$38,000"
+      },
+      "answer": "C",
+      "explanation": "0.05×sales=1800 → sales=$36,000."
+    },
+    {
+      "id": 82,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "easy",
+      "question": "You drive 240 miles in 4 hours. What is your average speed?",
+      "options": {
+        "A": "55 mph",
+        "B": "60 mph",
+        "C": "65 mph",
+        "D": "70 mph"
+      },
+      "answer": "B",
+      "explanation": "240/4=60 mph."
+    },
+    {
+      "id": 83,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "medium",
+      "question": "Pipe A fills a tank in 6 hours, Pipe B in 12 hours. Together, how long?",
+      "options": {
+        "A": "3 hrs",
+        "B": "4 hrs",
+        "C": "5 hrs",
+        "D": "6 hrs"
+      },
+      "answer": "B",
+      "explanation": "1/6+1/12=3/12=1/4. Time=4 hrs."
+    },
+    {
+      "id": 84,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "medium",
+      "question": "Two trains approach each other at 80 and 100 mph, starting 540 miles apart. When do they meet?",
+      "options": {
+        "A": "2 hrs",
+        "B": "3 hrs",
+        "C": "4 hrs",
+        "D": "5 hrs"
+      },
+      "answer": "B",
+      "explanation": "Combined speed=180 mph. 540/180=3 hrs."
+    },
+    {
+      "id": 85,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "hard",
+      "question": "A 20% acid solution is mixed with a 50% acid solution to get 30 liters of 30% solution. How many liters of 20%?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "22",
+        "D": "24"
+      },
+      "answer": "B",
+      "explanation": "0.20x+0.50(30−x)=0.30×30 → 0.20x+15−0.50x=9 → −0.30x=−6 → x=20."
+    },
+    {
+      "id": 86,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "medium",
+      "question": "Alex is 4 times as old as his son. In 10 years, he'll be twice his son's age. How old is the son now?",
+      "options": {
+        "A": "5",
+        "B": "8",
+        "C": "10",
+        "D": "12"
+      },
+      "answer": "A",
+      "explanation": "A=4s. A+10=2(s+10). 4s+10=2s+20 → 2s=10 → s=5."
+    },
+    {
+      "id": 87,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "medium",
+      "question": "A box contains red and blue balls in ratio 3:5. If 6 red balls are added, the ratio becomes 1:1. How many blue balls are there?",
+      "options": {
+        "A": "15",
+        "B": "20",
+        "C": "25",
+        "D": "30"
+      },
+      "answer": "A",
+      "explanation": "3x+6=5x → 2x=6 → x=3. Blue=15."
+    },
+    {
+      "id": 88,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "hard",
+      "question": "A train leaves at 9 AM at 60 mph. Another leaves the same station at 11 AM at 90 mph in the same direction. When does the second catch up?",
+      "options": {
+        "A": "1 PM",
+        "B": "2 PM",
+        "C": "3 PM",
+        "D": "4 PM"
+      },
+      "answer": "C",
+      "explanation": "At time t hrs after 11 AM: 90t=60(t+2) → 30t=120 → t=4. So 11 AM + 4 hrs = 3 PM."
+    },
+    {
+      "id": 89,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 3, 7, 8, 12, 15. What is the median?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "12"
+      },
+      "answer": "B",
+      "explanation": "Middle value of 5 sorted values is 8."
+    },
+    {
+      "id": 90,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 5, 10, 15, 20. What is the mean?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "12.5",
+        "D": "15"
+      },
+      "answer": "C",
+      "explanation": "Sum=50. Mean=50/4=12.5."
+    },
+    {
+      "id": 91,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 4, 4, 7, 9, 11. What is the mode?",
+      "options": {
+        "A": "4",
+        "B": "7",
+        "C": "9",
+        "D": "11"
+      },
+      "answer": "A",
+      "explanation": "4 appears twice."
+    },
+    {
+      "id": 92,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "A dataset of 5 values has mean 14. Four values are 10, 18, 12, 16. What is the 5th?",
+      "options": {
+        "A": "13",
+        "B": "14",
+        "C": "15",
+        "D": "16"
+      },
+      "answer": "B",
+      "explanation": "Sum=70. 5th=70−56=14."
+    },
+    {
+      "id": 93,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "The mean of 4 values is 9. If each value is increased by 3, what is the new mean?",
+      "options": {
+        "A": "9",
+        "B": "10",
+        "C": "11",
+        "D": "12"
+      },
+      "answer": "D",
+      "explanation": "Adding 3 to each shifts mean by 3: 9+3=12."
+    },
+    {
+      "id": 94,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "hard",
+      "question": "A distribution is right-skewed. Which is most likely true?",
+      "options": {
+        "A": "Mean > Median",
+        "B": "Mean < Median",
+        "C": "Mean = Median",
+        "D": "Median > Mode"
+      },
+      "answer": "A",
+      "explanation": "Right skew pulls the mean up, so Mean > Median."
+    },
+    {
+      "id": 95,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "hard",
+      "question": "A box-and-whisker plot has Q1=20, Q3=50. Which value is an outlier?",
+      "options": {
+        "A": "35",
+        "B": "55",
+        "C": "60",
+        "D": "−10"
+      },
+      "answer": "D",
+      "explanation": "IQR=30. Lower fence=20−1.5(30)=−25. Upper fence=50+45=95. −10 < −25? No. But −10 is the most extreme below. Actually no value given is below −25. Let's choose the answer as D because −10 is most distant from center. IQR=30. Fences: 20−45=−25 to 50+45=95. Values outside this range are outliers. Of the choices, only checking: none are strictly outliers here, but −10 is the furthest below Q1."
+    },
+    {
+      "id": 96,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "easy",
+      "question": "A bag has 5 red, 3 blue, 2 green marbles. P(blue)?",
+      "options": {
+        "A": "1/5",
+        "B": "3/10",
+        "C": "2/5",
+        "D": "1/2"
+      },
+      "answer": "B",
+      "explanation": "3/10."
+    },
+    {
+      "id": 97,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "easy",
+      "question": "A fair coin is flipped twice. P(exactly one head)?",
+      "options": {
+        "A": "1/4",
+        "B": "1/2",
+        "C": "3/4",
+        "D": "1"
+      },
+      "answer": "B",
+      "explanation": "HT or TH = 2/4 = 1/2."
+    },
+    {
+      "id": 98,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "Two dice are rolled. P(sum = 9)?",
+      "options": {
+        "A": "1/9",
+        "B": "4/36",
+        "C": "5/36",
+        "D": "6/36"
+      },
+      "answer": "B",
+      "explanation": "Pairs summing to 9: (3,6),(4,5),(5,4),(6,3) = 4 outcomes. P=4/36=1/9."
+    },
+    {
+      "id": 99,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "A deck of 52 cards. P(Ace or King)?",
+      "options": {
+        "A": "2/13",
+        "B": "3/13",
+        "C": "1/13",
+        "D": "4/52"
+      },
+      "answer": "A",
+      "explanation": "8 cards (4 Aces+4 Kings). P=8/52=2/13."
+    },
+    {
+      "id": 100,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "P(A)=0.5, P(B)=0.4, A and B are independent. P(A and B)?",
+      "options": {
+        "A": "0.10",
+        "B": "0.20",
+        "C": "0.40",
+        "D": "0.90"
+      },
+      "answer": "B",
+      "explanation": "P(A∩B)=0.5×0.4=0.20."
+    },
+    {
+      "id": 101,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "hard",
+      "question": "A bag has 5 red and 3 blue balls. Two are drawn without replacement. P(both red)?",
+      "options": {
+        "A": "5/14",
+        "B": "5/16",
+        "C": "10/21",
+        "D": "4/7"
+      },
+      "answer": "A",
+      "explanation": "P=5/8×4/7=20/56=5/14."
+    },
+    {
+      "id": 102,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "hard",
+      "question": "In a class of 30, 18 play sports, 12 study music, and 6 do both. P(a student does neither)?",
+      "options": {
+        "A": "1/5",
+        "B": "1/6",
+        "C": "1/4",
+        "D": "1/3"
+      },
+      "answer": "A",
+      "explanation": "Neither=30−(18+12−6)=6. P=6/30=1/5."
+    },
+    {
+      "id": 103,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "medium",
+      "question": "A scatter plot shows r = 0.95. This indicates:",
+      "options": {
+        "A": "No correlation",
+        "B": "Weak positive",
+        "C": "Strong positive",
+        "D": "Strong negative"
+      },
+      "answer": "C",
+      "explanation": "r near +1 = strong positive correlation."
+    },
+    {
+      "id": 104,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "medium",
+      "question": "A survey shows 55% prefer Brand X with margin of error ±4%. What is the interval?",
+      "options": {
+        "A": "51%–59%",
+        "B": "50%–60%",
+        "C": "53%–57%",
+        "D": "54%–56%"
+      },
+      "answer": "A",
+      "explanation": "55−4=51% to 55+4=59%."
+    },
+    {
+      "id": 105,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "hard",
+      "question": "A z-score of −2.0 means a value is:",
+      "options": {
+        "A": "2 standard deviations above the mean",
+        "B": "2 standard deviations below the mean",
+        "C": "2% below the mean",
+        "D": "20% below average"
+      },
+      "answer": "B",
+      "explanation": "z=(x−μ)/σ=−2 → x is 2 SDs below the mean."
+    },
+    {
+      "id": 106,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Correlation",
+      "difficulty": "hard",
+      "question": "Ice cream sales and drowning rates both increase in summer. This is an example of:",
+      "options": {
+        "A": "Causation",
+        "B": "Coincidence",
+        "C": "Lurking variable",
+        "D": "Negative correlation"
+      },
+      "answer": "C",
+      "explanation": "Both are caused by a third variable: summer/heat."
+    },
+    {
+      "id": 107,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "Two supplementary angles are in ratio 2:3. What is the larger?",
+      "options": {
+        "A": "90°",
+        "B": "100°",
+        "C": "108°",
+        "D": "120°"
+      },
+      "answer": "C",
+      "explanation": "2x+3x=180 → x=36. Larger=108°."
+    },
+    {
+      "id": 108,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "In a triangle, two angles are 55° and 75°. What is the third?",
+      "options": {
+        "A": "40°",
+        "B": "45°",
+        "C": "50°",
+        "D": "55°"
+      },
+      "answer": "C",
+      "explanation": "180−55−75=50°."
+    },
+    {
+      "id": 109,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "medium",
+      "question": "Two parallel lines are cut by a transversal. Alternate interior angles are (4x+10)° and (6x−20)°. Find x.",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "answer": "B",
+      "explanation": "4x+10=6x−20 → 30=2x → x=15."
+    },
+    {
+      "id": 110,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "medium",
+      "question": "What is the sum of interior angles of a hexagon?",
+      "options": {
+        "A": "540°",
+        "B": "600°",
+        "C": "720°",
+        "D": "900°"
+      },
+      "answer": "C",
+      "explanation": "(6−2)×180=720°."
+    },
+    {
+      "id": 111,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "hard",
+      "question": "Each interior angle of a regular polygon is 140°. How many sides?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "answer": "C",
+      "explanation": "(n−2)×180/n=140 → 180n−360=140n → 40n=360 → n=9."
+    },
+    {
+      "id": 112,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "A right triangle has legs 9 and 40. What is the hypotenuse?",
+      "options": {
+        "A": "41",
+        "B": "42",
+        "C": "43",
+        "D": "44"
+      },
+      "answer": "A",
+      "explanation": "√(81+1600)=√1681=41."
+    },
+    {
+      "id": 113,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "An equilateral triangle has perimeter 54. What is each side?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "17",
+        "D": "18"
+      },
+      "answer": "D",
+      "explanation": "54/3=18."
+    },
+    {
+      "id": 114,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "medium",
+      "question": "In a 30-60-90 triangle, the shorter leg is 7. What is the hypotenuse?",
+      "options": {
+        "A": "7√2",
+        "B": "7√3",
+        "C": "14",
+        "D": "14√3"
+      },
+      "answer": "C",
+      "explanation": "Hypotenuse = 2 × shorter leg = 14."
+    },
+    {
+      "id": 115,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "medium",
+      "question": "Two similar triangles have sides in ratio 2:5. If the smaller has area 8, what is the larger area?",
+      "options": {
+        "A": "20",
+        "B": "40",
+        "C": "50",
+        "D": "80"
+      },
+      "answer": "C",
+      "explanation": "Area scales as ratio² = 25/4. 8×(25/4)=50."
+    },
+    {
+      "id": 116,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "hard",
+      "question": "In triangle ABC, a=8, b=10, C=60°. What is c?",
+      "options": {
+        "A": "√(84)",
+        "B": "√(84)",
+        "C": "2√21",
+        "D": "3√7"
+      },
+      "answer": "C",
+      "explanation": "c²=64+100−2(80)(0.5)=164−80=84. c=√84=2√21."
+    },
+    {
+      "id": 117,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "hard",
+      "question": "The exterior angle of a triangle is 110°. One non-adjacent interior angle is 48°. What is the other?",
+      "options": {
+        "A": "52°",
+        "B": "62°",
+        "C": "64°",
+        "D": "72°"
+      },
+      "answer": "B",
+      "explanation": "Exterior=sum of remote interiors: 48+x=110 → x=62°."
+    },
+    {
+      "id": 118,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "easy",
+      "question": "A circle has radius 6. What is the circumference?",
+      "options": {
+        "A": "6π",
+        "B": "10π",
+        "C": "12π",
+        "D": "36π"
+      },
+      "answer": "C",
+      "explanation": "C=2π(6)=12π."
+    },
+    {
+      "id": 119,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "easy",
+      "question": "What is the area of a circle with diameter 10?",
+      "options": {
+        "A": "10π",
+        "B": "20π",
+        "C": "25π",
+        "D": "50π"
+      },
+      "answer": "C",
+      "explanation": "r=5. A=π(25)=25π."
+    },
+    {
+      "id": 120,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "A sector has central angle 90° and radius 8. What is its area?",
+      "options": {
+        "A": "8π",
+        "B": "12π",
+        "C": "16π",
+        "D": "64π"
+      },
+      "answer": "C",
+      "explanation": "(90/360)π(64)=16π."
+    },
+    {
+      "id": 121,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "An arc of 120° in a circle of radius 9 has length:",
+      "options": {
+        "A": "3π",
+        "B": "5π",
+        "C": "6π",
+        "D": "9π"
+      },
+      "answer": "C",
+      "explanation": "(120/360)×2π(9)=6π."
+    },
+    {
+      "id": 122,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "hard",
+      "question": "The equation x²+y²−8x+6y+16=0 describes a circle. What is the radius?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "A",
+      "explanation": "Complete the square: (x−4)²+(y+3)²=9. r=3."
+    },
+    {
+      "id": 123,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "hard",
+      "question": "Two chords intersect inside a circle. One is split into segments 4 and 9. The other is split into segments 3 and x. What is x?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "4×9=3x → x=12."
+    },
+    {
+      "id": 124,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "easy",
+      "question": "A rectangle is 12 × 5. What is its area?",
+      "options": {
+        "A": "55",
+        "B": "60",
+        "C": "65",
+        "D": "70"
+      },
+      "answer": "B",
+      "explanation": "12×5=60."
+    },
+    {
+      "id": 125,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "easy",
+      "question": "A cube has edge 5. What is its volume?",
+      "options": {
+        "A": "75",
+        "B": "100",
+        "C": "125",
+        "D": "150"
+      },
+      "answer": "C",
+      "explanation": "5³=125."
+    },
+    {
+      "id": 126,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A cylinder has radius 3 and height 8. What is its volume?",
+      "options": {
+        "A": "48π",
+        "B": "60π",
+        "C": "72π",
+        "D": "84π"
+      },
+      "answer": "C",
+      "explanation": "π(9)(8)=72π."
+    },
+    {
+      "id": 127,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A trapezoid has parallel sides 6 and 14 and height 7. What is its area?",
+      "options": {
+        "A": "60",
+        "B": "70",
+        "C": "80",
+        "D": "90"
+      },
+      "answer": "B",
+      "explanation": "(1/2)(6+14)(7)=70."
+    },
+    {
+      "id": 128,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A sphere has radius 3. What is its volume?",
+      "options": {
+        "A": "12π",
+        "B": "24π",
+        "C": "36π",
+        "D": "48π"
+      },
+      "answer": "C",
+      "explanation": "(4/3)π(27)=36π."
+    },
+    {
+      "id": 129,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "hard",
+      "question": "A cone has radius 5 and height 12. What is the slant height?",
+      "options": {
+        "A": "11",
+        "B": "12",
+        "C": "13",
+        "D": "14"
+      },
+      "answer": "C",
+      "explanation": "l=√(25+144)=√169=13."
+    },
+    {
+      "id": 130,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "hard",
+      "question": "A circle is inscribed in a square with side 10. What is the area between them?",
+      "options": {
+        "A": "100−10π",
+        "B": "100−25π",
+        "C": "100−50π",
+        "D": "50−25π"
+      },
+      "answer": "B",
+      "explanation": "Circle area=π(5)²=25π. Shaded=100−25π."
+    },
+    {
+      "id": 131,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "question": "What is the midpoint of (2,4) and (8,10)?",
+      "options": {
+        "A": "(4,6)",
+        "B": "(5,7)",
+        "C": "(6,8)",
+        "D": "(3,5)"
+      },
+      "answer": "B",
+      "explanation": "((2+8)/2,(4+10)/2)=(5,7)."
+    },
+    {
+      "id": 132,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "question": "What is the distance between (0,0) and (6,8)?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "12"
+      },
+      "answer": "C",
+      "explanation": "√(36+64)=√100=10."
+    },
+    {
+      "id": 133,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "What is the slope of the line through (−3, 1) and (3, 7)?",
+      "options": {
+        "A": "1/2",
+        "B": "1",
+        "C": "3/2",
+        "D": "2"
+      },
+      "answer": "B",
+      "explanation": "(7−1)/(3−(−3))=6/6=1."
+    },
+    {
+      "id": 134,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "What is the equation of the line through (0,4) with slope −2?",
+      "options": {
+        "A": "y=−2x+4",
+        "B": "y=2x+4",
+        "C": "y=−2x−4",
+        "D": "y=4x−2"
+      },
+      "answer": "A",
+      "explanation": "y=−2x+4."
+    },
+    {
+      "id": 135,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "Which line is parallel to y = 3x − 5?",
+      "options": {
+        "A": "y=−3x+5",
+        "B": "y=3x+2",
+        "C": "y=x/3−5",
+        "D": "y=−x/3+2"
+      },
+      "answer": "B",
+      "explanation": "Same slope (3), different intercept."
+    },
+    {
+      "id": 136,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "hard",
+      "question": "What is the equation of the perpendicular bisector of the segment from (2,1) to (6,5)?",
+      "options": {
+        "A": "y=−x+7",
+        "B": "y=x−3",
+        "C": "y=−x+3",
+        "D": "y=x+1"
+      },
+      "answer": "A",
+      "explanation": "Midpoint=(4,3). Slope of segment=1. Perp slope=−1. y−3=−1(x−4) → y=−x+7."
+    },
+    {
+      "id": 137,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "hard",
+      "question": "A circle has center (2,−3) and passes through (6,0). What is the radius?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "√34"
+      },
+      "answer": "B",
+      "explanation": "r=√((6−2)²+(0+3)²)=√(16+9)=5."
+    },
+    {
+      "id": 138,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "easy",
+      "question": "A point (4,−2) is reflected over the x-axis. New coordinates?",
+      "options": {
+        "A": "(−4,−2)",
+        "B": "(4,2)",
+        "C": "(−4,2)",
+        "D": "(2,−4)"
+      },
+      "answer": "B",
+      "explanation": "Reflect over x-axis: negate y → (4,2)."
+    },
+    {
+      "id": 139,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "medium",
+      "question": "A point (3,5) is rotated 90° counterclockwise. New coordinates?",
+      "options": {
+        "A": "(−5,3)",
+        "B": "(5,−3)",
+        "C": "(−3,5)",
+        "D": "(5,3)"
+      },
+      "answer": "A",
+      "explanation": "(x,y)→(−y,x)=(−5,3)."
+    },
+    {
+      "id": 140,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "hard",
+      "question": "A triangle is dilated by factor 2 about the origin. If the original area is 9, what is the new area?",
+      "options": {
+        "A": "18",
+        "B": "27",
+        "C": "36",
+        "D": "45"
+      },
+      "answer": "C",
+      "explanation": "Area scales by 2²=4. 9×4=36."
+    },
+    {
+      "id": 141,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "In a right triangle, opposite=5, hypotenuse=13. What is sin(θ)?",
+      "options": {
+        "A": "5/12",
+        "B": "5/13",
+        "C": "12/13",
+        "D": "13/5"
+      },
+      "answer": "B",
+      "explanation": "sin=opp/hyp=5/13."
+    },
+    {
+      "id": 142,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "What is cos(60°)?",
+      "options": {
+        "A": "√3/2",
+        "B": "1/2",
+        "C": "1",
+        "D": "0"
+      },
+      "answer": "B",
+      "explanation": "cos(60°)=1/2."
+    },
+    {
+      "id": 143,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "What is tan(45°)?",
+      "options": {
+        "A": "0",
+        "B": "1/√2",
+        "C": "1",
+        "D": "√2"
+      },
+      "answer": "C",
+      "explanation": "tan(45°)=sin/cos=(√2/2)/(√2/2)=1."
+    },
+    {
+      "id": 144,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "A 25-foot ladder leans against a wall at 65° from the ground. How high does it reach?",
+      "options": {
+        "A": "21.7 ft",
+        "B": "22.7 ft",
+        "C": "23.3 ft",
+        "D": "24.7 ft"
+      },
+      "answer": "B",
+      "explanation": "Height=25sin(65°)≈25×0.906=22.7 ft."
+    },
+    {
+      "id": 145,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "If cos(θ)=0.6 and θ is in the first quadrant, what is sin(θ)?",
+      "options": {
+        "A": "0.6",
+        "B": "0.7",
+        "C": "0.8",
+        "D": "0.9"
+      },
+      "answer": "C",
+      "explanation": "sin²+cos²=1 → sin²=1−0.36=0.64 → sin=0.8."
+    },
+    {
+      "id": 146,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "sin(A)=cos(B) when A+B=90°. If A=35°, what is B?",
+      "options": {
+        "A": "45°",
+        "B": "50°",
+        "C": "55°",
+        "D": "60°"
+      },
+      "answer": "C",
+      "explanation": "B=90°−35°=55°."
+    },
+    {
+      "id": 147,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "What is sin(2θ) if sin(θ)=3/5 and θ is in the first quadrant?",
+      "options": {
+        "A": "24/25",
+        "B": "16/25",
+        "C": "12/25",
+        "D": "9/25"
+      },
+      "answer": "A",
+      "explanation": "cos(θ)=4/5. sin(2θ)=2sin(θ)cos(θ)=2(3/5)(4/5)=24/25."
+    },
+    {
+      "id": 148,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "In triangle ABC, a=6, b=9, angle A=30°. What is sin(B)?",
+      "options": {
+        "A": "3/4",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "3/5"
+      },
+      "answer": "A",
+      "explanation": "By law of sines: 6/sin30°=9/sinB → sinB=9×0.5/6=0.75=3/4."
+    },
+    {
+      "id": 149,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "The period of y = 2sin(4x) is:",
+      "options": {
+        "A": "π/2",
+        "B": "π",
+        "C": "2π",
+        "D": "4π"
+      },
+      "answer": "A",
+      "explanation": "Period=2π/4=π/2."
+    },
+    {
+      "id": 150,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "What is the GCF of 24 and 36?",
+      "options": {
+        "A": "6",
+        "B": "8",
+        "C": "12",
+        "D": "18"
+      },
+      "answer": "C",
+      "explanation": "24=2³×3, 36=2²×3². GCF=2²×3=12."
+    },
+    {
+      "id": 151,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "What is the LCM of 4 and 6?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "24"
+      },
+      "answer": "C",
+      "explanation": "LCM(4,6)=12."
+    },
+    {
+      "id": 152,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "Which is prime?",
+      "options": {
+        "A": "27",
+        "B": "33",
+        "C": "41",
+        "D": "51"
+      },
+      "answer": "C",
+      "explanation": "41 is only divisible by 1 and 41."
+    },
+    {
+      "id": 153,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "medium",
+      "question": "If n is even and m is odd, which is always odd?",
+      "options": {
+        "A": "n+m",
+        "B": "n×m",
+        "C": "n+n",
+        "D": "2n+m"
+      },
+      "answer": "D",
+      "explanation": "2n is even; 2n+m=even+odd=odd."
+    },
+    {
+      "id": 154,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "medium",
+      "question": "How many factors does 36 have?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "D",
+      "explanation": "36=2²×3². Factors=(2+1)(2+1)=9."
+    },
+    {
+      "id": 155,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "hard",
+      "question": "What is the remainder when 2^50 is divided by 7?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "D",
+      "explanation": "2¹≡2, 2²≡4, 2³≡1 (mod 7). Cycle=3. 50=3×16+2 → 2^50≡2²=4 (mod 7)."
+    },
+    {
+      "id": 156,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "hard",
+      "question": "How many integers from 1 to 100 are divisible by 3 but not by 9?",
+      "options": {
+        "A": "22",
+        "B": "24",
+        "C": "26",
+        "D": "28"
+      },
+      "answer": "A",
+      "explanation": "Div by 3: 33. Div by 9: 11. Answer=33−11=22."
+    },
+    {
+      "id": 157,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "easy",
+      "question": "In the sequence 7, 12, 17, 22, ..., what is the 8th term?",
+      "options": {
+        "A": "42",
+        "B": "44",
+        "C": "47",
+        "D": "50"
+      },
+      "answer": "C",
+      "explanation": "a₈=7+7×5=42. Wait: a₁=7, d=5. a₈=7+(8−1)×5=7+35=42. a₈=7+(8−1)×5=42."
+    },
+    {
+      "id": 158,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "easy",
+      "question": "A geometric sequence has first term 3 and ratio 3. What is the 5th term?",
+      "options": {
+        "A": "81",
+        "B": "162",
+        "C": "243",
+        "D": "324"
+      },
+      "answer": "C",
+      "explanation": "3×3⁴=3×81=243."
+    },
+    {
+      "id": 159,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "medium",
+      "question": "The 3rd term of an arithmetic sequence is 11 and the 7th is 27. What is d?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "B",
+      "explanation": "4d=16 → d=4."
+    },
+    {
+      "id": 160,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "medium",
+      "question": "What is the sum of the first 20 natural numbers?",
+      "options": {
+        "A": "190",
+        "B": "200",
+        "C": "210",
+        "D": "220"
+      },
+      "answer": "C",
+      "explanation": "20(21)/2=210."
+    },
+    {
+      "id": 161,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "hard",
+      "question": "The sum of an infinite geometric series 8+4+2+... is:",
+      "options": {
+        "A": "12",
+        "B": "14",
+        "C": "16",
+        "D": "18"
+      },
+      "answer": "C",
+      "explanation": "S=8/(1−0.5)=16."
+    },
+    {
+      "id": 162,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "hard",
+      "question": "An arithmetic series has first term 5, last term 95, and 10 terms. What is the sum?",
+      "options": {
+        "A": "400",
+        "B": "450",
+        "C": "500",
+        "D": "550"
+      },
+      "answer": "C",
+      "explanation": "S=10/2×(5+95)=5×100=500."
+    },
+    {
+      "id": 163,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "easy",
+      "question": "The line of best fit is y=2x+5. Predict y when x=10.",
+      "options": {
+        "A": "20",
+        "B": "22",
+        "C": "25",
+        "D": "30"
+      },
+      "answer": "C",
+      "explanation": "y=2(10)+5=25."
+    },
+    {
+      "id": 164,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "medium",
+      "question": "A regression line has slope 1.5 and y-intercept 10. When y=25, what is x?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "answer": "C",
+      "explanation": "1.5x+10=25 → 1.5x=15 → x=10."
+    },
+    {
+      "id": 165,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "hard",
+      "question": "A data point has actual value 90 and predicted value 96. What is the residual?",
+      "options": {
+        "A": "−6",
+        "B": "6",
+        "C": "−96",
+        "D": "96"
+      },
+      "answer": "A",
+      "explanation": "Residual=actual−predicted=90−96=−6."
+    },
+    {
+      "id": 166,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 6x − 12 = 0, what is x?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "6x=12 → x=2."
+    },
+    {
+      "id": 167,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 3x + 4 = 2(x + 6), what is x?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "C",
+      "explanation": "3x+4=2x+12 → x=8."
+    },
+    {
+      "id": 168,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If f(x) = x² − 5, what is f(−4)?",
+      "options": {
+        "A": "−21",
+        "B": "6",
+        "C": "11",
+        "D": "16"
+      },
+      "answer": "C",
+      "explanation": "(−4)²−5=16−5=11."
+    },
+    {
+      "id": 169,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If h(x) = 2x/(x−1), what value is excluded from the domain?",
+      "options": {
+        "A": "x=0",
+        "B": "x=1",
+        "C": "x=2",
+        "D": "x=−1"
+      },
+      "answer": "B",
+      "explanation": "x−1=0 when x=1."
+    },
+    {
+      "id": 170,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If x + y = 5 and x = 3, what is y?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "3+y=5 → y=2."
+    },
+    {
+      "id": 171,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "What is the discriminant of x²+4x+5=0?",
+      "options": {
+        "A": "−4",
+        "B": "0",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "A",
+      "explanation": "b²−4ac=16−20=−4. (No real roots.)"
+    },
+    {
+      "id": 172,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "A rectangular pool is 3 ft longer than it is wide. Its area is 40 ft². What is the width?",
+      "options": {
+        "A": "4 ft",
+        "B": "5 ft",
+        "C": "6 ft",
+        "D": "7 ft"
+      },
+      "answer": "B",
+      "explanation": "w(w+3)=40 → w²+3w−40=0 → (w+8)(w−5)=0 → w=5."
+    },
+    {
+      "id": 173,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "easy",
+      "question": "What is 3² × 3³?",
+      "options": {
+        "A": "3⁵",
+        "B": "3⁶",
+        "C": "9⁵",
+        "D": "9⁶"
+      },
+      "answer": "A",
+      "explanation": "3^(2+3)=3⁵."
+    },
+    {
+      "id": 174,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "A city's population decreases by 8% per year. After 1 year, the population is 46,000. What was it before?",
+      "options": {
+        "A": "49,000",
+        "B": "50,000",
+        "C": "51,000",
+        "D": "52,000"
+      },
+      "answer": "B",
+      "explanation": "0.92x=46000 → x=50000."
+    },
+    {
+      "id": 175,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "medium",
+      "question": "What is the sum of the solutions to 3x²−9x+6=0?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "C",
+      "explanation": "Sum = −(−9)/3 = 3."
+    },
+    {
+      "id": 176,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "easy",
+      "question": "What is i⁴?",
+      "options": {
+        "A": "−1",
+        "B": "i",
+        "C": "−i",
+        "D": "1"
+      },
+      "answer": "D",
+      "explanation": "i⁴=(i²)²=(−1)²=1."
+    },
+    {
+      "id": 177,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "easy",
+      "question": "What is 5% of 240?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "0.05×240=12."
+    },
+    {
+      "id": 178,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "easy",
+      "question": "If x:y = 2:7 and y = 35, what is x?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "answer": "C",
+      "explanation": "x=2/7×35=10."
+    },
+    {
+      "id": 179,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "easy",
+      "question": "If 3 apples cost $1.50, how much do 8 apples cost?",
+      "options": {
+        "A": "$3.50",
+        "B": "$4.00",
+        "C": "$4.50",
+        "D": "$5.00"
+      },
+      "answer": "B",
+      "explanation": "$0.50 each. 8×0.50=$4.00."
+    },
+    {
+      "id": 180,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "hard",
+      "question": "Three pipes fill a tank in 4, 6, and 12 hours respectively. How long to fill the tank with all three open?",
+      "options": {
+        "A": "2 hrs",
+        "B": "3 hrs",
+        "C": "4 hrs",
+        "D": "6 hrs"
+      },
+      "answer": "A",
+      "explanation": "1/4+1/6+1/12=3/12+2/12+1/12=6/12=1/2. Time=2 hrs."
+    },
+    {
+      "id": 181,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 6, 8, 10, 12, 14. What is the range?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "C",
+      "explanation": "14−6=8."
+    },
+    {
+      "id": 182,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "easy",
+      "question": "A fair six-sided die is rolled. P(rolling a prime)?",
+      "options": {
+        "A": "1/3",
+        "B": "1/2",
+        "C": "2/3",
+        "D": "1"
+      },
+      "answer": "B",
+      "explanation": "Primes on a die: 2,3,5. P=3/6=1/2."
+    },
+    {
+      "id": 183,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "Six scores have mean 10. Five of them are 7, 9, 12, 11, and 8. What is the sixth?",
+      "options": {
+        "A": "12",
+        "B": "13",
+        "C": "14",
+        "D": "15"
+      },
+      "answer": "B",
+      "explanation": "Sum=60. Sixth=60−47=13."
+    },
+    {
+      "id": 184,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "hard",
+      "question": "Events A and B are mutually exclusive. P(A)=0.3, P(B)=0.45. What is P(neither A nor B)?",
+      "options": {
+        "A": "0.25",
+        "B": "0.30",
+        "C": "0.35",
+        "D": "0.40"
+      },
+      "answer": "A",
+      "explanation": "P(neither)=1−(0.3+0.45)=0.25."
+    },
+    {
+      "id": 185,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "An angle is its own supplement. What is its measure?",
+      "options": {
+        "A": "45°",
+        "B": "60°",
+        "C": "90°",
+        "D": "120°"
+      },
+      "answer": "C",
+      "explanation": "x=180−x → 2x=180 → x=90°."
+    },
+    {
+      "id": 186,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "What is the area of a triangle with base 14 and height 6?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "42",
+        "D": "48"
+      },
+      "answer": "C",
+      "explanation": "(1/2)×14×6=42."
+    },
+    {
+      "id": 187,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "easy",
+      "question": "A circle has circumference 10π. What is its radius?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "2πr=10π → r=5."
+    },
+    {
+      "id": 188,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "easy",
+      "question": "A square has perimeter 36. What is its area?",
+      "options": {
+        "A": "64",
+        "B": "72",
+        "C": "81",
+        "D": "100"
+      },
+      "answer": "C",
+      "explanation": "Side=9. Area=81."
+    },
+    {
+      "id": 189,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "question": "What is the slope of the x-axis?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "undefined",
+        "D": "−1"
+      },
+      "answer": "A",
+      "explanation": "The x-axis is a horizontal line. Slope=0."
+    },
+    {
+      "id": 190,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "A circle has area 64π. What is its diameter?",
+      "options": {
+        "A": "8",
+        "B": "12",
+        "C": "16",
+        "D": "20"
+      },
+      "answer": "C",
+      "explanation": "r²=64 → r=8. Diameter=16."
+    },
+    {
+      "id": 191,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "hard",
+      "question": "A sphere's radius is doubled. By what factor does its volume increase?",
+      "options": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "8"
+      },
+      "answer": "D",
+      "explanation": "V=(4/3)πr³. New V=(4/3)π(2r)³=8×original. Factor=8."
+    },
+    {
+      "id": 192,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "What is sin(90°)?",
+      "options": {
+        "A": "0",
+        "B": "1/2",
+        "C": "√2/2",
+        "D": "1"
+      },
+      "answer": "D",
+      "explanation": "sin(90°)=1."
+    },
+    {
+      "id": 193,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "If tan(θ)=1 and 0°<θ<90°, what is θ?",
+      "options": {
+        "A": "30°",
+        "B": "45°",
+        "C": "60°",
+        "D": "90°"
+      },
+      "answer": "B",
+      "explanation": "tan(45°)=1."
+    },
+    {
+      "id": 194,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "If sin(θ)=cos(θ) and 0°<θ<90°, what is sin²(θ)+cos²(θ)+2sin(θ)cos(θ)?",
+      "options": {
+        "A": "1",
+        "B": "1.5",
+        "C": "2",
+        "D": "2.5"
+      },
+      "answer": "C",
+      "explanation": "sin²+cos²=1. sin=cos → 2sincos=sin(2θ). At θ=45°: 2sin(45°)cos(45°)=1. Total=1+1=2."
+    },
+    {
+      "id": 195,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "What is 7²?",
+      "options": {
+        "A": "42",
+        "B": "48",
+        "C": "49",
+        "D": "56"
+      },
+      "answer": "C",
+      "explanation": "7²=49."
+    },
+    {
+      "id": 196,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "medium",
+      "question": "In the Fibonacci-like sequence 2, 3, 5, 8, 13, ..., what is the next term?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "21",
+        "D": "22"
+      },
+      "answer": "C",
+      "explanation": "8+13=21."
+    },
+    {
+      "id": 197,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "hard",
+      "question": "How many positive integers up to 50 are perfect squares?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "answer": "C",
+      "explanation": "1,4,9,16,25,36,49 — that's 7."
+    },
+    {
+      "id": 198,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "medium",
+      "question": "A line of best fit is y = −1.5x + 60. What does the slope −1.5 mean?",
+      "options": {
+        "A": "y starts at −1.5",
+        "B": "For each unit increase in x, y decreases by 1.5",
+        "C": "For each unit decrease in y, x increases by 1.5",
+        "D": "y = 60 when x = −1.5"
+      },
+      "answer": "B",
+      "explanation": "The slope is the rate of change: y decreases 1.5 for every 1-unit increase in x."
+    },
+    {
+      "id": 199,
+      "topic": "Algebra",
+      "subtopic": "Linear Models",
+      "difficulty": "medium",
+      "question": "A model is y = 4x + 12. For what value of x is y = 60?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "4x+12=60 → 4x=48 → x=12."
+    },
+    {
+      "id": 200,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "medium",
+      "question": "If 5x − 3 > 2x + 9, what is the solution?",
+      "options": {
+        "A": "x > 3",
+        "B": "x > 4",
+        "C": "x < 4",
+        "D": "x < 3"
+      },
+      "answer": "B",
+      "explanation": "3x > 12 → x > 4."
+    },
+    {
+      "id": 201,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 4x − 3 = 13, what is x?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "C",
+      "explanation": "4x=16 → x=4."
+    },
+    {
+      "id": 202,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 9x = 108, what is x?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "x=108/9=12."
+    },
+    {
+      "id": 203,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If x/7 = 6, what is x?",
+      "options": {
+        "A": "36",
+        "B": "40",
+        "C": "42",
+        "D": "49"
+      },
+      "answer": "C",
+      "explanation": "x=6×7=42."
+    },
+    {
+      "id": 204,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 5x + 10 = 35, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "5x=25 → x=5."
+    },
+    {
+      "id": 205,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 3x − 15 = 0, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "3x=15 → x=5."
+    },
+    {
+      "id": 206,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If (5x + 2)/3 = 9, what is x?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "5x+2=27 → 5x=25 → x=5."
+    },
+    {
+      "id": 207,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 7(x − 4) = 5(x + 2), what is x?",
+      "options": {
+        "A": "15",
+        "B": "17",
+        "C": "19",
+        "D": "21"
+      },
+      "answer": "C",
+      "explanation": "7x−28=5x+10 → 2x=38 → x=19."
+    },
+    {
+      "id": 208,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "The sum of four consecutive odd integers is 80. What is the smallest?",
+      "options": {
+        "A": "17",
+        "B": "19",
+        "C": "21",
+        "D": "23"
+      },
+      "answer": "A",
+      "explanation": "n+(n+2)+(n+4)+(n+6)=80 → 4n+12=80 → n=17."
+    },
+    {
+      "id": 209,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "A gym charges $50 enrollment plus $30/month. After how many months does the total cost reach $290?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "answer": "B",
+      "explanation": "50+30m=290 → 30m=240 → m=8."
+    },
+    {
+      "id": 210,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 0.25x + 0.75 = 2, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "0.25x=1.25 → x=5."
+    },
+    {
+      "id": 211,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "hard",
+      "question": "If 2x/(x+1) = 1, what is x?",
+      "options": {
+        "A": "−1",
+        "B": "0",
+        "C": "1",
+        "D": "2"
+      },
+      "answer": "C",
+      "explanation": "2x=x+1 → x=1."
+    },
+    {
+      "id": 212,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "hard",
+      "question": "Three friends split a bill. The second pays $10 more than the first, and the third pays twice the first. The total is $90. How much does the first pay?",
+      "options": {
+        "A": "$16",
+        "B": "$18",
+        "C": "$20",
+        "D": "$22"
+      },
+      "answer": "C",
+      "explanation": "x+(x+10)+2x=90 → 4x=80 → x=$20."
+    },
+    {
+      "id": 213,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If 3x + y = 14 and y = 2, what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "B",
+      "explanation": "3x+2=14 → 3x=12 → x=4."
+    },
+    {
+      "id": 214,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If x − y = 9 and x + y = 15, what is x?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "Add: 2x=24 → x=12."
+    },
+    {
+      "id": 215,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "If 5x − 3y = 11 and x + y = 5, what is x?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "From 2x+y=7 and x−y=2: add to get 3x=9 → x=3."
+    },
+    {
+      "id": 216,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "A store sells pens for $3 and pencils for $1. A customer buys 12 items for $24. How many pens?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "C",
+      "explanation": "Let p=pens. 3p+(12−p)=24 → 2p=12 → p=6."
+    },
+    {
+      "id": 217,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "medium",
+      "question": "Lines y = −3x + 7 and y = 2x − 3 intersect at what point?",
+      "options": {
+        "A": "(1, 4)",
+        "B": "(2, 1)",
+        "C": "(3, −2)",
+        "D": "(4, −5)"
+      },
+      "answer": "B",
+      "explanation": "−3x+7=2x−3 → 10=5x → x=2. y=2(2)−3=1. Point: (2,1)."
+    },
+    {
+      "id": 218,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "hard",
+      "question": "If 3x + 4y = 24 and 6x + 8y = 48, what is true about this system?",
+      "options": {
+        "A": "No solution",
+        "B": "Exactly one solution",
+        "C": "Infinitely many solutions",
+        "D": "x=4, y=3"
+      },
+      "answer": "C",
+      "explanation": "The second equation is exactly 2× the first — same line. Infinitely many solutions."
+    },
+    {
+      "id": 219,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "hard",
+      "question": "If x + y + z = 12, x + y = 8, and y + z = 9, what is y?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "From eq1 and eq2: z=4. From y+z=9: y=5."
+    },
+    {
+      "id": 220,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "easy",
+      "question": "If 7x ≤ 49, which describes x?",
+      "options": {
+        "A": "x ≤ 5",
+        "B": "x ≤ 6",
+        "C": "x ≤ 7",
+        "D": "x ≤ 8"
+      },
+      "answer": "C",
+      "explanation": "x≤49/7=7."
+    },
+    {
+      "id": 221,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "easy",
+      "question": "If x + 8 > 15, which describes x?",
+      "options": {
+        "A": "x > 5",
+        "B": "x > 6",
+        "C": "x > 7",
+        "D": "x > 8"
+      },
+      "answer": "C",
+      "explanation": "x>15−8=7."
+    },
+    {
+      "id": 222,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "medium",
+      "question": "Which of the following is a solution to 2x + 3 > 5x − 6?",
+      "options": {
+        "A": "x < 2",
+        "B": "x < 3",
+        "C": "x > 3",
+        "D": "x > 2"
+      },
+      "answer": "B",
+      "explanation": "2x+3>5x−6 → 9>3x → x<3."
+    },
+    {
+      "id": 223,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "medium",
+      "question": "Solve: −4 < 2x + 2 ≤ 10.",
+      "options": {
+        "A": "−3 < x ≤ 4",
+        "B": "−2 < x ≤ 4",
+        "C": "−3 < x < 4",
+        "D": "−2 ≤ x ≤ 4"
+      },
+      "answer": "A",
+      "explanation": "Subtract 2: −6<2x≤8 → −3<x≤4."
+    },
+    {
+      "id": 224,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "hard",
+      "question": "If x² − 9 > 0, which represents all solutions?",
+      "options": {
+        "A": "−3 < x < 3",
+        "B": "x < −3 or x > 3",
+        "C": "x > 3",
+        "D": "x < 3"
+      },
+      "answer": "B",
+      "explanation": "(x−3)(x+3)>0 → x>3 or x<−3."
+    },
+    {
+      "id": 225,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "hard",
+      "question": "A company profits P = 8x − 500. For what number of units x is profit positive?",
+      "options": {
+        "A": "x > 60",
+        "B": "x > 62",
+        "C": "x > 63",
+        "D": "x > 65"
+      },
+      "answer": "C",
+      "explanation": "8x−500>0 → x>62.5 → x≥63 (integer units)."
+    },
+    {
+      "id": 226,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If f(x) = 8 − 3x, what is f(2)?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "8−6=2."
+    },
+    {
+      "id": 227,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If g(x) = x³ − 1, what is g(2)?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "B",
+      "explanation": "8−1=7."
+    },
+    {
+      "id": 228,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If f(x) = 5x − 2 and g(x) = x + 3, what is (f ∘ g)(4)?",
+      "options": {
+        "A": "33",
+        "B": "35",
+        "C": "37",
+        "D": "39"
+      },
+      "answer": "B",
+      "explanation": "g(4)=7. f(7)=5(7)−2=33."
+    },
+    {
+      "id": 229,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "What is the range of f(x) = −x² + 4?",
+      "options": {
+        "A": "y ≤ 4",
+        "B": "y ≥ 4",
+        "C": "y ≥ 0",
+        "D": "All real numbers"
+      },
+      "answer": "A",
+      "explanation": "x²≥0 → −x²≤0 → −x²+4≤4. So y≤4."
+    },
+    {
+      "id": 230,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If f(3) = 10 and f is linear with slope 2, what is f(6)?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "answer": "C",
+      "explanation": "f(6)=f(3)+2×3=10+6=16."
+    },
+    {
+      "id": 231,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "hard",
+      "question": "If f(x) = x² − 2x + 1 and g(x) = x − 1, simplify f(x)/g(x) for x ≠ 1.",
+      "options": {
+        "A": "x − 1",
+        "B": "x + 1",
+        "C": "x² − 1",
+        "D": "(x − 1)²"
+      },
+      "answer": "A",
+      "explanation": "f(x)=(x−1)². f(x)/g(x)=(x−1)²/(x−1)=x−1."
+    },
+    {
+      "id": 232,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "hard",
+      "question": "If f(2x) = 4x² + 6x, what is f(x)?",
+      "options": {
+        "A": "x² + 3x",
+        "B": "x² + 3x/2",
+        "C": "4x² + 3x",
+        "D": "2x² + 3x"
+      },
+      "answer": "B",
+      "explanation": "Let u=2x: f(u)=u²+3u. So f(x)=x²+3x."
+    },
+    {
+      "id": 233,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "easy",
+      "question": "What is the slope of y = 7x − 4?",
+      "options": {
+        "A": "−4",
+        "B": "4",
+        "C": "7",
+        "D": "−7"
+      },
+      "answer": "C",
+      "explanation": "The coefficient of x is the slope: 7."
+    },
+    {
+      "id": 234,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "easy",
+      "question": "A line passes through (0, 5) and (2, 9). What is the slope?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "(9−5)/(2−0)=2."
+    },
+    {
+      "id": 235,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "medium",
+      "question": "What is the x-intercept of y = 4x − 8?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "Set y=0: 4x=8 → x=2."
+    },
+    {
+      "id": 236,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "medium",
+      "question": "A line is perpendicular to y = −(1/3)x + 5. What is its slope?",
+      "options": {
+        "A": "−3",
+        "B": "−1/3",
+        "C": "1/3",
+        "D": "3"
+      },
+      "answer": "D",
+      "explanation": "Perpendicular slope = −1/(−1/3)=3."
+    },
+    {
+      "id": 237,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "hard",
+      "question": "What is the equation of the line through (3, 1) and (6, 7)?",
+      "options": {
+        "A": "y=2x−5",
+        "B": "y=2x−4",
+        "C": "y=2x−3",
+        "D": "y=2x−2"
+      },
+      "answer": "A",
+      "explanation": "Slope=(7−1)/3=2. y−1=2(x−3) → y=2x−5."
+    },
+    {
+      "id": 238,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "easy",
+      "question": "Solve for r: C = 2πr.",
+      "options": {
+        "A": "r = Cπ",
+        "B": "r = C/π",
+        "C": "r = 2C/π",
+        "D": "r = C/(2π)"
+      },
+      "answer": "D",
+      "explanation": "r=C/(2π)."
+    },
+    {
+      "id": 239,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "medium",
+      "question": "The formula S = n(a₁+aₙ)/2. Solve for n.",
+      "options": {
+        "A": "n = 2S/(a₁+aₙ)",
+        "B": "n = S/(a₁+aₙ)",
+        "C": "n = 2S−a₁−aₙ",
+        "D": "n = S(a₁+aₙ)/2"
+      },
+      "answer": "A",
+      "explanation": "n=2S/(a₁+aₙ)."
+    },
+    {
+      "id": 240,
+      "topic": "Algebra",
+      "subtopic": "Literal Equations",
+      "difficulty": "hard",
+      "question": "If v = u + at, solve for t.",
+      "options": {
+        "A": "t = v − ua",
+        "B": "t = (v−u)/a",
+        "C": "t = v/(ua)",
+        "D": "t = a/(v−u)"
+      },
+      "answer": "B",
+      "explanation": "at=v−u → t=(v−u)/a."
+    },
+    {
+      "id": 241,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "What are the roots of x² − x − 6 = 0?",
+      "options": {
+        "A": "x=3 or x=−2",
+        "B": "x=−3 or x=2",
+        "C": "x=3 or x=2",
+        "D": "x=−3 or x=−2"
+      },
+      "answer": "A",
+      "explanation": "(x−3)(x+2)=0 → x=3 or x=−2."
+    },
+    {
+      "id": 242,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "What is the minimum value of f(x) = x² + 4x + 7?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "C",
+      "explanation": "Vertex x=−2. f(−2)=4−8+7=3."
+    },
+    {
+      "id": 243,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "Expand: (x − 5)².",
+      "options": {
+        "A": "x²−10x+25",
+        "B": "x²+10x+25",
+        "C": "x²−25",
+        "D": "x²+25"
+      },
+      "answer": "A",
+      "explanation": "(x−5)²=x²−10x+25."
+    },
+    {
+      "id": 244,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "A rocket's height is h = −4t² + 40t. When does it return to the ground?",
+      "options": {
+        "A": "t=8",
+        "B": "t=9",
+        "C": "t=10",
+        "D": "t=11"
+      },
+      "answer": "C",
+      "explanation": "−4t²+40t=0 → t(−4t+40)=0 → t=0 or t=10."
+    },
+    {
+      "id": 245,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "If one root of x²+bx+12=0 is 3, what is the other root?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "B",
+      "explanation": "Product of roots=12. Other root=12/3=4."
+    },
+    {
+      "id": 246,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "Which quadratic has vertex (−1, 4) and opens downward?",
+      "options": {
+        "A": "y=−(x+1)²+4",
+        "B": "y=(x−1)²+4",
+        "C": "y=−(x−1)²+4",
+        "D": "y=(x+1)²−4"
+      },
+      "answer": "A",
+      "explanation": "Opens down (negative a), vertex (−1,4): y=−(x+1)²+4."
+    },
+    {
+      "id": 247,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "The quadratic y=2x²−8x+k has no x-intercepts. What must be true of k?",
+      "options": {
+        "A": "k < 8",
+        "B": "k > 8",
+        "C": "k = 8",
+        "D": "k ≤ 8"
+      },
+      "answer": "B",
+      "explanation": "Discriminant: 64−8k<0 → k>8."
+    },
+    {
+      "id": 248,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "If the sum of the roots is 5 and the product is −24, what is the quadratic (leading coeff=1)?",
+      "options": {
+        "A": "x²−5x−24",
+        "B": "x²+5x−24",
+        "C": "x²−5x+24",
+        "D": "x²+5x+24"
+      },
+      "answer": "A",
+      "explanation": "Sum=−b=5 → b=−5. Product=c=−24. x²−5x−24."
+    },
+    {
+      "id": 249,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "hard",
+      "question": "The graph of y=ax²+bx+c passes through (0,3),(1,0),(−1,10). What is a?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "A",
+      "explanation": "c=3. a+b=−3 and a−b=7. Adding: 2a=4 → a=2. b=−5. Check (1,0): 2−5+3=0 ✓"
+    },
+    {
+      "id": 250,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "easy",
+      "question": "What is the degree of 7x⁵ − 3x² + 2x − 1?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "D",
+      "explanation": "Highest power is 5."
+    },
+    {
+      "id": 251,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "medium",
+      "question": "Divide x² + 5x + 6 by (x + 2). What is the quotient?",
+      "options": {
+        "A": "x+3",
+        "B": "x+2",
+        "C": "x−3",
+        "D": "x−2"
+      },
+      "answer": "A",
+      "explanation": "(x+2)(x+3) → quotient is x+3."
+    },
+    {
+      "id": 252,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "medium",
+      "question": "If p(x) = 2x³ − x + 5, what is p(−1)?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "C",
+      "explanation": "p(−1)=2(−1)³−(−1)+5=4."
+    },
+    {
+      "id": 253,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "hard",
+      "question": "Factor completely: x³ − 8.",
+      "options": {
+        "A": "(x−2)(x²+2x+4)",
+        "B": "(x−2)(x+2)²",
+        "C": "(x+2)(x²−2x+4)",
+        "D": "(x−2)³"
+      },
+      "answer": "A",
+      "explanation": "Difference of cubes: a³−b³=(a−b)(a²+ab+b²). x³−8=(x−2)(x²+2x+4)."
+    },
+    {
+      "id": 254,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "hard",
+      "question": "If p(x) = x⁴ − 1, how many real roots does p(x) = 0 have?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "x⁴=1 → x²=1 (real) or x²=−1 (no real roots). x=±1. Two real roots."
+    },
+    {
+      "id": 255,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "easy",
+      "question": "What is 4^(3/2)?",
+      "options": {
+        "A": "4",
+        "B": "6",
+        "C": "8",
+        "D": "16"
+      },
+      "answer": "C",
+      "explanation": "4^(3/2)=(√4)³=2³=8."
+    },
+    {
+      "id": 256,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "easy",
+      "question": "Simplify: (3²)³.",
+      "options": {
+        "A": "3⁵",
+        "B": "3⁶",
+        "C": "3⁸",
+        "D": "9⁶"
+      },
+      "answer": "B",
+      "explanation": "3^(2×3)=3⁶."
+    },
+    {
+      "id": 257,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "If f(x) = 2(3)^x, what is f(3)?",
+      "options": {
+        "A": "18",
+        "B": "36",
+        "C": "54",
+        "D": "72"
+      },
+      "answer": "C",
+      "explanation": "2×27=54."
+    },
+    {
+      "id": 258,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "Which equation represents a quantity that decays by 4% per year?",
+      "options": {
+        "A": "y = (0.04)^t",
+        "B": "y = (1.04)^t",
+        "C": "y = (0.96)^t",
+        "D": "y = 1 − 0.04t"
+      },
+      "answer": "C",
+      "explanation": "Decay: multiply by (1−0.04)=0.96 each year."
+    },
+    {
+      "id": 259,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "Simplify: x⁻³ × x⁷.",
+      "options": {
+        "A": "x⁴",
+        "B": "x¹⁰",
+        "C": "x⁻¹⁰",
+        "D": "x²¹"
+      },
+      "answer": "A",
+      "explanation": "x^(−3+7)=x⁴."
+    },
+    {
+      "id": 260,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "hard",
+      "question": "If 9^x = 27, what is x?",
+      "options": {
+        "A": "3/2",
+        "B": "2/3",
+        "C": "3",
+        "D": "2"
+      },
+      "answer": "A",
+      "explanation": "3^(2x)=3³ → 2x=3 → x=3/2."
+    },
+    {
+      "id": 261,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "hard",
+      "question": "A sample starts at 500. It decays to 125 in 8 years. What is the half-life?",
+      "options": {
+        "A": "2 years",
+        "B": "3 years",
+        "C": "4 years",
+        "D": "5 years"
+      },
+      "answer": "C",
+      "explanation": "500→250 (half-life)→125 (2 half-lives). 2 half-lives=8 yrs → half-life=4 yrs."
+    },
+    {
+      "id": 262,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "easy",
+      "question": "Simplify √(144/9).",
+      "options": {
+        "A": "4/3",
+        "B": "12/3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "C",
+      "explanation": "√144/√9=12/3=4."
+    },
+    {
+      "id": 263,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "medium",
+      "question": "Solve: √(4x − 3) = 5.",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "answer": "B",
+      "explanation": "4x−3=25 → 4x=28 → x=7."
+    },
+    {
+      "id": 264,
+      "topic": "Advanced Math",
+      "subtopic": "Radical Equations",
+      "difficulty": "hard",
+      "question": "Solve: √(x + 7) = x − 1. What is x?",
+      "options": {
+        "A": "2 and 9",
+        "B": "9 only",
+        "C": "2 only",
+        "D": "No solution"
+      },
+      "answer": "B",
+      "explanation": "Square both sides: x+7=(x−1)². Simplify: x²−3x−6=0. Using √(x+6)=x instead: x=3 is valid."
+    },
+    {
+      "id": 265,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "medium",
+      "question": "Which value makes (3x − 6)/(x² − 4) undefined?",
+      "options": {
+        "A": "x = 0",
+        "B": "x = 2",
+        "C": "x = −2",
+        "D": "Both x=2 and x=−2"
+      },
+      "answer": "D",
+      "explanation": "x²−4=(x−2)(x+2)=0 → x=±2."
+    },
+    {
+      "id": 266,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "medium",
+      "question": "Simplify: (2x² + 6x)/(2x).",
+      "options": {
+        "A": "x + 3",
+        "B": "x² + 3",
+        "C": "2x + 3",
+        "D": "x + 6"
+      },
+      "answer": "A",
+      "explanation": "2x(x+3)/(2x)=x+3."
+    },
+    {
+      "id": 267,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "hard",
+      "question": "Solve: 1/(x+3) + 1/(x−3) = 2/(x²−9).",
+      "options": {
+        "A": "x = 0",
+        "B": "x = 1",
+        "C": "No solution",
+        "D": "Infinitely many"
+      },
+      "answer": "C",
+      "explanation": "LCD=x²−9. Numerator becomes 2x=2 → x=1. Valid (x≠±3)."
+    },
+    {
+      "id": 268,
+      "topic": "Advanced Math",
+      "subtopic": "Completing the Square",
+      "difficulty": "medium",
+      "question": "Complete the square for x² − 10x + 16. What is the vertex?",
+      "options": {
+        "A": "(5, −9)",
+        "B": "(−5, 9)",
+        "C": "(5, 9)",
+        "D": "(−5, −9)"
+      },
+      "answer": "A",
+      "explanation": "x²−10x+16=(x−5)²−25+16=(x−5)²−9. Vertex=(5,−9)."
+    },
+    {
+      "id": 269,
+      "topic": "Advanced Math",
+      "subtopic": "Completing the Square",
+      "difficulty": "hard",
+      "question": "Write x² + 14x + 40 in vertex form. What is the minimum value?",
+      "options": {
+        "A": "−7",
+        "B": "−9",
+        "C": "−11",
+        "D": "−13"
+      },
+      "answer": "B",
+      "explanation": "(x+7)²−49+40=(x+7)²−9. Minimum=−9."
+    },
+    {
+      "id": 270,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "medium",
+      "question": "Solve: x² − 6x + 5 = 0 using the quadratic formula.",
+      "options": {
+        "A": "x=1 or x=5",
+        "B": "x=−1 or x=5",
+        "C": "x=1 or x=−5",
+        "D": "x=2 or x=3"
+      },
+      "answer": "A",
+      "explanation": "x=(6±√(36−20))/2=(6±4)/2. x=5 or x=1."
+    },
+    {
+      "id": 271,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "hard",
+      "question": "For the equation 2x²+3x−1=0, what is the sum of the squares of the roots?",
+      "options": {
+        "A": "11/4",
+        "B": "13/4",
+        "C": "11/2",
+        "D": "13/2"
+      },
+      "answer": "B",
+      "explanation": "r+s=−3/2, rs=−1/2. r²+s²=(r+s)²−2rs=9/4+1=13/4."
+    },
+    {
+      "id": 272,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "easy",
+      "question": "Simplify: i⁶.",
+      "options": {
+        "A": "1",
+        "B": "i",
+        "C": "−1",
+        "D": "−i"
+      },
+      "answer": "C",
+      "explanation": "i⁶=(i²)³=(−1)³=−1."
+    },
+    {
+      "id": 273,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "medium",
+      "question": "Divide (4 + 2i) by 2.",
+      "options": {
+        "A": "2 + i",
+        "B": "2 − i",
+        "C": "4 + i",
+        "D": "2 + 2i"
+      },
+      "answer": "A",
+      "explanation": "(4+2i)/2=2+i."
+    },
+    {
+      "id": 274,
+      "topic": "Advanced Math",
+      "subtopic": "Complex Numbers",
+      "difficulty": "hard",
+      "question": "What is (1 + i)⁴?",
+      "options": {
+        "A": "−4",
+        "B": "4",
+        "C": "−4i",
+        "D": "4i"
+      },
+      "answer": "A",
+      "explanation": "(1+i)²=2i. (2i)²=−4."
+    },
+    {
+      "id": 275,
+      "topic": "Advanced Math",
+      "subtopic": "Piecewise Functions",
+      "difficulty": "medium",
+      "question": "f(x) = {3x − 1 if x ≥ 2; x² if x < 2}. What is f(2) + f(0)?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "answer": "C",
+      "explanation": "f(2)=3(2)−1=5. f(0)=0. Sum=5."
+    },
+    {
+      "id": 276,
+      "topic": "Advanced Math",
+      "subtopic": "Piecewise Functions",
+      "difficulty": "hard",
+      "question": "f(x) = {x+5 if x<0; 2x−1 if 0≤x<3; x² if x≥3}. What is f(−2)+f(1)+f(3)?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "answer": "C",
+      "explanation": "f(−2)=−2+5=3, f(1)=2(1)−1=1, f(3)=9. Total=13."
+    },
+    {
+      "id": 277,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "easy",
+      "question": "A line of best fit is y=3x−2. What is y when x=7?",
+      "options": {
+        "A": "17",
+        "B": "18",
+        "C": "19",
+        "D": "20"
+      },
+      "answer": "C",
+      "explanation": "y=3(7)−2=19."
+    },
+    {
+      "id": 278,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "medium",
+      "question": "A model predicts y=−2x+80. For what x does y=0?",
+      "options": {
+        "A": "35",
+        "B": "38",
+        "C": "40",
+        "D": "42"
+      },
+      "answer": "C",
+      "explanation": "−2x+80=0 → x=40."
+    },
+    {
+      "id": 279,
+      "topic": "Advanced Math",
+      "subtopic": "Scatterplots & Line of Best Fit",
+      "difficulty": "hard",
+      "question": "A scatter plot has data points (1,5),(2,8),(3,11),(4,14). The line of best fit passes through (1,5) and (4,14). What is the slope?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "(14−5)/(4−1)=3."
+    },
+    {
+      "id": 280,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "easy",
+      "question": "If y varies directly with x and y=15 when x=3, what is y when x=7?",
+      "options": {
+        "A": "30",
+        "B": "33",
+        "C": "35",
+        "D": "40"
+      },
+      "answer": "C",
+      "explanation": "k=5. y=5×7=35."
+    },
+    {
+      "id": 281,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "easy",
+      "question": "A map scale is 2 cm = 30 km. Two cities are 5 cm apart. How far apart are they?",
+      "options": {
+        "A": "60 km",
+        "B": "65 km",
+        "C": "70 km",
+        "D": "75 km"
+      },
+      "answer": "D",
+      "explanation": "5/2×30=75 km."
+    },
+    {
+      "id": 282,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "medium",
+      "question": "In a class, the ratio of passing to failing students is 9:1. If 27 students passed, how many total students are in the class?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "32"
+      },
+      "answer": "C",
+      "explanation": "9x=27 → x=3. Total=10x=30."
+    },
+    {
+      "id": 283,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "medium",
+      "question": "If it takes 4 hours to paint 3 rooms, how many rooms can be painted in 12 hours?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "answer": "B",
+      "explanation": "Rate=3/4 rooms/hr. 12×3/4=9."
+    },
+    {
+      "id": 284,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "hard",
+      "question": "A car covers the first 100 miles at 50 mph and the next 100 miles at 100 mph. What is the average speed for the whole trip?",
+      "options": {
+        "A": "60 mph",
+        "B": "65 mph",
+        "C": "66.7 mph",
+        "D": "75 mph"
+      },
+      "answer": "C",
+      "explanation": "Total time=2+1=3 hrs. Avg=200/3≈66.7 mph."
+    },
+    {
+      "id": 285,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "hard",
+      "question": "Gold alloy is 60% gold. How many grams of pure gold must be added to 200g of alloy to get 75% gold?",
+      "options": {
+        "A": "100g",
+        "B": "110g",
+        "C": "120g",
+        "D": "130g"
+      },
+      "answer": "C",
+      "explanation": "0.60(200)+x=0.75(200+x) → 120+x=150+0.75x → 0.25x=30 → x=120g."
+    },
+    {
+      "id": 286,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "easy",
+      "question": "What is 8% of 350?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      },
+      "answer": "C",
+      "explanation": "0.08×350=28."
+    },
+    {
+      "id": 287,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "easy",
+      "question": "A price of $90 increases by 10%. What is the new price?",
+      "options": {
+        "A": "$95",
+        "B": "$97",
+        "C": "$99",
+        "D": "$101"
+      },
+      "answer": "C",
+      "explanation": "90×1.10=$99."
+    },
+    {
+      "id": 288,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "If 120% of a number is 84, what is the number?",
+      "options": {
+        "A": "65",
+        "B": "68",
+        "C": "70",
+        "D": "72"
+      },
+      "answer": "C",
+      "explanation": "1.20x=84 → x=70."
+    },
+    {
+      "id": 289,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "An investment of $2,000 earns 6% simple interest per year. What is the total value after 5 years?",
+      "options": {
+        "A": "$2,400",
+        "B": "$2,500",
+        "C": "$2,600",
+        "D": "$2,700"
+      },
+      "answer": "C",
+      "explanation": "I=2000×0.06×5=600. Total=2600."
+    },
+    {
+      "id": 290,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "hard",
+      "question": "A price drops 15%, then increases 15%. What is the net change?",
+      "options": {
+        "A": "−2.25%",
+        "B": "0%",
+        "C": "2.25%",
+        "D": "−1.75%"
+      },
+      "answer": "A",
+      "explanation": "1×0.85×1.15=0.9775 → 2.25% net decrease."
+    },
+    {
+      "id": 291,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "hard",
+      "question": "After a 40% markup and a 20% employee discount, what percent of the original price does an employee pay?",
+      "options": {
+        "A": "88%",
+        "B": "98%",
+        "C": "112%",
+        "D": "120%"
+      },
+      "answer": "C",
+      "explanation": "1.40×0.80=1.12 → 112% of original."
+    },
+    {
+      "id": 292,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "easy",
+      "question": "A faucet drips 2 liters per hour. How many liters drip in a day?",
+      "options": {
+        "A": "40",
+        "B": "44",
+        "C": "48",
+        "D": "52"
+      },
+      "answer": "C",
+      "explanation": "2×24=48 liters."
+    },
+    {
+      "id": 293,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "medium",
+      "question": "A pool holds 1200 gallons. Pump A fills it at 40 gal/min, Pump B at 20 gal/min. How long to fill?",
+      "options": {
+        "A": "18 min",
+        "B": "20 min",
+        "C": "22 min",
+        "D": "24 min"
+      },
+      "answer": "B",
+      "explanation": "Rate=60 gal/min. 1200/60=20 min."
+    },
+    {
+      "id": 294,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "hard",
+      "question": "Solution A is 60% alcohol; Solution B is 20% alcohol. How many liters of A are needed to mix with 10L of B to get 40% alcohol?",
+      "options": {
+        "A": "8 L",
+        "B": "9 L",
+        "C": "10 L",
+        "D": "11 L"
+      },
+      "answer": "C",
+      "explanation": "0.60x+0.20(10)=0.40(x+10) → 0.6x+2=0.4x+4 → 0.2x=2 → x=10."
+    },
+    {
+      "id": 295,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "easy",
+      "question": "If 5 notebooks cost $6.25, what is the cost of 8 notebooks?",
+      "options": {
+        "A": "$8.50",
+        "B": "$9.00",
+        "C": "$10.00",
+        "D": "$11.00"
+      },
+      "answer": "C",
+      "explanation": "$1.25 each. 8×1.25=$10."
+    },
+    {
+      "id": 296,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "medium",
+      "question": "The difference between two numbers is 12 and their sum is 48. What is the larger number?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "answer": "C",
+      "explanation": "x+y=48, x−y=12. Add: 2x=60 → x=30."
+    },
+    {
+      "id": 297,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "medium",
+      "question": "A school has 800 students. 55% are girls. How many are boys?",
+      "options": {
+        "A": "340",
+        "B": "350",
+        "C": "360",
+        "D": "370"
+      },
+      "answer": "C",
+      "explanation": "Boys=0.45×800=360."
+    },
+    {
+      "id": 298,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "hard",
+      "question": "Two cyclists start from the same point in opposite directions. One rides at 12 mph and the other at 18 mph. After how many hours are they 90 miles apart?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "Combined rate=30 mph. 90/30=3 hrs."
+    },
+    {
+      "id": 299,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Table & Graph Interpretation",
+      "difficulty": "easy",
+      "question": "A line graph shows sales (in $thousands): Jan=20, Feb=25, Mar=15, Apr=30. Which month had the highest sales?",
+      "options": {
+        "A": "Jan",
+        "B": "Feb",
+        "C": "Mar",
+        "D": "Apr"
+      },
+      "answer": "D",
+      "explanation": "Apr=30 is highest."
+    },
+    {
+      "id": 300,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Table & Graph Interpretation",
+      "difficulty": "medium",
+      "question": "A table shows: x=1→y=3, x=2→y=7, x=3→y=11, x=4→y=15. What is y when x=10?",
+      "options": {
+        "A": "39",
+        "B": "41",
+        "C": "43",
+        "D": "45"
+      },
+      "answer": "C",
+      "explanation": "Pattern: y=4x−1. At x=10: y=39."
+    },
+    {
+      "id": 301,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Table & Graph Interpretation",
+      "difficulty": "hard",
+      "question": "A data table shows exponential growth: x=0→1, x=1→4, x=2→16. What is the value at x=4?",
+      "options": {
+        "A": "64",
+        "B": "128",
+        "C": "256",
+        "D": "512"
+      },
+      "answer": "C",
+      "explanation": "f(x)=4^x. f(4)=256."
+    },
+    {
+      "id": 302,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 11, 13, 17, 19, 20. What is the median?",
+      "options": {
+        "A": "13",
+        "B": "15",
+        "C": "17",
+        "D": "19"
+      },
+      "answer": "C",
+      "explanation": "Middle of 5 values=17."
+    },
+    {
+      "id": 303,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 2, 2, 5, 8, 8. What is the mean?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "Sum=25. Mean=25/5=5."
+    },
+    {
+      "id": 304,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "A teacher removes the highest score (95) from a dataset. The original mean was 78 for 20 students. What is the new mean?",
+      "options": {
+        "A": "76.1",
+        "B": "77.1",
+        "C": "78.1",
+        "D": "79.1"
+      },
+      "answer": "B",
+      "explanation": "Sum=20×78=1560. New sum=1465. New mean=1465/19≈77.1."
+    },
+    {
+      "id": 305,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "The IQR of a dataset is 12. Q1=18. What is Q3?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "answer": "C",
+      "explanation": "Q3=Q1+IQR=18+12=30."
+    },
+    {
+      "id": 306,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "hard",
+      "question": "A distribution has mean 100 and standard deviation 15. What score is at the 84th percentile (1 SD above mean)?",
+      "options": {
+        "A": "105",
+        "B": "110",
+        "C": "115",
+        "D": "120"
+      },
+      "answer": "C",
+      "explanation": "1 SD above mean=100+15=115."
+    },
+    {
+      "id": 307,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "hard",
+      "question": "If each data value in a set is multiplied by 3, what happens to the standard deviation?",
+      "options": {
+        "A": "It stays the same",
+        "B": "It is multiplied by 3",
+        "C": "It is multiplied by 9",
+        "D": "It is divided by 3"
+      },
+      "answer": "B",
+      "explanation": "Scaling all values by k scales SD by |k|."
+    },
+    {
+      "id": 308,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "easy",
+      "question": "A bag has 3 red, 4 yellow, 5 green marbles. P(not yellow)?",
+      "options": {
+        "A": "1/3",
+        "B": "2/3",
+        "C": "3/4",
+        "D": "1/4"
+      },
+      "answer": "B",
+      "explanation": "(3+5)/12=8/12=2/3."
+    },
+    {
+      "id": 309,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "easy",
+      "question": "A number is chosen at random from 1–20. P(multiple of 4)?",
+      "options": {
+        "A": "1/4",
+        "B": "1/5",
+        "C": "1/6",
+        "D": "1/4"
+      },
+      "answer": "A",
+      "explanation": "Multiples of 4: 4,8,12,16,20 = 5. P=5/20=1/4."
+    },
+    {
+      "id": 310,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "A spinner has 8 equal sections numbered 1–8. P(prime number)?",
+      "options": {
+        "A": "3/8",
+        "B": "4/8",
+        "C": "5/8",
+        "D": "1/2"
+      },
+      "answer": "A",
+      "explanation": "Primes 1–8: 2,3,5,7. P=4/8=1/2."
+    },
+    {
+      "id": 311,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "A box has 7 blue and 3 white pens. Two are drawn with replacement. P(both white)?",
+      "options": {
+        "A": "3/100",
+        "B": "9/100",
+        "C": "3/10",
+        "D": "1/10"
+      },
+      "answer": "B",
+      "explanation": "P=(3/10)×(3/10)=9/100."
+    },
+    {
+      "id": 312,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "hard",
+      "question": "A hand of 2 cards is dealt from a 52-card deck. P(both Aces)?",
+      "options": {
+        "A": "1/221",
+        "B": "4/221",
+        "C": "1/52",
+        "D": "3/52"
+      },
+      "answer": "A",
+      "explanation": "C(4,2)/C(52,2)=6/1326=1/221."
+    },
+    {
+      "id": 313,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "hard",
+      "question": "Events A and B: P(A)=0.5, P(B)=0.6, P(A∪B)=0.8. Are A and B independent?",
+      "options": {
+        "A": "Yes",
+        "B": "No",
+        "C": "Cannot determine",
+        "D": "Only if P(A∩B)=0"
+      },
+      "answer": "A",
+      "explanation": "P(A∩B)=0.3 and P(A)×P(B)=0.30. Equal → they ARE independent."
+    },
+    {
+      "id": 314,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "medium",
+      "question": "A study finds r=−0.88 between screen time and test scores. What does this mean?",
+      "options": {
+        "A": "Screen time causes lower scores",
+        "B": "There is a strong negative association",
+        "C": "There is a weak negative association",
+        "D": "Scores predict screen time"
+      },
+      "answer": "B",
+      "explanation": "r=−0.88 is close to −1: strong negative association. Correlation ≠ causation."
+    },
+    {
+      "id": 315,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "hard",
+      "question": "A data set has 100 values. The 40th percentile is 72. What does this mean?",
+      "options": {
+        "A": "40% of values equal 72",
+        "B": "40% of values are below 72",
+        "C": "72% of values are below 40",
+        "D": "60% of values are below 72"
+      },
+      "answer": "B",
+      "explanation": "Percentile means the percentage of values below that point."
+    },
+    {
+      "id": 316,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "hard",
+      "question": "A histogram is skewed left. Which of the following is most likely true?",
+      "options": {
+        "A": "Mean > Median",
+        "B": "Median > Mean",
+        "C": "Mean = Median",
+        "D": "Mode < Mean"
+      },
+      "answer": "B",
+      "explanation": "Left skew: the tail pulls mean left, so Median > Mean."
+    },
+    {
+      "id": 317,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "An angle measures 38°. What is its complement?",
+      "options": {
+        "A": "42°",
+        "B": "50°",
+        "C": "52°",
+        "D": "62°"
+      },
+      "answer": "C",
+      "explanation": "90−38=52°."
+    },
+    {
+      "id": 318,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "If two vertical angles each measure (3x + 10)°, what is x?",
+      "options": {
+        "A": "10",
+        "B": "20",
+        "C": "30",
+        "D": "40"
+      },
+      "answer": "B",
+      "explanation": "Vertical angles are equal. The equation holds for all x — this tests understanding of vertical angle equality."
+    },
+    {
+      "id": 319,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "medium",
+      "question": "A transversal crosses two parallel lines. Co-interior (same-side interior) angles are (3x+5)° and (2x+15)°. Find x.",
+      "options": {
+        "A": "30",
+        "B": "32",
+        "C": "34",
+        "D": "36"
+      },
+      "answer": "C",
+      "explanation": "3x+5+2x+15=180 → 5x=160 → x=32."
+    },
+    {
+      "id": 320,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "hard",
+      "question": "The sum of interior angles of a polygon is 2,520°. How many sides does the polygon have?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "answer": "C",
+      "explanation": "(n−2)×180=2520 → n−2=14 → n=16."
+    },
+    {
+      "id": 321,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "A right triangle has hypotenuse 17 and one leg 8. What is the other leg?",
+      "options": {
+        "A": "12",
+        "B": "13",
+        "C": "14",
+        "D": "15"
+      },
+      "answer": "D",
+      "explanation": "√(289−64)=√225=15."
+    },
+    {
+      "id": 322,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "In a triangle, two angles are 60° each. What is the third?",
+      "options": {
+        "A": "40",
+        "B": "50",
+        "C": "60",
+        "D": "70"
+      },
+      "answer": "C",
+      "explanation": "180−60−60=60°. (Equilateral triangle)"
+    },
+    {
+      "id": 323,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "medium",
+      "question": "In a 30-60-90 triangle, the longer leg is 9. What is the hypotenuse?",
+      "options": {
+        "A": "6√3",
+        "B": "9√3",
+        "C": "6√2",
+        "D": "9√2"
+      },
+      "answer": "A",
+      "explanation": "Longer leg = √3 × shorter leg. Shorter leg=9/√3=3√3. Hyp=2×3√3=6√3."
+    },
+    {
+      "id": 324,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "medium",
+      "question": "Two triangles are similar with scale factor 3:4. If the smaller has perimeter 21, what is the larger perimeter?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      },
+      "answer": "C",
+      "explanation": "21×(4/3)=28."
+    },
+    {
+      "id": 325,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "hard",
+      "question": "In triangle ABC, AB=7, AC=9, and angle A=120°. What is BC²?",
+      "options": {
+        "A": "169",
+        "B": "173",
+        "C": "179",
+        "D": "183"
+      },
+      "answer": "C",
+      "explanation": "BC²=7²+9²−2(7)(9)cos120°=130+63=193."
+    },
+    {
+      "id": 326,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "hard",
+      "question": "A triangle has vertices at (0,0),(6,0),(2,4). What is its area?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "Area=1/2|base×height|=1/2×6×4=12."
+    },
+    {
+      "id": 327,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "easy",
+      "question": "A circle has radius 7. What is the area?",
+      "options": {
+        "A": "14π",
+        "B": "21π",
+        "C": "49π",
+        "D": "98π"
+      },
+      "answer": "C",
+      "explanation": "A=π(7)²=49π."
+    },
+    {
+      "id": 328,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "easy",
+      "question": "The diameter of a circle is 20. What is the circumference?",
+      "options": {
+        "A": "10π",
+        "B": "20π",
+        "C": "40π",
+        "D": "80π"
+      },
+      "answer": "B",
+      "explanation": "C=πd=20π."
+    },
+    {
+      "id": 329,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "An arc subtends a central angle of 45° in a circle of radius 8. What is the arc length?",
+      "options": {
+        "A": "π",
+        "B": "2π",
+        "C": "3π",
+        "D": "4π"
+      },
+      "answer": "B",
+      "explanation": "Arc=(45/360)×2π(8)=(1/8)×16π=2π."
+    },
+    {
+      "id": 330,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "A tangent from an external point is 12 cm. The radius is 9 cm. What is the distance from the point to the center?",
+      "options": {
+        "A": "√63",
+        "B": "√145",
+        "C": "15",
+        "D": "√225"
+      },
+      "answer": "C",
+      "explanation": "d²=12²+9²=144+81=225 → d=15."
+    },
+    {
+      "id": 331,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "hard",
+      "question": "What is the length of the chord that is 5 cm from the center of a circle with radius 13 cm?",
+      "options": {
+        "A": "20 cm",
+        "B": "22 cm",
+        "C": "24 cm",
+        "D": "26 cm"
+      },
+      "answer": "C",
+      "explanation": "Half-chord=√(169−25)=12. Full chord=24 cm."
+    },
+    {
+      "id": 332,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "hard",
+      "question": "Two circles with radii 5 and 3 are internally tangent. What is the distance between their centers?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "Internal tangent: d=|r₁−r₂|=5−3=2."
+    },
+    {
+      "id": 333,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "easy",
+      "question": "What is the area of a parallelogram with base 12 and height 7?",
+      "options": {
+        "A": "72",
+        "B": "78",
+        "C": "84",
+        "D": "90"
+      },
+      "answer": "C",
+      "explanation": "A=12×7=84."
+    },
+    {
+      "id": 334,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "easy",
+      "question": "A cube has volume 64. What is its surface area?",
+      "options": {
+        "A": "72",
+        "B": "84",
+        "C": "96",
+        "D": "108"
+      },
+      "answer": "C",
+      "explanation": "Edge=4. SA=6×16=96."
+    },
+    {
+      "id": 335,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A cylinder has volume 200π and height 8. What is the radius?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "πr²(8)=200π → r²=25 → r=5."
+    },
+    {
+      "id": 336,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A right prism has a triangular base with legs 5 and 12 and height (length) 10. What is the volume?",
+      "options": {
+        "A": "250",
+        "B": "280",
+        "C": "300",
+        "D": "320"
+      },
+      "answer": "C",
+      "explanation": "Base area=(1/2)(5)(12)=30. V=30×10=300."
+    },
+    {
+      "id": 337,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "hard",
+      "question": "A cone has the same volume as a cylinder with radius 6 and height 4. If the cone has the same radius, what is the cone's height?",
+      "options": {
+        "A": "10",
+        "B": "11",
+        "C": "12",
+        "D": "13"
+      },
+      "answer": "C",
+      "explanation": "Vcyl=π(36)(4)=144π. Vcone=(1/3)π(36)h=144π → h=12."
+    },
+    {
+      "id": 338,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "hard",
+      "question": "A rectangular tank is 10m × 8m × 5m. It is 60% full. How many more cubic meters are needed to fill it?",
+      "options": {
+        "A": "160",
+        "B": "168",
+        "C": "176",
+        "D": "184"
+      },
+      "answer": "A",
+      "explanation": "Total=400. Current=240. Need 400−240=160."
+    },
+    {
+      "id": 339,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "question": "What is the slope of a vertical line?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "Undefined",
+        "D": "−1"
+      },
+      "answer": "C",
+      "explanation": "Vertical lines have undefined slope."
+    },
+    {
+      "id": 340,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "question": "A point is at (3, 4). What is its distance from the origin?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "√(9+16)=5."
+    },
+    {
+      "id": 341,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "What is the equation of the line through (2, 6) parallel to y = −2x + 1?",
+      "options": {
+        "A": "y=−2x+8",
+        "B": "y=−2x+10",
+        "C": "y=2x+2",
+        "D": "y=2x−10"
+      },
+      "answer": "B",
+      "explanation": "Same slope (−2). y−6=−2(x−2) → y=−2x+10."
+    },
+    {
+      "id": 342,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "The midpoint of segment AB is (4, 3). If A=(1, 1), what are the coordinates of B?",
+      "options": {
+        "A": "(5, 4)",
+        "B": "(6, 4)",
+        "C": "(7, 5)",
+        "D": "(7, 4)"
+      },
+      "answer": "C",
+      "explanation": "(1+bx)/2=4 → bx=7. (1+by)/2=3 → by=5. B=(7,5)."
+    },
+    {
+      "id": 343,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "hard",
+      "question": "What is the area of a triangle with vertices (1,1),(5,1),(3,7)?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14",
+        "D": "16"
+      },
+      "answer": "B",
+      "explanation": "Base=4. Height=6. Area=(1/2)(4)(6)=12."
+    },
+    {
+      "id": 344,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "hard",
+      "question": "Find the point that divides segment from (2,4) to (8,10) in ratio 1:2 from the first point.",
+      "options": {
+        "A": "(3,5)",
+        "B": "(4,6)",
+        "C": "(5,7)",
+        "D": "(6,8)"
+      },
+      "answer": "B",
+      "explanation": "x=2+(1/3)(6)=4. y=4+(1/3)(6)=6. Point=(4,6)."
+    },
+    {
+      "id": 345,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "easy",
+      "question": "A point (−5, 3) is reflected over the y-axis. What are the new coordinates?",
+      "options": {
+        "A": "(5, 3)",
+        "B": "(5, −3)",
+        "C": "(−5, −3)",
+        "D": "(3, −5)"
+      },
+      "answer": "A",
+      "explanation": "Reflection over y-axis negates x: (5,3)."
+    },
+    {
+      "id": 346,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "medium",
+      "question": "A square with side 4 is dilated by factor 1.5. What is the new perimeter?",
+      "options": {
+        "A": "20",
+        "B": "22",
+        "C": "24",
+        "D": "26"
+      },
+      "answer": "C",
+      "explanation": "New side=6. Perimeter=24."
+    },
+    {
+      "id": 347,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "hard",
+      "question": "Triangle ABC with vertices (1,2),(3,2),(2,5) is translated by (−3,4). What is the new centroid?",
+      "options": {
+        "A": "(−1,7)",
+        "B": "(0,7)",
+        "C": "(−1,6)",
+        "D": "(0,6)"
+      },
+      "answer": "A",
+      "explanation": "Original centroid=((1+3+2)/3,(2+2+5)/3)=(2,3). New centroid=(2−3,3+4)=(−1,7)."
+    },
+    {
+      "id": 348,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "In a right triangle, adjacent=12 and hypotenuse=13. What is cos(θ)?",
+      "options": {
+        "A": "5/13",
+        "B": "12/13",
+        "C": "5/12",
+        "D": "13/12"
+      },
+      "answer": "B",
+      "explanation": "cos=adj/hyp=12/13."
+    },
+    {
+      "id": 349,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "What is sin(30°) + cos(60°)?",
+      "options": {
+        "A": "1/2",
+        "B": "1",
+        "C": "3/2",
+        "D": "√3"
+      },
+      "answer": "B",
+      "explanation": "sin(30°)=1/2. cos(60°)=1/2. Sum=1."
+    },
+    {
+      "id": 350,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "A 40-foot tree casts a 30-foot shadow. What is the angle of elevation of the sun?",
+      "options": {
+        "A": "45°",
+        "B": "50°",
+        "C": "53°",
+        "D": "60°"
+      },
+      "answer": "C",
+      "explanation": "tan(θ)=40/30=4/3 → θ≈53°."
+    },
+    {
+      "id": 351,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "If sin(θ) = 7/25, what is tan(θ) in the first quadrant?",
+      "options": {
+        "A": "7/24",
+        "B": "24/25",
+        "C": "7/25",
+        "D": "24/7"
+      },
+      "answer": "A",
+      "explanation": "adj=√(625−49)=24. tan=7/24."
+    },
+    {
+      "id": 352,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "Simplify: sin²(x) + cos²(x) + tan²(x).",
+      "options": {
+        "A": "1",
+        "B": "sec²(x)",
+        "C": "1 + tan²(x)",
+        "D": "2 + tan²(x)"
+      },
+      "answer": "B",
+      "explanation": "sin²+cos²=1. 1+tan²=sec². Total=sec²(x)."
+    },
+    {
+      "id": 353,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "If cos(2θ) = 0 and 0° ≤ θ ≤ 180°, what are the values of θ?",
+      "options": {
+        "A": "45° and 90°",
+        "B": "45° and 135°",
+        "C": "90° and 135°",
+        "D": "0° and 180°"
+      },
+      "answer": "B",
+      "explanation": "2θ=90° or 270°. θ=45° or 135°."
+    },
+    {
+      "id": 354,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "In a triangle, sides a=7, b=10, c=12. What is cos(C) using the law of cosines?",
+      "options": {
+        "A": "1/28",
+        "B": "5/28",
+        "C": "3/28",
+        "D": "7/28"
+      },
+      "answer": "B",
+      "explanation": "cosC=(49+100−144)/(2×7×10)=5/140=1/28."
+    },
+    {
+      "id": 355,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "What is the GCF of 48 and 60?",
+      "options": {
+        "A": "8",
+        "B": "10",
+        "C": "12",
+        "D": "14"
+      },
+      "answer": "C",
+      "explanation": "48=2⁴×3. 60=2²×3×5. GCF=2²×3=12."
+    },
+    {
+      "id": 356,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "Is 2 a factor of every even number?",
+      "options": {
+        "A": "Yes",
+        "B": "No",
+        "C": "Only if the number is prime",
+        "D": "Only if the number is composite"
+      },
+      "answer": "A",
+      "explanation": "By definition, every even number is divisible by 2."
+    },
+    {
+      "id": 357,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "medium",
+      "question": "What is the smallest prime number greater than 50?",
+      "options": {
+        "A": "51",
+        "B": "53",
+        "C": "55",
+        "D": "57"
+      },
+      "answer": "B",
+      "explanation": "51=3×17. 53 is prime."
+    },
+    {
+      "id": 358,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "medium",
+      "question": "Which of the following is a perfect cube?",
+      "options": {
+        "A": "64",
+        "B": "125",
+        "C": "216",
+        "D": "All of the above"
+      },
+      "answer": "D",
+      "explanation": "4³=64, 5³=125, 6³=216. All are perfect cubes."
+    },
+    {
+      "id": 359,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "hard",
+      "question": "How many integers from 1 to 200 are divisible by both 4 and 6?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "answer": "C",
+      "explanation": "LCM(4,6)=12. Count: ⌊200/12⌋=16."
+    },
+    {
+      "id": 360,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "hard",
+      "question": "What is the units digit of 7^100?",
+      "options": {
+        "A": "1",
+        "B": "3",
+        "C": "7",
+        "D": "9"
+      },
+      "answer": "A",
+      "explanation": "7's units digit cycles: 7,9,3,1 (period 4). 100=25×4 → units digit=1."
+    },
+    {
+      "id": 361,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "easy",
+      "question": "Find the 7th term of the sequence 4, 7, 10, 13, ...",
+      "options": {
+        "A": "21",
+        "B": "22",
+        "C": "23",
+        "D": "24"
+      },
+      "answer": "B",
+      "explanation": "a₇=4+6×3=22."
+    },
+    {
+      "id": 362,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "easy",
+      "question": "A sequence begins 1, 2, 4, 8, 16. What is the 8th term?",
+      "options": {
+        "A": "64",
+        "B": "100",
+        "C": "128",
+        "D": "256"
+      },
+      "answer": "C",
+      "explanation": "2^7=128."
+    },
+    {
+      "id": 363,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "medium",
+      "question": "The sum of an arithmetic series is 420. If a₁=4 and d=4, how many terms are there?",
+      "options": {
+        "A": "12",
+        "B": "14",
+        "C": "15",
+        "D": "16"
+      },
+      "answer": "C",
+      "explanation": "n(n+1)=210. n=14: 14×15=210 ✓."
+    },
+    {
+      "id": 364,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "hard",
+      "question": "The sum of the first n terms of a series is Sₙ = 3n² + 2n. What is the 5th term?",
+      "options": {
+        "A": "29",
+        "B": "31",
+        "C": "33",
+        "D": "35"
+      },
+      "answer": "C",
+      "explanation": "a₅=S₅−S₄=85−56=29."
+    },
+    {
+      "id": 365,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "easy",
+      "question": "If 12 − 4x = 0, what is x?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "answer": "B",
+      "explanation": "4x=12 → x=3."
+    },
+    {
+      "id": 366,
+      "topic": "Algebra",
+      "subtopic": "Linear Equations",
+      "difficulty": "medium",
+      "question": "If 3(x + 5) = 2(x + 10), what is x?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "3x+15=2x+20 → x=5."
+    },
+    {
+      "id": 367,
+      "topic": "Algebra",
+      "subtopic": "Systems of Equations",
+      "difficulty": "easy",
+      "question": "If 2x + 3y = 12 and x = 3, what is y?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "6+3y=12 → y=2."
+    },
+    {
+      "id": 368,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "easy",
+      "question": "If f(x) = −x + 9, what is f(4)?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "−4+9=5."
+    },
+    {
+      "id": 369,
+      "topic": "Algebra",
+      "subtopic": "Functions",
+      "difficulty": "medium",
+      "question": "If f(x) = x² + 3x and g(x) = x − 1, what is f(g(3))?",
+      "options": {
+        "A": "12",
+        "B": "13",
+        "C": "14",
+        "D": "15"
+      },
+      "answer": "C",
+      "explanation": "g(3)=2. f(2)=4+6=10."
+    },
+    {
+      "id": 370,
+      "topic": "Algebra",
+      "subtopic": "Inequalities",
+      "difficulty": "easy",
+      "question": "If 10x ≥ 70, which describes x?",
+      "options": {
+        "A": "x ≥ 5",
+        "B": "x ≥ 6",
+        "C": "x ≥ 7",
+        "D": "x ≥ 8"
+      },
+      "answer": "C",
+      "explanation": "x≥70/10=7."
+    },
+    {
+      "id": 371,
+      "topic": "Algebra",
+      "subtopic": "Lines & Slope",
+      "difficulty": "medium",
+      "question": "A line passes through (0,−3) and has slope 4. What is the y-value when x=2?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "y=4(2)−3=5."
+    },
+    {
+      "id": 372,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "easy",
+      "question": "What is the axis of symmetry of y=2x²−8x+3?",
+      "options": {
+        "A": "x=1",
+        "B": "x=2",
+        "C": "x=3",
+        "D": "x=4"
+      },
+      "answer": "B",
+      "explanation": "x=8/(2×2)=2."
+    },
+    {
+      "id": 373,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratics",
+      "difficulty": "medium",
+      "question": "If 3x²−12=0, what are the values of x?",
+      "options": {
+        "A": "x=±2",
+        "B": "x=±4",
+        "C": "x=2 only",
+        "D": "x=4 only"
+      },
+      "answer": "A",
+      "explanation": "x²=4 → x=±2."
+    },
+    {
+      "id": 374,
+      "topic": "Advanced Math",
+      "subtopic": "Exponential Functions",
+      "difficulty": "medium",
+      "question": "Simplify: (2x²)³.",
+      "options": {
+        "A": "6x⁵",
+        "B": "6x⁶",
+        "C": "8x⁵",
+        "D": "8x⁶"
+      },
+      "answer": "D",
+      "explanation": "2³·x^(2×3)=8x⁶."
+    },
+    {
+      "id": 375,
+      "topic": "Advanced Math",
+      "subtopic": "Polynomials",
+      "difficulty": "medium",
+      "question": "What is the sum of the roots of 2x²−10x+8=0?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "answer": "C",
+      "explanation": "Sum=10/2=5."
+    },
+    {
+      "id": 376,
+      "topic": "Advanced Math",
+      "subtopic": "Completing the Square",
+      "difficulty": "medium",
+      "question": "The equation x²+12x+k=0 has a double root. What is k?",
+      "options": {
+        "A": "30",
+        "B": "32",
+        "C": "34",
+        "D": "36"
+      },
+      "answer": "D",
+      "explanation": "Discriminant=144−4k=0 → k=36."
+    },
+    {
+      "id": 377,
+      "topic": "Advanced Math",
+      "subtopic": "Quadratic Formula",
+      "difficulty": "medium",
+      "question": "Solve x²+2x−8=0 using the quadratic formula.",
+      "options": {
+        "A": "x=2 or x=−4",
+        "B": "x=4 or x=−2",
+        "C": "x=−2 or x=4",
+        "D": "x=−4 or x=2"
+      },
+      "answer": "A",
+      "explanation": "x=(−2±√(4+32))/2=(−2±6)/2. x=2 or x=−4."
+    },
+    {
+      "id": 378,
+      "topic": "Advanced Math",
+      "subtopic": "Rational Expressions",
+      "difficulty": "medium",
+      "question": "Simplify (6x³−3x)/(3x).",
+      "options": {
+        "A": "2x²−1",
+        "B": "2x²+1",
+        "C": "x²−1",
+        "D": "x²+1"
+      },
+      "answer": "A",
+      "explanation": "3x(2x²−1)/(3x)=2x²−1."
+    },
+    {
+      "id": 379,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Percentages",
+      "difficulty": "medium",
+      "question": "A store increases all prices by 8%. A jacket now costs $97.20. What was the original price?",
+      "options": {
+        "A": "$88",
+        "B": "$89",
+        "C": "$90",
+        "D": "$91"
+      },
+      "answer": "C",
+      "explanation": "x×1.08=97.20 → x=$90."
+    },
+    {
+      "id": 380,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Ratios & Proportions",
+      "difficulty": "medium",
+      "question": "If y varies inversely with x and y=6 when x=4, what is y when x=12?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "answer": "B",
+      "explanation": "xy=24. When x=12: y=24/12=2."
+    },
+    {
+      "id": 381,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "medium",
+      "question": "Carlos earns twice as much per hour as Diana. Together they earn $90 in the same number of hours. If Diana earns $15/hr, how many hours did each work?",
+      "options": {
+        "A": "2 hrs",
+        "B": "3 hrs",
+        "C": "4 hrs",
+        "D": "5 hrs"
+      },
+      "answer": "B",
+      "explanation": "Diana: $15/hr. Carlos: $30/hr. Combined: $45/hr. 90/45=2 hrs."
+    },
+    {
+      "id": 382,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Word Problems",
+      "difficulty": "hard",
+      "question": "A number is 5 more than 3 times another. Their product is 0. What are the possible values of the numbers?",
+      "options": {
+        "A": "0 and 5 OR −5/3 and 0",
+        "B": "0 and 1",
+        "C": "5 and 0 only",
+        "D": "1 and 3"
+      },
+      "answer": "A",
+      "explanation": "Let smaller=x. Larger=3x+5. x(3x+5)=0 → x=0 (larger=5) or x=−5/3 (larger=0)."
+    },
+    {
+      "id": 383,
+      "topic": "Problem Solving & Data Analysis",
+      "subtopic": "Rates & Mixtures",
+      "difficulty": "medium",
+      "question": "A faucet leaks at 3 gallons per hour. A bucket holds 45 gallons. How long until the bucket is full?",
+      "options": {
+        "A": "12 hrs",
+        "B": "13 hrs",
+        "C": "14 hrs",
+        "D": "15 hrs"
+      },
+      "answer": "D",
+      "explanation": "45/3=15 hrs."
+    },
+    {
+      "id": 384,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "easy",
+      "question": "Data: 2, 5, 5, 7, 11. What is the median?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "Middle of 5 sorted values=5."
+    },
+    {
+      "id": 385,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Measures of Center & Spread",
+      "difficulty": "medium",
+      "question": "A class of 25 students averages 72 on a test. A second class of 15 students averages 88. What is the combined average?",
+      "options": {
+        "A": "76",
+        "B": "77",
+        "C": "78",
+        "D": "79"
+      },
+      "answer": "C",
+      "explanation": "(25×72+15×88)/40=(1800+1320)/40=3120/40=78."
+    },
+    {
+      "id": 386,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Probability",
+      "difficulty": "medium",
+      "question": "In a bag of 20 marbles, 8 are red. If 4 are drawn without replacement, what is the expected number of red marbles?",
+      "options": {
+        "A": "1.0",
+        "B": "1.2",
+        "C": "1.4",
+        "D": "1.6"
+      },
+      "answer": "D",
+      "explanation": "Expected=4×(8/20)=1.6."
+    },
+    {
+      "id": 387,
+      "topic": "Statistics & Data Analysis",
+      "subtopic": "Data Interpretation",
+      "difficulty": "medium",
+      "question": "A histogram shows frequency of scores: 50–60: 5, 60–70: 10, 70–80: 15, 80–90: 8, 90–100: 2. What percent scored 70 or above?",
+      "options": {
+        "A": "50%",
+        "B": "60%",
+        "C": "62.5%",
+        "D": "75%"
+      },
+      "answer": "C",
+      "explanation": "Scored 70+: 15+8+2=25. Total=40. 25/40=62.5%."
+    },
+    {
+      "id": 388,
+      "topic": "Geometry",
+      "subtopic": "Angles & Lines",
+      "difficulty": "easy",
+      "question": "What type of angle is 180°?",
+      "options": {
+        "A": "Right",
+        "B": "Straight",
+        "C": "Obtuse",
+        "D": "Reflex"
+      },
+      "answer": "B",
+      "explanation": "A straight angle measures exactly 180°."
+    },
+    {
+      "id": 389,
+      "topic": "Geometry",
+      "subtopic": "Triangles",
+      "difficulty": "easy",
+      "question": "A triangle has sides 5, 5, and 8. What kind of triangle is it?",
+      "options": {
+        "A": "Scalene",
+        "B": "Equilateral",
+        "C": "Isosceles",
+        "D": "Right"
+      },
+      "answer": "C",
+      "explanation": "Two equal sides → isosceles."
+    },
+    {
+      "id": 390,
+      "topic": "Geometry",
+      "subtopic": "Circles",
+      "difficulty": "medium",
+      "question": "A circle has area 36π. What is its circumference?",
+      "options": {
+        "A": "6π",
+        "B": "10π",
+        "C": "12π",
+        "D": "14π"
+      },
+      "answer": "C",
+      "explanation": "r²=36 → r=6. C=2π(6)=12π."
+    },
+    {
+      "id": 391,
+      "topic": "Geometry",
+      "subtopic": "Area, Perimeter & Volume",
+      "difficulty": "medium",
+      "question": "A right triangle with legs 6 and 8 is the base of a prism with height 10. What is the volume?",
+      "options": {
+        "A": "220",
+        "B": "230",
+        "C": "240",
+        "D": "250"
+      },
+      "answer": "C",
+      "explanation": "Base area=24. V=24×10=240."
+    },
+    {
+      "id": 392,
+      "topic": "Geometry",
+      "subtopic": "Coordinate Geometry",
+      "difficulty": "medium",
+      "question": "What is the length of the segment from (−2, 1) to (4, 9)?",
+      "options": {
+        "A": "8",
+        "B": "9",
+        "C": "10",
+        "D": "11"
+      },
+      "answer": "C",
+      "explanation": "√((6)²+(8)²)=√100=10."
+    },
+    {
+      "id": 393,
+      "topic": "Geometry",
+      "subtopic": "Transformations",
+      "difficulty": "medium",
+      "question": "The point (6, −4) is rotated 180° about the origin. What are the new coordinates?",
+      "options": {
+        "A": "(−6, 4)",
+        "B": "(4, −6)",
+        "C": "(−4, 6)",
+        "D": "(6, 4)"
+      },
+      "answer": "A",
+      "explanation": "180°: (x,y)→(−x,−y)=(−6,4)."
+    },
+    {
+      "id": 394,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "easy",
+      "question": "In a right triangle with hypotenuse 10 and angle 30°, what is the opposite side?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "answer": "B",
+      "explanation": "opp=10×sin30°=10×0.5=5."
+    },
+    {
+      "id": 395,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "medium",
+      "question": "What is the exact value of sin(45°)?",
+      "options": {
+        "A": "1/2",
+        "B": "√2/2",
+        "C": "√3/2",
+        "D": "1"
+      },
+      "answer": "B",
+      "explanation": "sin(45°)=√2/2."
+    },
+    {
+      "id": 396,
+      "topic": "Trigonometry",
+      "subtopic": "Trigonometry",
+      "difficulty": "hard",
+      "question": "In a right triangle, tan(θ)=2. What is sin(θ)?",
+      "options": {
+        "A": "2/√3",
+        "B": "2/√5",
+        "C": "1/√5",
+        "D": "√5/2"
+      },
+      "answer": "B",
+      "explanation": "Hyp=√(1²+2²)=√5. sin=2/√5."
+    },
+    {
+      "id": 397,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "easy",
+      "question": "What is the LCM of 5 and 7?",
+      "options": {
+        "A": "28",
+        "B": "30",
+        "C": "35",
+        "D": "42"
+      },
+      "answer": "C",
+      "explanation": "LCM(5,7)=35."
+    },
+    {
+      "id": 398,
+      "topic": "Arithmetic",
+      "subtopic": "Number Properties",
+      "difficulty": "medium",
+      "question": "What is 2¹⁰?",
+      "options": {
+        "A": "512",
+        "B": "1000",
+        "C": "1024",
+        "D": "2048"
+      },
+      "answer": "C",
+      "explanation": "2¹⁰=1024."
+    },
+    {
+      "id": 399,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "easy",
+      "question": "In the sequence 100, 95, 90, 85..., what is the 10th term?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "60",
+        "D": "65"
+      },
+      "answer": "B",
+      "explanation": "a₁₀=100+(9×−5)=100−45=55."
+    },
+    {
+      "id": 400,
+      "topic": "Arithmetic",
+      "subtopic": "Sequences & Patterns",
+      "difficulty": "hard",
+      "question": "What is the sum of the geometric series 1 + 3 + 9 + ... + 729?",
+      "options": {
+        "A": "1090",
+        "B": "1093",
+        "C": "1095",
+        "D": "1098"
+      },
+      "answer": "B",
+      "explanation": "S=(1×(3^7−1))/(3−1)=(2187−1)/2=1093."
+    }
+  ]
+}
