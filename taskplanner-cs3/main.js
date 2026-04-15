@@ -244,7 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
             addRow.replaceChild(input, addBtn);
             input.focus();
 
+            let isCommitted = false;
+
             function commit() {
+                if (isCommitted) return;
+                isCommitted = true;
+
                 const val = (input.value || '').trim();
                 if (val) {
                     addTaskWithDate(val, selectedDate);
@@ -337,6 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     cb.dataset.parentTaskId = item.task.id;
                     cb.dataset.subtaskId = subtask.id;
                     cb.checked = !!subtask.completed;
+                    const typeBadge = document.createElement('span');
+                    typeBadge.className = 'day-task-type';
+                    typeBadge.textContent = 'Subtask';
                     const lbl = document.createElement('span');
                     lbl.className = 'task-label';
                     lbl.textContent = subtask.text;
@@ -346,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (e.key === 'Enter') { e.preventDefault(); startEditingSubtaskName(item.task.id, subtask, li); }
                     });
                     li.appendChild(cb);
+                    li.appendChild(typeBadge);
                     li.appendChild(lbl);
                     const impSelect = document.createElement('select');
                     impSelect.className = 'task-importance-select';
