@@ -244,7 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
             addRow.replaceChild(input, addBtn);
             input.focus();
 
+            let isCommitted = false;
+
             function commit() {
+                if (isCommitted) return;
+                isCommitted = true;
+
                 const val = (input.value || '').trim();
                 if (val) {
                     addTaskWithDate(val, selectedDate);
