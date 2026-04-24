@@ -1216,3 +1216,39 @@ body {
         padding: 40px 20px;
     }
 }
+:root {
+    --primary-color: #c77dff;
+    --text-color: #ffffff;
+}
+
+.container {
+    width: 100%;
+}
+
+.section-header {
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #c77dff, #9d4edd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.section-subtitle {
+    font-size: 15px;
+    color: #b8b8b8;
+    line-height: 1.6;
+}
+
+.progress-card {
+    background: rgba(157, 78, 221, 0.06);
+    border: 1px solid rgba(157, 78, 221, 0.16);
+    border-radius: 16px;
+    padding: 28px;
+}

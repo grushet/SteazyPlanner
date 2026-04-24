@@ -236,13 +236,14 @@
         });
 
         startBtn.addEventListener('click', () => {
-            if (currentUserUid) {
-                showPage('dashboard');
-            } else {
-                window.location.href = '../index.html';
-            }
-        });
-
+    if (currentUserUid) {
+        showPage('dashboard');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.querySelector('[data-page="dashboard"]').classList.add('active');
+    } else {
+        window.location.href = '../index.html';
+    }
+});
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 currentUserUid = user.uid;

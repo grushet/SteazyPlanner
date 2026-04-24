@@ -6,11 +6,183 @@
     <title>Lesson — SAT Planner</title>
     <link rel="stylesheet" href="../satmain.css">
     <style>
-        :root { --bg-color: linear-gradient(#040404, #111); }
-        .lesson-view { max-width:900px; margin:40px auto; padding:24px; }
-        .lesson-meta { margin-bottom:12px; color:var(--text-color); }
-        .lesson-body { background: rgba(255,255,255,0.03); padding:18px; border-radius:10px; }
-        .back-link { display:inline-block; margin-top:16px; color:var(--primary-color); }
+        :root {
+            --primary-color: #c77dff;
+            --text-color: #ffffff;
+        }
+
+        .lesson-view {
+            max-width: 800px;
+            margin: 48px auto;
+            padding: 0 24px 64px;
+        }
+
+        .lesson-meta {
+            font-size: 12px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-body {
+            background: rgba(157, 78, 221, 0.04);
+            border: 1px solid rgba(157, 78, 221, 0.14);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            margin-right: 20px;
+            color: #9d4edd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #c77dff;
+        }
+
+        /* ---- quiz layout ---- */
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-question {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.75;
+            color: #f0f0f0;
+            padding-bottom: 22px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(157, 78, 221, 0.14);
+        }
+
+        .quiz-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-bottom: 18px;
+        }
+
+        /* ---- choice buttons ---- */
+        .choice-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 10px;
+            padding: 13px 20px;
+            color: #c8c8c8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+        }
+
+        .choice-btn:hover:not(:disabled) {
+            background: rgba(157, 78, 221, 0.1);
+            border-color: #9d4edd;
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .choice-btn:disabled {
+            cursor: default;
+        }
+
+        .choice-btn.correct-answer {
+            background: rgba(74, 222, 128, 0.1);
+            border-color: #4ade80;
+            color: #fff;
+        }
+
+        .choice-btn.wrong-answer {
+            background: rgba(248, 113, 113, 0.1);
+            border-color: #f87171;
+            color: #fff;
+        }
+
+        /* ---- feedback box ---- */
+        .quiz-feedback {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #a0a0a0;
+            padding: 14px 18px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 16px;
+        }
+
+        .quiz-feedback:empty {
+            display: none;
+        }
+
+        /* ---- next / submit button ---- */
+        .practice-btn {
+            background: linear-gradient(135deg, #9d4edd, #c77dff);
+            border: none;
+            border-radius: 10px;
+            padding: 13px;
+            color: #0a0a0a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .practice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(157, 78, 221, 0.4);
+        }
+
+        /* ---- short answer input ---- */
+        .short-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            width: 100%;
+            margin-bottom: 10px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .short-input:focus {
+            border-color: #9d4edd;
+        }
+
+        /* ---- completion screen ---- */
+        .quiz-complete {
+            text-align: center;
+            padding: 12px 0 8px;
+        }
+
+        .quiz-complete h3 {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c77dff, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+        }
+
+        .quiz-complete p {
+            font-size: 15px;
+            color: #b8b8b8;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -96,7 +268,6 @@
         metaEl.textContent = `Topic ID: ${topic} · Lesson ${lesson}`;
         backLink.href = `${topic}.html`;
 
-        // Load questions for this topic/lesson
         fetch('../data/questions.json').then(r=>r.json()).then(data=>{
             const topicData = data[topic] || {};
             const questions = topicData[lesson] || [];
@@ -145,7 +316,6 @@
                 choicesEl.innerHTML = '';
                 nextBtn.style.display = 'none';
 
-                // treat missing or verbose type as multiple choice (mcq)
                 const t = item.type || 'mcq';
                 if (t === 'mcq' || t === 'multiple-choice') {
                     item.choices.forEach((c, ci)=>{
@@ -171,14 +341,16 @@
             }
 
             function handleChoice(btn, item, ci) {
-                // disable all
                 const all = choicesEl.querySelectorAll('button');
                 all.forEach(x=>x.disabled=true);
                 const correct = Number(item.answer) === Number(ci);
                 if (correct) {
+                    btn.classList.add('correct-answer');
                     feedbackEl.textContent = 'Correct! ' + (item.explanation || '');
                     incrementTopicProgress(topic, 2);
                 } else {
+                    btn.classList.add('wrong-answer');
+                    all[Number(item.answer)].classList.add('correct-answer');
                     const isMCQ = item.type === 'mcq' || item.type === 'multiple-choice';
                     const correctText = (isMCQ && item.choices && item.choices[item.answer]) ? item.choices[item.answer] : '';
                     feedbackEl.textContent = `Incorrect. Correct: ${correctText}. ${item.explanation||''}`;
@@ -226,7 +398,6 @@
                 container.appendChild(home);
             }
 
-            // start
             showQuestion(idx);
         }
     </script>
