@@ -199,6 +199,13 @@
             { id: 'vocabulary', name: 'Vocabulary', progress: 72 }
         ];
 
+        // Apply hash immediately so there's no flash of the home page while auth resolves
+        if (window.location.hash === '#dashboard') {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const dashPage = document.getElementById('dashboard-page');
+            if (dashPage) dashPage.classList.add('active');
+        }
+
         // Navigation
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -225,37 +232,41 @@
         const authBtn = document.getElementById('authBtn');
         const startBtn = document.getElementById('startBtn');
 
+        function goToLogin() {
+            sessionStorage.setItem('postLoginRedirect', window.location.href.split('#')[0] + '#dashboard');
+            window.location.href = '../index.html';
+        }
+
         authBtn.addEventListener('click', () => {
             if (currentUserUid) {
                 signOut(auth).then(() => {
                     updateAuthUI();
                 });
             } else {
-                window.location.href = '../index.html';
+                goToLogin();
             }
         });
 
         startBtn.addEventListener('click', () => {
-    if (currentUserUid) {
-        showPage('dashboard');
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.querySelector('[data-page="dashboard"]').classList.add('active');
-    } else {
-        window.location.href = '../index.html';
-    }
-});
+            if (currentUserUid) {
+                showPage('dashboard');
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelector('[data-page="dashboard"]').classList.add('active');
+            } else {
+                goToLogin();
+            }
+        });
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 currentUserUid = user.uid;
                 await loadTopicsFromFirestore();
                 updateAuthUI();
+                if (window.location.hash === '#dashboard') {
+                    showPage('dashboard');
+                }
             } else {
                 currentUserUid = null;
                 updateAuthUI();
-            }
-            // Check hash for initial page
-            if (window.location.hash === '#dashboard') {
-                showPage('dashboard');
             }
         });
 

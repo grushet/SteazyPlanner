@@ -1254,6 +1254,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btnPlayPause = document.getElementById('pomo-play-pause');
         const btnReset = document.getElementById('pomo-reset');
+        const btnSkip = document.getElementById('pomo-skip');
+        const settingsBtn = document.getElementById('pomo-settings-btn');
+        const settingsDropdown = document.getElementById('pomo-settings-dropdown');
+        const eyeBtn = document.getElementById('pomo-eye-btn');
+        const eyeOpen = document.getElementById('pomo-eye-open');
+        const eyeClosed = document.getElementById('pomo-eye-closed');
+        let timerHidden = false;
         // circular progress elements (if present)
         const progressCircle = document.querySelector('.progress-ring__progress');
         const pomoModeEl = document.getElementById('pomo-mode');
@@ -1331,15 +1338,14 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const radius = progressCircle.r.baseVal.value;
                 const circumference = 2 * Math.PI * radius;
-                progressCircle.style.transition = 'stroke-dashoffset 1s linear, stroke 0.25s ease';
+                progressCircle.style.transition = 'stroke-dashoffset 1s linear';
                 progressCircle.style.strokeDasharray = `${circumference}`;
                 const fraction = Math.max(0, Math.min(1, remaining / total));
                 const offset = circumference * (1 - fraction);
                 progressCircle.style.strokeDashoffset = String(offset);
-                // color by mode
-                if (mode === 'work') progressCircle.style.stroke = '#80deea';
-                else if (mode === 'short') progressCircle.style.stroke = '#fbbf24';
-                else progressCircle.style.stroke = '#ef4444';
+                // color by mode (class-based so the browser handles it cleanly)
+                progressCircle.classList.toggle('mode-work', mode === 'work');
+                progressCircle.classList.toggle('mode-break', mode !== 'work');
             } catch (e) {
                 // ignore if DOM not ready
             }
@@ -1362,8 +1368,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // update center mode label
             if (pomoModeEl) {
                 if (state.mode === 'work') pomoModeEl.textContent = 'Work';
-                else if (state.mode === 'short') pomoModeEl.textContent = 'Short Break';
-                else pomoModeEl.textContent = 'Long Break';
+                else pomoModeEl.textContent = 'Break';
             }
             displayCurrent && (displayCurrent.textContent = state.currentSession);
             displayTotal && (displayTotal.textContent = settings.sessions);
@@ -1428,8 +1433,42 @@ document.addEventListener('DOMContentLoaded', () => {
             saveState();
         }
 
+        function skipPhase() {
+            const wasRunning = state.running;
+            pauseTimer();
+            const finishedMode = state.mode;
+            if (finishedMode === 'work') {
+                state.currentSession = (state.currentSession || 0) + 1;
+                state.mode = state.currentSession % settings.sessions === 0 ? 'long' : 'short';
+            } else {
+                if (finishedMode === 'long') state.currentSession = 0;
+                state.mode = 'work';
+            }
+            setRemainingFromMode();
+            if (wasRunning) startTimer();
+            else updateUI();
+            saveState();
+        }
+
         const workEndSound = new Audio('workEndAlarm.mp3');
         const breakEndSound = new Audio('breakEndAlarm.mp3');
+
+        // Unlock audio on first user interaction so timer-triggered sounds work
+        let audioUnlocked = false;
+        function unlockAudio() {
+            if (audioUnlocked) return;
+            audioUnlocked = true;
+            [workEndSound, breakEndSound].forEach(snd => {
+                snd.volume = 0;
+                snd.play().then(() => { snd.pause(); snd.currentTime = 0; snd.volume = 1; }).catch(() => {});
+            });
+        }
+        document.addEventListener('click', unlockAudio, { once: false });
+
+        function playSound(snd) {
+            snd.currentTime = 0;
+            snd.play().catch(err => console.warn('Pomodoro sound blocked:', err));
+        }
 
         function handlePeriodEnd() {
             // simple visual flash using body class
@@ -1441,11 +1480,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // play the appropriate alarm
             if (finishedMode === 'work') {
-                workEndSound.currentTime = 0;
-                workEndSound.play();
+                playSound(workEndSound);
             } else {
-                breakEndSound.currentTime = 0;
-                breakEndSound.play();
+                playSound(breakEndSound);
             }
 
             if (finishedMode === 'work') {
@@ -1473,18 +1510,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Wire UI events
         btnPlayPause && btnPlayPause.addEventListener('click', (e) => { e.preventDefault(); toggleTimer(); });
         btnReset && btnReset.addEventListener('click', (e) => { e.preventDefault(); resetTimer(); });
+        btnSkip && btnSkip.addEventListener('click', (e) => { e.preventDefault(); skipPhase(); });
+
+        if (eyeBtn) {
+            eyeBtn.addEventListener('click', () => {
+                timerHidden = !timerHidden;
+                pomoTimerEl.classList.toggle('hidden-time', timerHidden);
+                eyeOpen.style.display = timerHidden ? 'none' : 'block';
+                eyeClosed.style.display = timerHidden ? 'block' : 'none';
+            });
+        }
+
+        // Settings dropdown toggle
+        if (settingsBtn && settingsDropdown) {
+            settingsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                settingsDropdown.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!settingsDropdown.contains(e.target) && e.target !== settingsBtn) {
+                    settingsDropdown.classList.remove('open');
+                }
+            });
+        }
 
         [inputWork, inputShort, inputLong, inputSessions].forEach(inp => {
             if (!inp) return;
-            inp.addEventListener('change', () => {
-                // read all values
-                settings.work = Math.max(1, parseInt(inputWork.value, 10) || 25);
-                settings.short = Math.max(1, parseInt(inputShort.value, 10) || 5);
-                settings.long = Math.max(1, parseInt(inputLong.value, 10) || 15);
-                settings.sessions = Math.max(1, parseInt(inputSessions.value, 10) || 4);
+            inp.addEventListener('input', () => {
+                if (inputWork) settings.work = Math.max(1, parseInt(inputWork.value, 10) || 25);
+                if (inputShort) settings.short = Math.max(1, parseInt(inputShort.value, 10) || 5);
+                if (inputLong) settings.long = Math.max(1, parseInt(inputLong.value, 10) || 15);
+                if (inputSessions) settings.sessions = Math.max(1, parseInt(inputSessions.value, 10) || 4);
                 saveSettings();
-                // if not running, update remaining to reflect mode change
-                if (!state.running) setRemainingFromMode();
+                if (!state.running) {
+                    setRemainingFromMode();
+                    saveState();
+                }
                 updateUI();
             });
         });

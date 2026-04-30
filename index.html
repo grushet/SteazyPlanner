@@ -115,8 +115,9 @@
     // Monitor Authentication State
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Redirect to main planner only if successfully logged in
-        window.location.replace('taskplanner-cs3/main_page.html');
+        const redirect = sessionStorage.getItem('postLoginRedirect');
+        sessionStorage.removeItem('postLoginRedirect');
+        window.location.replace(redirect || 'taskplanner-cs3/main_page.html');
       }
     });
   </script>
