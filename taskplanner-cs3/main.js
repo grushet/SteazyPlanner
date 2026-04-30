@@ -1536,15 +1536,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         [inputWork, inputShort, inputLong, inputSessions].forEach(inp => {
             if (!inp) return;
-            inp.addEventListener('change', () => {
-                // read all values
-                settings.work = Math.max(1, parseInt(inputWork.value, 10) || 25);
-                settings.short = Math.max(1, parseInt(inputShort.value, 10) || 5);
-                settings.long = Math.max(1, parseInt(inputLong.value, 10) || 15);
-                settings.sessions = Math.max(1, parseInt(inputSessions.value, 10) || 4);
+            inp.addEventListener('input', () => {
+                if (inputWork) settings.work = Math.max(1, parseInt(inputWork.value, 10) || 25);
+                if (inputShort) settings.short = Math.max(1, parseInt(inputShort.value, 10) || 5);
+                if (inputLong) settings.long = Math.max(1, parseInt(inputLong.value, 10) || 15);
+                if (inputSessions) settings.sessions = Math.max(1, parseInt(inputSessions.value, 10) || 4);
                 saveSettings();
-                // if not running, update remaining to reflect mode change
-                if (!state.running) setRemainingFromMode();
+                if (!state.running) {
+                    setRemainingFromMode();
+                    saveState();
+                }
                 updateUI();
             });
         });
