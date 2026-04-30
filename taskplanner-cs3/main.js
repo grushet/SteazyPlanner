@@ -1257,6 +1257,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnSkip = document.getElementById('pomo-skip');
         const settingsBtn = document.getElementById('pomo-settings-btn');
         const settingsDropdown = document.getElementById('pomo-settings-dropdown');
+        const eyeBtn = document.getElementById('pomo-eye-btn');
+        const eyeOpen = document.getElementById('pomo-eye-open');
+        const eyeClosed = document.getElementById('pomo-eye-closed');
+        let timerHidden = false;
         // circular progress elements (if present)
         const progressCircle = document.querySelector('.progress-ring__progress');
         const pomoModeEl = document.getElementById('pomo-mode');
@@ -1507,6 +1511,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btnPlayPause && btnPlayPause.addEventListener('click', (e) => { e.preventDefault(); toggleTimer(); });
         btnReset && btnReset.addEventListener('click', (e) => { e.preventDefault(); resetTimer(); });
         btnSkip && btnSkip.addEventListener('click', (e) => { e.preventDefault(); skipPhase(); });
+
+        if (eyeBtn) {
+            eyeBtn.addEventListener('click', () => {
+                timerHidden = !timerHidden;
+                pomoTimerEl.classList.toggle('hidden-time', timerHidden);
+                eyeOpen.style.display = timerHidden ? 'none' : 'block';
+                eyeClosed.style.display = timerHidden ? 'block' : 'none';
+            });
+        }
 
         // Settings dropdown toggle
         if (settingsBtn && settingsDropdown) {
