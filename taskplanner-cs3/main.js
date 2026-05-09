@@ -1,7 +1,11 @@
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+
 // new repo commit test
 
     // Populate the date/time spans if present
@@ -53,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close all open menus
     function closeAllMenus() {
-        const allMenus = document.querySelectorAll('.task-menu-container, .subtask-menu-container');
+        const allMenus = document.querySelectorAll('.task-menu-container, .subtask-menu-container, .task-repeat-popover, .task-bell-popover');
         allMenus.forEach(menu => menu.classList.add('hidden'));
     }
 
@@ -388,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Use parsed date if available, otherwise use the provided date (from calendar)
             const finalDate = parsedDate || ymd || null;
-            const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: finalDate, importance: null };
+            const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: finalDate, importance: null, repeat: null, reminder: null, reminderFired: false };
             tasks.unshift(task);
             saveTasks();
             renderTasks();
@@ -448,6 +452,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure all tasks and subtasks have required properties
         tasks.forEach(task => {
             if (!task.subtasks) task.subtasks = [];
+            if (!('repeat' in task)) task.repeat = null;
+            if (!('reminder' in task)) task.reminder = null;
+            if (!('reminderFired' in task)) task.reminderFired = false;
             task.subtasks.forEach(subtask => {
                 if (!subtask.importance) subtask.importance = null;
                 if (!subtask.dueDate) subtask.dueDate = null;
@@ -462,6 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTasks();
         renderCalendar();
         renderDayTasks();
+        checkReminders();
     });
 
     // Save directly to Firebase
@@ -581,6 +589,159 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.appendChild(add);
             }
             
+            // repeat button + popover
+            const repeatWrapper = document.createElement('span');
+            repeatWrapper.className = 'task-repeat-wrapper';
+
+            const repeatBtn = document.createElement('button');
+            repeatBtn.type = 'button';
+            repeatBtn.className = 'task-repeat-btn' + (task.repeat ? ' active' : '');
+            repeatBtn.textContent = '↻';
+            repeatBtn.title = task.repeat ? `Every ${task.repeat.n} ${task.repeat.unit}` : 'Set repeat';
+
+            const repeatPopover = document.createElement('div');
+            repeatPopover.className = 'task-repeat-popover hidden';
+
+            const repeatNInput = document.createElement('input');
+            repeatNInput.type = 'number';
+            repeatNInput.className = 'task-repeat-n';
+            repeatNInput.min = '1';
+            repeatNInput.placeholder = '1';
+            if (task.repeat) repeatNInput.value = task.repeat.n;
+
+            const repeatUnitSelect = document.createElement('select');
+            repeatUnitSelect.className = 'task-repeat-unit';
+            ['days', 'weeks', 'months'].forEach(unit => {
+                const opt = document.createElement('option');
+                opt.value = unit;
+                opt.textContent = unit.charAt(0).toUpperCase() + unit.slice(1);
+                opt.selected = task.repeat ? task.repeat.unit === unit : unit === 'days';
+                repeatUnitSelect.appendChild(opt);
+            });
+
+            function applyRepeat() {
+                const n = parseInt(repeatNInput.value, 10);
+                if (!n || n < 1) {
+                    task.repeat = null;
+                    repeatBtn.classList.remove('active');
+                    repeatBtn.title = 'Set repeat';
+                } else {
+                    task.repeat = { n, unit: repeatUnitSelect.value };
+                    repeatBtn.classList.add('active');
+                    repeatBtn.title = `Every ${n} ${repeatUnitSelect.value}`;
+                }
+                saveTasks();
+            }
+
+            repeatNInput.addEventListener('change', applyRepeat);
+            repeatUnitSelect.addEventListener('change', () => {
+                applyRepeat();
+                repeatPopover.classList.add('hidden');
+            });
+            repeatNInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); applyRepeat(); repeatPopover.classList.add('hidden'); }
+                if (e.key === 'Escape') repeatPopover.classList.add('hidden');
+            });
+
+            repeatBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAllMenus();
+                repeatPopover.classList.toggle('hidden');
+                if (!repeatPopover.classList.contains('hidden')) repeatNInput.focus();
+            });
+
+            repeatPopover.addEventListener('click', (e) => e.stopPropagation());
+
+            repeatPopover.appendChild(repeatNInput);
+            repeatPopover.appendChild(repeatUnitSelect);
+            repeatWrapper.appendChild(repeatBtn);
+            repeatWrapper.appendChild(repeatPopover);
+            li.appendChild(repeatWrapper);
+
+            // bell button + reminder popover
+            const bellWrapper = document.createElement('span');
+            bellWrapper.className = 'task-bell-wrapper';
+
+            const bellBtn = document.createElement('button');
+            bellBtn.type = 'button';
+            bellBtn.className = 'task-bell-btn' + (task.reminder ? ' active' : '');
+            bellBtn.textContent = '🔔';
+            bellBtn.title = task.reminder
+                ? `Reminder: ${new Date(task.reminder).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`
+                : 'Set reminder';
+
+            const bellPopover = document.createElement('div');
+            bellPopover.className = 'task-bell-popover hidden';
+
+            const reminderDateInput = document.createElement('input');
+            reminderDateInput.type = 'date';
+            reminderDateInput.className = 'task-reminder-date';
+            reminderDateInput.value = task.reminder ? task.reminder.slice(0, 10) : '';
+
+            const reminderTimeInput = document.createElement('input');
+            reminderTimeInput.type = 'time';
+            reminderTimeInput.className = 'task-reminder-time';
+            reminderTimeInput.value = task.reminder ? task.reminder.slice(11, 16) : '09:00';
+
+            const clearReminderBtn = document.createElement('button');
+            clearReminderBtn.type = 'button';
+            clearReminderBtn.className = 'task-reminder-clear';
+            clearReminderBtn.textContent = '✕';
+            clearReminderBtn.title = 'Clear reminder';
+
+            function applyReminder() {
+                const d = reminderDateInput.value;
+                const t = reminderTimeInput.value;
+                if (d && t) {
+                    task.reminder = `${d}T${t}`;
+                    task.reminderFired = false;
+                    bellBtn.classList.add('active');
+                    bellBtn.title = `Reminder: ${new Date(task.reminder).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`;
+                } else {
+                    task.reminder = null;
+                    task.reminderFired = false;
+                    bellBtn.classList.remove('active');
+                    bellBtn.title = 'Set reminder';
+                }
+                saveTasks();
+            }
+
+            reminderTimeInput.addEventListener('change', applyReminder);
+            reminderDateInput.addEventListener('change', applyReminder);
+            [reminderDateInput, reminderTimeInput].forEach(inp => {
+                inp.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') bellPopover.classList.add('hidden');
+                });
+            });
+            clearReminderBtn.addEventListener('click', () => {
+                task.reminder = null;
+                task.reminderFired = false;
+                bellBtn.classList.remove('active');
+                bellBtn.title = 'Set reminder';
+                reminderDateInput.value = '';
+                saveTasks();
+                bellPopover.classList.add('hidden');
+            });
+
+            bellBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAllMenus();
+                bellPopover.classList.toggle('hidden');
+                if (!bellPopover.classList.contains('hidden')) {
+                    if (!reminderDateInput.value) reminderDateInput.value = task.dueDate || ymdFromDate(now);
+                    requestNotifPermission();
+                    reminderDateInput.focus();
+                }
+            });
+            bellPopover.addEventListener('click', (e) => e.stopPropagation());
+
+            bellPopover.appendChild(reminderDateInput);
+            bellPopover.appendChild(reminderTimeInput);
+            bellPopover.appendChild(clearReminderBtn);
+            bellWrapper.appendChild(bellBtn);
+            bellWrapper.appendChild(bellPopover);
+            li.appendChild(bellWrapper);
+
             // add subtask button
             if (!task.subtasks) task.subtasks = [];
             const addSubtaskBtn = document.createElement('button');
@@ -839,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cleanText) return; // if all text was keywords, skip
 
         // Create task with parsed dueDate and no importance by default
-        const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: dueDate || null, importance: null };
+        const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: dueDate || null, importance: null, repeat: null, reminder: null, reminderFired: false };
         tasks.unshift(task);
         saveTasks();
         renderTasks();
@@ -849,7 +1010,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleTask(id, completed) {
         const idx = tasks.findIndex(t => String(t.id) === String(id));
         if (idx === -1) return;
-        tasks[idx].completed = !!completed;
+        if (completed && tasks[idx].repeat) {
+            const src = tasks[idx];
+            const anchorDate = src.dueDate || ymdFromDate(now);
+            if (!src.dueDate) tasks[idx].dueDate = anchorDate;
+            tasks[idx].completed = true;
+            let nextReminder = null;
+            if (src.reminder) {
+                const rd = new Date(src.reminder);
+                if (src.repeat.unit === 'days') rd.setDate(rd.getDate() + src.repeat.n);
+                else if (src.repeat.unit === 'weeks') rd.setDate(rd.getDate() + src.repeat.n * 7);
+                else if (src.repeat.unit === 'months') rd.setMonth(rd.getMonth() + src.repeat.n);
+                nextReminder = rd.toISOString().slice(0, 16);
+            }
+            const nextTask = {
+                id: Date.now(),
+                text: src.text,
+                completed: false,
+                createdAt: Date.now(),
+                dueDate: getNextRepeatDate(anchorDate, src.repeat),
+                importance: src.importance,
+                repeat: src.repeat,
+                reminder: nextReminder,
+                reminderFired: false,
+                subtasks: [],
+            };
+            tasks.unshift(nextTask);
+        } else {
+            tasks[idx].completed = !!completed;
+        }
         saveTasks();
         renderTasks();
         renderCalendar();
@@ -1211,6 +1400,50 @@ document.addEventListener('DOMContentLoaded', () => {
         return task.dueDate < todayYMD;
     }
 
+    async function requestNotifPermission() {
+        if (!('Notification' in window)) return false;
+        if (Notification.permission === 'granted') return true;
+        if (Notification.permission === 'denied') return false;
+        return (await Notification.requestPermission()) === 'granted';
+    }
+
+    async function fireNotification(task) {
+        if (!('serviceWorker' in navigator)) return;
+        try {
+            const reg = await navigator.serviceWorker.ready;
+            reg.showNotification(task.text, {
+                body: 'Task reminder',
+                tag: `task-${task.id}`,
+            });
+        } catch (e) {}
+    }
+
+    function checkReminders() {
+        const nowMs = Date.now();
+        let changed = false;
+        tasks.forEach(task => {
+            if (!task.reminder || task.reminderFired) return;
+            if (new Date(task.reminder).getTime() <= nowMs) {
+                fireNotification(task);
+                task.reminderFired = true;
+                changed = true;
+            }
+        });
+        if (changed) saveTasks();
+    }
+
+    function getNextRepeatDate(ymd, repeat) {
+        const d = parseDateYMD(ymd);
+        if (!d || !repeat) return ymd;
+        const n = repeat.n || 1;
+        switch (repeat.unit) {
+            case 'days': d.setDate(d.getDate() + n); break;
+            case 'weeks': d.setDate(d.getDate() + n * 7); break;
+            case 'months': d.setMonth(d.getMonth() + n); break;
+        }
+        return ymdFromDate(d);
+    }
+
     // load & initial render
     tasks = loadTasks();
     renderTasks();
@@ -1561,5 +1794,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!state.remaining || state.remaining < 60) setRemainingFromMode();
         updateUI();
     }
+
+    setInterval(checkReminders, 60000);
 
 });
