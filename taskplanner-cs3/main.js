@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close all open menus
     function closeAllMenus() {
-        const allMenus = document.querySelectorAll('.task-menu-container, .subtask-menu-container');
+        const allMenus = document.querySelectorAll('.task-menu-container, .subtask-menu-container, .task-repeat-popover');
         allMenus.forEach(menu => menu.classList.add('hidden'));
     }
 
@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Use parsed date if available, otherwise use the provided date (from calendar)
             const finalDate = parsedDate || ymd || null;
-            const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: finalDate, importance: null };
+            const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: finalDate, importance: null, repeat: null };
             tasks.unshift(task);
             saveTasks();
             renderTasks();
@@ -448,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure all tasks and subtasks have required properties
         tasks.forEach(task => {
             if (!task.subtasks) task.subtasks = [];
+            if (!('repeat' in task)) task.repeat = null;
             task.subtasks.forEach(subtask => {
                 if (!subtask.importance) subtask.importance = null;
                 if (!subtask.dueDate) subtask.dueDate = null;
@@ -581,6 +582,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.appendChild(add);
             }
             
+            // repeat button + popover
+            const repeatWrapper = document.createElement('span');
+            repeatWrapper.className = 'task-repeat-wrapper';
+
+            const repeatBtn = document.createElement('button');
+            repeatBtn.type = 'button';
+            repeatBtn.className = 'task-repeat-btn' + (task.repeat ? ' active' : '');
+            repeatBtn.textContent = '↻';
+            repeatBtn.title = task.repeat ? `Every ${task.repeat.n} ${task.repeat.unit}` : 'Set repeat';
+
+            const repeatPopover = document.createElement('div');
+            repeatPopover.className = 'task-repeat-popover hidden';
+
+            const repeatNInput = document.createElement('input');
+            repeatNInput.type = 'number';
+            repeatNInput.className = 'task-repeat-n';
+            repeatNInput.min = '1';
+            repeatNInput.placeholder = '1';
+            if (task.repeat) repeatNInput.value = task.repeat.n;
+
+            const repeatUnitSelect = document.createElement('select');
+            repeatUnitSelect.className = 'task-repeat-unit';
+            ['days', 'weeks', 'months'].forEach(unit => {
+                const opt = document.createElement('option');
+                opt.value = unit;
+                opt.textContent = unit.charAt(0).toUpperCase() + unit.slice(1);
+                opt.selected = task.repeat ? task.repeat.unit === unit : unit === 'days';
+                repeatUnitSelect.appendChild(opt);
+            });
+
+            function applyRepeat() {
+                const n = parseInt(repeatNInput.value, 10);
+                if (!n || n < 1) {
+                    task.repeat = null;
+                    repeatBtn.classList.remove('active');
+                    repeatBtn.title = 'Set repeat';
+                } else {
+                    task.repeat = { n, unit: repeatUnitSelect.value };
+                    repeatBtn.classList.add('active');
+                    repeatBtn.title = `Every ${n} ${repeatUnitSelect.value}`;
+                }
+                saveTasks();
+            }
+
+            repeatNInput.addEventListener('change', applyRepeat);
+            repeatUnitSelect.addEventListener('change', () => {
+                applyRepeat();
+                repeatPopover.classList.add('hidden');
+            });
+            repeatNInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); applyRepeat(); repeatPopover.classList.add('hidden'); }
+                if (e.key === 'Escape') repeatPopover.classList.add('hidden');
+            });
+
+            repeatBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeAllMenus();
+                repeatPopover.classList.toggle('hidden');
+                if (!repeatPopover.classList.contains('hidden')) repeatNInput.focus();
+            });
+
+            repeatPopover.addEventListener('click', (e) => e.stopPropagation());
+
+            repeatPopover.appendChild(repeatNInput);
+            repeatPopover.appendChild(repeatUnitSelect);
+            repeatWrapper.appendChild(repeatBtn);
+            repeatWrapper.appendChild(repeatPopover);
+            li.appendChild(repeatWrapper);
+
             // add subtask button
             if (!task.subtasks) task.subtasks = [];
             const addSubtaskBtn = document.createElement('button');
@@ -839,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cleanText) return; // if all text was keywords, skip
 
         // Create task with parsed dueDate and no importance by default
-        const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: dueDate || null, importance: null };
+        const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: dueDate || null, importance: null, repeat: null };
         tasks.unshift(task);
         saveTasks();
         renderTasks();
@@ -849,7 +919,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleTask(id, completed) {
         const idx = tasks.findIndex(t => String(t.id) === String(id));
         if (idx === -1) return;
-        tasks[idx].completed = !!completed;
+        if (completed && tasks[idx].repeat) {
+            const src = tasks[idx];
+            const anchorDate = src.dueDate || ymdFromDate(now);
+            if (!src.dueDate) tasks[idx].dueDate = anchorDate;
+            tasks[idx].completed = true;
+            const nextTask = {
+                id: Date.now(),
+                text: src.text,
+                completed: false,
+                createdAt: Date.now(),
+                dueDate: getNextRepeatDate(anchorDate, src.repeat),
+                importance: src.importance,
+                repeat: src.repeat,
+                subtasks: [],
+            };
+            tasks.unshift(nextTask);
+        } else {
+            tasks[idx].completed = !!completed;
+        }
         saveTasks();
         renderTasks();
         renderCalendar();
@@ -1209,6 +1297,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const today = new Date();
         const todayYMD = ymdFromDate(today);
         return task.dueDate < todayYMD;
+    }
+
+    function getNextRepeatDate(ymd, repeat) {
+        const d = parseDateYMD(ymd);
+        if (!d || !repeat) return ymd;
+        const n = repeat.n || 1;
+        switch (repeat.unit) {
+            case 'days': d.setDate(d.getDate() + n); break;
+            case 'weeks': d.setDate(d.getDate() + n * 7); break;
+            case 'months': d.setMonth(d.getMonth() + n); break;
+        }
+        return ymdFromDate(d);
     }
 
     // load & initial render
