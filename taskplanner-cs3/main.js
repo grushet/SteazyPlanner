@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // render tasks for the currently selected day
     const dayTasksEl = document.getElementById('day-tasks');
+    const homeSummaryEl = document.getElementById('home-summary');
 
     let selectedDate = ymdFromDate(now); // default to today
 
@@ -401,6 +402,97 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         dayTasksEl.innerHTML = '';
         dayTasksEl.appendChild(container);
+    }
+
+    function getUpcomingTasks() {
+        const todayYMD = ymdFromDate(new Date());
+        const upcoming = [];
+
+        tasks.forEach(task => {
+            if (task.dueDate && task.dueDate >= todayYMD && !task.completed) {
+                upcoming.push({ title: task.text, dueDate: task.dueDate, type: 'Task', importance: task.importance });
+            }
+            if (task.subtasks && task.subtasks.length) {
+                task.subtasks.forEach(subtask => {
+                    if (subtask.dueDate && subtask.dueDate >= todayYMD && !subtask.completed) {
+                        upcoming.push({ title: `${task.text} → ${subtask.text}`, dueDate: subtask.dueDate, type: 'Subtask', importance: subtask.importance });
+                    }
+                });
+            }
+        });
+
+        return upcoming.sort((a, b) => {
+            if (a.dueDate !== b.dueDate) return a.dueDate.localeCompare(b.dueDate);
+            return a.title.localeCompare(b.title);
+        });
+    }
+
+    function renderHomeSummary() {
+        if (!homeSummaryEl) return;
+
+        const todayYMD = ymdFromDate(new Date());
+        const upcoming = getUpcomingTasks();
+        const weekFromNow = new Date();
+        weekFromNow.setDate(weekFromNow.getDate() + 7);
+        const dueThisWeek = upcoming.filter(item => item.dueDate <= ymdFromDate(weekFromNow)).length;
+        const dueToday = upcoming.filter(item => item.dueDate === todayYMD).length;
+
+        homeSummaryEl.innerHTML = '';
+
+        const header = document.createElement('div');
+        header.className = 'home-summary-header';
+        const title = document.createElement('h3');
+        title.textContent = 'Upcoming tasks';
+        header.appendChild(title);
+        homeSummaryEl.appendChild(header);
+
+        const statsGrid = document.createElement('div');
+        statsGrid.className = 'home-summary-cards';
+        [
+            { label: 'Today', value: dueToday, description: 'Due today' },
+            { label: 'Next 7 days', value: dueThisWeek, description: 'Due this week' },
+            { label: 'Upcoming', value: upcoming.length, description: 'Upcoming tasks' }
+        ].forEach(cardData => {
+            const card = document.createElement('div');
+            card.className = 'home-summary-card';
+            card.innerHTML = `<strong>${cardData.value}</strong><span>${cardData.label}</span><p>${cardData.description}</p>`;
+            statsGrid.appendChild(card);
+        });
+        homeSummaryEl.appendChild(statsGrid);
+
+        if (!upcoming.length) {
+            const empty = document.createElement('p');
+            empty.className = 'home-summary-empty';
+            empty.textContent = 'No upcoming tasks. You are all caught up!';
+            homeSummaryEl.appendChild(empty);
+            return;
+        }
+
+        const list = document.createElement('ul');
+        list.className = 'home-summary-list';
+        upcoming.slice(0, 5).forEach(item => {
+            const li = document.createElement('li');
+            const itemText = document.createElement('span');
+            itemText.className = 'home-summary-item';
+            itemText.textContent = item.title;
+
+            const meta = document.createElement('span');
+            meta.className = 'home-summary-meta';
+            meta.innerHTML = `<span class="home-summary-date">${formatTaskDateDisplay(item.dueDate)}</span><span class="home-summary-type">${item.type}</span>`;
+
+            li.appendChild(itemText);
+            li.appendChild(meta);
+            list.appendChild(li);
+        });
+
+        homeSummaryEl.appendChild(list);
+
+        if (upcoming.length > 5) {
+            const more = document.createElement('p');
+            more.className = 'home-summary-more';
+            more.textContent = `Showing 5 of ${upcoming.length} upcoming items. Visit Tasks for the full list.`;
+            homeSummaryEl.appendChild(more);
+        }
     }
 
     // listen for check toggles inside dayTasks
@@ -850,6 +942,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(subtasksContainer);
             taskListEl.appendChild(li);
         });
+        renderHomeSummary();
     }
 
     function startEditingDate(task) {
