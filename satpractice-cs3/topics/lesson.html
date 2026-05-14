@@ -162,6 +162,38 @@
             border-color: #9d4edd;
         }
 
+        /* ---- reading passage ---- */
+        .reading-passage {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(157, 78, 221, 0.14);
+            border-radius: 12px;
+            padding: 24px 26px;
+            margin-bottom: 28px;
+        }
+
+        .passage-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9d4edd;
+            margin-bottom: 14px;
+        }
+
+        .passage-source {
+            font-size: 12px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .passage-text {
+            font-size: 15px;
+            line-height: 1.85;
+            color: #d0d0d0;
+            white-space: pre-wrap;
+        }
+
         /* ---- completion screen ---- */
         .quiz-complete {
             text-align: center;
@@ -240,6 +272,15 @@
             return found;
         }
 
+        // Increments the shared questions-solved counter read by satmain.html
+        function trackQuestionAnswered() {
+            try {
+                const stats = JSON.parse(localStorage.getItem('satPlannerStats') || '{}');
+                stats.questionsSolved = (stats.questionsSolved || 0) + 1;
+                localStorage.setItem('satPlannerStats', JSON.stringify(stats));
+            } catch (e) {}
+        }
+
         function incrementTopicProgress(topicId, amount) {
             const list = loadTopicsState();
             let item = list.find(t=>t.id===topicId);
@@ -284,6 +325,21 @@
                 return;
             }
 
+            bodyEl.innerHTML = '';
+
+            // If the first question has a passage, show it as a fixed header above the quiz
+            const firstQ = questions[0];
+            if (firstQ.passage) {
+                const passageEl = document.createElement('div');
+                passageEl.className = 'reading-passage';
+                passageEl.innerHTML = `
+                    <div class="passage-label">Reading Passage</div>
+                    ${firstQ.passage_source ? `<div class="passage-source">${firstQ.passage_source}</div>` : ''}
+                    <div class="passage-text">${firstQ.passage}</div>
+                `;
+                bodyEl.appendChild(passageEl);
+            }
+
             let idx = 0;
             const container = document.createElement('div');
             container.className = 'quiz-container';
@@ -306,7 +362,6 @@
             container.appendChild(choicesEl);
             container.appendChild(feedbackEl);
             container.appendChild(nextBtn);
-            bodyEl.innerHTML = '';
             bodyEl.appendChild(container);
 
             function showQuestion(i) {
@@ -343,6 +398,7 @@
             function handleChoice(btn, item, ci) {
                 const all = choicesEl.querySelectorAll('button');
                 all.forEach(x=>x.disabled=true);
+                trackQuestionAnswered();
                 const correct = Number(item.answer) === Number(ci);
                 if (correct) {
                     btn.classList.add('correct-answer');
@@ -362,6 +418,7 @@
                 const v = String(value||'').trim().toLowerCase();
                 const ans = String(item.answer||'').trim().toLowerCase();
                 const correct = v === ans;
+                trackQuestionAnswered();
                 if (correct) {
                     feedbackEl.textContent = 'Correct! ' + (item.explanation||'');
                     incrementTopicProgress(topic, 2);

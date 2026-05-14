@@ -118,7 +118,7 @@
                 <div class="feature-card cta-card">
                     <h2>Ready to Transform Your SAT Score?</h2>
                     <p>Join thousands of students who've achieved their target scores with our platform.</p>
-                    <button class="cta-btn" id="startBtn">Start Learning Today</button>
+                    <button class="cta-btn" id="startBtn2">Start Learning Today</button>
                 </div>
             </section>
         </div>
@@ -134,15 +134,15 @@
                 <!-- Stats Cards -->
                 <div class="stats-section">
                     <div class="stat-card">
-                        <div class="stat-value">45%</div>
+                        <div class="stat-value" id="statProgress">0%</div>
                         <div class="stat-label">Overall Progress</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">12</div>
+                        <div class="stat-value" id="statStreak">0</div>
                         <div class="stat-label">Days Streak</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">156</div>
+                        <div class="stat-value" id="statQuestions">0</div>
                         <div class="stat-label">Questions Solved</div>
                     </div>
                 </div>
@@ -191,19 +191,74 @@
         let currentTopics = [];
 
         const defaultTopics = [
-            { id: 'arithmetic', name: 'Arithmetic', progress: 28 },
-            { id: 'geometry', name: 'Geometry', progress: 44 },
-            { id: 'data-stats', name: 'Data & Stats', progress: 55 },
-            { id: 'grammar', name: 'Grammar', progress: 22 },
-            { id: 'reading', name: 'Reading', progress: 65 },
-            { id: 'vocabulary', name: 'Vocabulary', progress: 72 }
+            { id: 'arithmetic', name: 'Arithmetic', progress: 0 },
+            { id: 'geometry', name: 'Geometry', progress: 0 },
+            { id: 'data-stats', name: 'Data & Stats', progress: 0 },
+            { id: 'grammar', name: 'Grammar', progress: 0 },
+            { id: 'reading', name: 'Reading', progress: 0 },
+            { id: 'vocabulary', name: 'Vocabulary', progress: 0 }
         ];
 
-        // Apply hash immediately so there's no flash of the home page while auth resolves
-        if (window.location.hash === '#dashboard') {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const dashPage = document.getElementById('dashboard-page');
-            if (dashPage) dashPage.classList.add('active');
+        // -------------------------------------------------------
+        // STREAK
+        // Reads and updates a streak counter in localStorage.
+        // The streak increments when the user visits on consecutive days.
+        // It resets to 1 if they skip a day.
+        // -------------------------------------------------------
+        function getOrUpdateStreak() {
+            const today = new Date().toDateString();
+            const yesterday = new Date(Date.now() - 86400000).toDateString();
+
+            let data = {};
+            try {
+                data = JSON.parse(localStorage.getItem('satPlannerStreak') || '{}');
+            } catch (e) {}
+
+            let streak = data.streak || 0;
+
+            if (data.lastVisit === today) {
+                // Already visited today, streak stays the same
+            } else if (data.lastVisit === yesterday) {
+                // Visited yesterday, increment streak
+                streak += 1;
+            } else {
+                // First visit or gap in days, reset to 1
+                streak = 1;
+            }
+
+            localStorage.setItem('satPlannerStreak', JSON.stringify({ lastVisit: today, streak }));
+            return streak;
+        }
+
+        // -------------------------------------------------------
+        // QUESTIONS SOLVED
+        // lesson.html writes to this same key whenever a question
+        // is answered, so we just read it here.
+        // -------------------------------------------------------
+        function getQuestionsSolved() {
+            try {
+                const stats = JSON.parse(localStorage.getItem('satPlannerStats') || '{}');
+                return stats.questionsSolved || 0;
+            } catch (e) {
+                return 0;
+            }
+        }
+
+        // -------------------------------------------------------
+        // UPDATE STAT CARDS
+        // Called every time the dashboard renders so the numbers
+        // are always fresh.
+        // -------------------------------------------------------
+        function updateStatsDisplay(topics) {
+            const avg = topics.length
+                ? Math.round(topics.reduce((sum, t) => sum + (t.progress || 0), 0) / topics.length)
+                : 0;
+            const streak = getOrUpdateStreak();
+            const solved = getQuestionsSolved();
+
+            document.getElementById('statProgress').textContent = avg + '%';
+            document.getElementById('statStreak').textContent = streak;
+            document.getElementById('statQuestions').textContent = solved;
         }
 
         // Navigation
@@ -212,7 +267,7 @@
                 e.preventDefault();
                 const pageName = link.getAttribute('data-page');
                 showPage(pageName);
-                
+
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 link.classList.add('active');
             });
@@ -221,7 +276,7 @@
         function showPage(pageName) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageName + '-page').classList.add('active');
-            
+
             if (pageName === 'dashboard' && !currentUserUid) {
                 showPage('home');
                 alert('Please login first');
@@ -231,11 +286,7 @@
         // Auth
         const authBtn = document.getElementById('authBtn');
         const startBtn = document.getElementById('startBtn');
-
-        function goToLogin() {
-            sessionStorage.setItem('postLoginRedirect', window.location.href.split('#')[0] + '#dashboard');
-            window.location.href = '../index.html';
-        }
+        const startBtn2 = document.getElementById('startBtn2');
 
         authBtn.addEventListener('click', () => {
             if (currentUserUid) {
@@ -243,30 +294,34 @@
                     updateAuthUI();
                 });
             } else {
-                goToLogin();
+                window.location.href = '../index.html';
             }
         });
 
-        startBtn.addEventListener('click', () => {
+        function handleStartClick() {
             if (currentUserUid) {
                 showPage('dashboard');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 document.querySelector('[data-page="dashboard"]').classList.add('active');
             } else {
-                goToLogin();
+                window.location.href = '../index.html';
             }
-        });
+        }
+
+        startBtn.addEventListener('click', handleStartClick);
+        startBtn2.addEventListener('click', handleStartClick);
+
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 currentUserUid = user.uid;
                 await loadTopicsFromFirestore();
                 updateAuthUI();
-                if (window.location.hash === '#dashboard') {
-                    showPage('dashboard');
-                }
             } else {
                 currentUserUid = null;
                 updateAuthUI();
+            }
+            if (window.location.hash === '#dashboard') {
+                showPage('dashboard');
             }
         });
 
@@ -287,7 +342,7 @@
             try {
                 const docRef = doc(db, "users", currentUserUid);
                 const docSnap = await getDoc(docRef);
-                
+
                 if (docSnap.exists() && docSnap.data().satTopics) {
                     const saved = docSnap.data().satTopics;
                     const map = {};
@@ -300,7 +355,7 @@
                 console.error("Error loading topics:", error);
                 currentTopics = JSON.parse(JSON.stringify(defaultTopics));
             }
-            
+
             renderDashboard();
         }
 
@@ -315,6 +370,8 @@
         }
 
         function renderDashboard() {
+            updateStatsDisplay(currentTopics);
+
             const grid = document.getElementById('topicsGrid');
             if (!grid) return;
 
@@ -324,7 +381,7 @@
             sorted.forEach(topic => {
                 const card = document.createElement('div');
                 card.className = 'topic-card';
-                
+
                 const progressPercent = topic.progress || 0;
                 const remaining = 100 - progressPercent;
 
@@ -343,7 +400,6 @@
                 `;
 
                 card.querySelector('.btn').addEventListener('click', () => {
-                    // navigate to the topic page where lessons and practice reside
                     window.location.href = `topics/${topic.id}.html`;
                 });
 
