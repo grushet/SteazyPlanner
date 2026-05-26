@@ -406,61 +406,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getUpcomingTasks() {
         const todayYMD = ymdFromDate(new Date());
-        const upcoming = [];
+        const all = [];
 
         tasks.forEach(task => {
-            if (task.dueDate && task.dueDate >= todayYMD && !task.completed) {
-                upcoming.push({ title: task.text, dueDate: task.dueDate, type: 'Task', importance: task.importance });
+            if (task.dueDate && !task.completed) {
+                all.push({ id: task.id, title: task.text, dueDate: task.dueDate, type: 'Task', importance: task.importance, overdue: task.dueDate < todayYMD });
             }
             if (task.subtasks && task.subtasks.length) {
                 task.subtasks.forEach(subtask => {
-                    if (subtask.dueDate && subtask.dueDate >= todayYMD && !subtask.completed) {
-                        upcoming.push({ title: `${task.text} → ${subtask.text}`, dueDate: subtask.dueDate, type: 'Subtask', importance: subtask.importance });
+                    if (subtask.dueDate && !subtask.completed) {
+                        all.push({ id: task.id, title: `${task.text} → ${subtask.text}`, dueDate: subtask.dueDate, type: 'Subtask', importance: subtask.importance, overdue: subtask.dueDate < todayYMD });
                     }
                 });
             }
         });
 
-        return upcoming.sort((a, b) => {
+        return all.sort((a, b) => {
             if (a.dueDate !== b.dueDate) return a.dueDate.localeCompare(b.dueDate);
             return a.title.localeCompare(b.title);
         });
+    }
+
+    function sortTasksBy(arr, sortBy) {
+        if (!sortBy) return [...arr];
+        const importanceOrder = { high: 0, med: 1, low: 2 };
+        return [...arr].sort((a, b) => {
+            if (sortBy === 'date') {
+                const da = a.dueDate || 'zzzz';
+                const db = b.dueDate || 'zzzz';
+                if (da !== db) return da.localeCompare(db);
+            }
+            if (sortBy === 'importance') {
+                const ia = a.importance ? (importanceOrder[a.importance] ?? 3) : 3;
+                const ib = b.importance ? (importanceOrder[b.importance] ?? 3) : 3;
+                if (ia !== ib) return ia - ib;
+            }
+            return 0;
+        });
+    }
+
+    function groupTasksBy(arr, groupBy) {
+        if (groupBy === 'date') {
+            const todayYMD = ymdFromDate(new Date());
+            const weekFromNow = new Date();
+            weekFromNow.setDate(weekFromNow.getDate() + 7);
+            const weekYMD = ymdFromDate(weekFromNow);
+            return [
+                { label: 'Overdue',   items: arr.filter(t => t.dueDate && t.dueDate < todayYMD) },
+                { label: 'Today',     items: arr.filter(t => t.dueDate === todayYMD) },
+                { label: 'This week', items: arr.filter(t => t.dueDate && t.dueDate > todayYMD && t.dueDate <= weekYMD) },
+                { label: 'Later',     items: arr.filter(t => t.dueDate && t.dueDate > weekYMD) },
+                { label: 'No date',   items: arr.filter(t => !t.dueDate) },
+            ].filter(g => g.items.length > 0);
+        }
+        if (groupBy === 'importance') {
+            return [
+                { label: 'High',        items: arr.filter(t => t.importance === 'high') },
+                { label: 'Medium',      items: arr.filter(t => t.importance === 'med') },
+                { label: 'Low',         items: arr.filter(t => t.importance === 'low') },
+                { label: 'No priority', items: arr.filter(t => !t.importance) },
+            ].filter(g => g.items.length > 0);
+        }
+        return [{ label: null, items: arr }];
     }
 
     function renderHomeSummary() {
         if (!homeSummaryEl) return;
 
         const todayYMD = ymdFromDate(new Date());
-        const upcoming = getUpcomingTasks();
         const weekFromNow = new Date();
         weekFromNow.setDate(weekFromNow.getDate() + 7);
-        const dueThisWeek = upcoming.filter(item => item.dueDate <= ymdFromDate(weekFromNow)).length;
-        const dueToday = upcoming.filter(item => item.dueDate === todayYMD).length;
+        const weekYMD = ymdFromDate(weekFromNow);
+
+        const PER_BOX_LIMIT = 3;
+
+        const all = getUpcomingTasks();
+        const buckets = [
+            { label: 'Overdue',   modifier: 'overdue', items: all.filter(i => i.dueDate < todayYMD) },
+            { label: 'Today',     modifier: 'today',   items: all.filter(i => i.dueDate === todayYMD) },
+            { label: 'This week', modifier: '',        items: all.filter(i => i.dueDate > todayYMD && i.dueDate <= weekYMD) },
+            { label: 'Later',     modifier: '',        items: all.filter(i => i.dueDate > weekYMD) }
+        ];
 
         homeSummaryEl.innerHTML = '';
 
         const header = document.createElement('div');
         header.className = 'home-summary-header';
         const title = document.createElement('h3');
-        title.textContent = 'Upcoming tasks';
+        title.textContent = 'Task overview';
         header.appendChild(title);
         homeSummaryEl.appendChild(header);
 
-        const statsGrid = document.createElement('div');
-        statsGrid.className = 'home-summary-cards';
-        [
-            { label: 'Today', value: dueToday, description: 'Due today' },
-            { label: 'Next 7 days', value: dueThisWeek, description: 'Due this week' },
-            { label: 'Upcoming', value: upcoming.length, description: 'Upcoming tasks' }
-        ].forEach(cardData => {
-            const card = document.createElement('div');
-            card.className = 'home-summary-card';
-            card.innerHTML = `<strong>${cardData.value}</strong><span>${cardData.label}</span><p>${cardData.description}</p>`;
-            statsGrid.appendChild(card);
-        });
-        homeSummaryEl.appendChild(statsGrid);
-
-        if (!upcoming.length) {
+        if (!all.length) {
             const empty = document.createElement('p');
             empty.className = 'home-summary-empty';
             empty.textContent = 'No upcoming tasks. You are all caught up!';
@@ -468,31 +505,85 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const list = document.createElement('ul');
-        list.className = 'home-summary-list';
-        upcoming.slice(0, 5).forEach(item => {
-            const li = document.createElement('li');
-            const itemText = document.createElement('span');
-            itemText.className = 'home-summary-item';
-            itemText.textContent = item.title;
+        const grid = document.createElement('div');
+        grid.className = 'home-summary-cards';
 
-            const meta = document.createElement('span');
-            meta.className = 'home-summary-meta';
-            meta.innerHTML = `<span class="home-summary-date">${formatTaskDateDisplay(item.dueDate)}</span><span class="home-summary-type">${item.type}</span>`;
+        buckets.forEach(bucket => {
+            const hasItems = bucket.items.length > 0;
+            const card = document.createElement('div');
+            // Colour modifier only when the box has tasks; empty boxes stay neutral/calm.
+            card.className = 'home-summary-card'
+                + (hasItems && bucket.modifier ? ` home-summary-card--${bucket.modifier}` : '')
+                + (hasItems ? '' : ' home-summary-card--empty');
 
-            li.appendChild(itemText);
-            li.appendChild(meta);
-            list.appendChild(li);
+            const cardHeader = document.createElement('div');
+            cardHeader.className = 'home-summary-card-header';
+
+            const label = document.createElement('span');
+            label.className = 'home-summary-card-label';
+            label.textContent = bucket.label;
+            cardHeader.appendChild(label);
+
+            const badge = document.createElement('span');
+            if (hasItems) {
+                badge.className = 'home-summary-card-count';
+                badge.textContent = bucket.items.length;
+            } else {
+                badge.className = 'home-summary-card-clear';
+                badge.textContent = 'All clear';
+            }
+            cardHeader.appendChild(badge);
+            card.appendChild(cardHeader);
+
+            if (hasItems) {
+                const list = document.createElement('ul');
+                list.className = 'home-summary-list';
+                bucket.items.slice(0, PER_BOX_LIMIT).forEach(item => {
+                    const li = document.createElement('li');
+                    li.addEventListener('click', () => {
+                        taskHighlightId = item.id;
+                        renderTasks();
+                        const tasksLink = document.querySelector('.nav-link[data-target="page-tasks"]');
+                        if (tasksLink) tasksLink.click();
+                    });
+
+                    const itemText = document.createElement('span');
+                    itemText.className = 'home-summary-item';
+                    itemText.textContent = item.title;
+                    itemText.title = item.title;
+
+                    const date = document.createElement('span');
+                    date.className = 'home-summary-date' + (item.overdue ? ' home-summary-date--overdue' : '');
+                    date.textContent = formatTaskDateDisplay(item.dueDate);
+
+                    li.appendChild(itemText);
+                    li.appendChild(date);
+                    list.appendChild(li);
+                });
+                card.appendChild(list);
+
+                if (bucket.items.length > PER_BOX_LIMIT) {
+                    const more = document.createElement('p');
+                    more.className = 'home-summary-more home-summary-more--link';
+                    more.textContent = `+${bucket.items.length - PER_BOX_LIMIT} more`;
+                    more.title = 'View all in Tasks';
+                    more.addEventListener('click', () => {
+                        taskGroupBy = 'date';
+                        taskHighlightGroup = bucket.label;
+                        const gEl = document.getElementById('task-group-by');
+                        if (gEl) { gEl.value = 'date'; gEl.classList.add('active'); }
+                        renderTasks();
+                        const tasksLink = document.querySelector('.nav-link[data-target="page-tasks"]');
+                        if (tasksLink) tasksLink.click();
+                    });
+                    card.appendChild(more);
+                }
+            }
+
+            grid.appendChild(card);
         });
 
-        homeSummaryEl.appendChild(list);
-
-        if (upcoming.length > 5) {
-            const more = document.createElement('p');
-            more.className = 'home-summary-more';
-            more.textContent = `Showing 5 of ${upcoming.length} upcoming items. Visit Tasks for the full list.`;
-            homeSummaryEl.appendChild(more);
-        }
+        homeSummaryEl.appendChild(grid);
     }
 
     // listen for check toggles inside dayTasks
@@ -527,6 +618,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const TASKS_KEY = 'tasks';
     let tasks = [];
+    let taskGroupBy = '';
+    let taskSortBy = '';
+    let taskHighlightGroup = null;
+    let taskHighlightId = null;
+    const recentlyCompleted = new Set();
 
     const taskInput = document.getElementById('new-task-input');
     const taskListEl = document.getElementById('task-list');
@@ -553,6 +649,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Restore view preferences
+        const prefs = userData.taskViewPrefs || {};
+        taskGroupBy = prefs.groupBy || '';
+        taskSortBy  = prefs.sortBy  || '';
+        const gEl = document.getElementById('task-group-by');
+        const sEl = document.getElementById('task-sort-by');
+        if (gEl) { gEl.value = taskGroupBy; gEl.classList.toggle('active', !!taskGroupBy); }
+        if (sEl) { sEl.value = taskSortBy;  sEl.classList.toggle('active', !!taskSortBy); }
+
         // Store pomodoro data from Firestore for later use
         window._firestorePomodoroState = userData.pomodoroState || null;
         window._firestorePomodoroSettings = userData.pomodoroSettings || null;
@@ -568,7 +673,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function saveTasks() {
         // Optional: Keep localStorage as a backup
         localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
-        
+
         if (window.currentUserUid && window.db) {
             const userDocRef = doc(window.db, "users", window.currentUserUid);
             try {
@@ -581,12 +686,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function saveViewPrefs() {
+        if (window.currentUserUid && window.db) {
+            const userDocRef = doc(window.db, "users", window.currentUserUid);
+            try {
+                await setDoc(userDocRef, {
+                    taskViewPrefs: { groupBy: taskGroupBy, sortBy: taskSortBy }
+                }, { merge: true });
+            } catch (error) {
+                console.error("Error saving view prefs:", error);
+            }
+        }
+    }
+
     function renderTasks() {
         if (!taskListEl) return;
         taskListEl.innerHTML = '';
-        tasks.forEach(task => {
-            const li = document.createElement('li');
-            li.className = 'task-item';
+        const sorted = sortTasksBy(tasks, taskSortBy);
+        const activeTasks = sorted.filter(t => !t.completed || recentlyCompleted.has(String(t.id)));
+        const groups = groupTasksBy(activeTasks, taskGroupBy);
+        const pendingGlow = taskHighlightGroup;
+        taskHighlightGroup = null;
+        const pendingNewId = taskHighlightId;
+        taskHighlightId = null;
+        groups.forEach(group => {
+            if (group.label) {
+                const header = document.createElement('li');
+                header.className = 'task-group-header';
+                header.textContent = group.label;
+                taskListEl.appendChild(header);
+                if (pendingGlow && group.label === pendingGlow) {
+                    requestAnimationFrame(() => {
+                        header.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        header.classList.add('task-group-header--glow');
+                    });
+                }
+            }
+            group.items.forEach(task => taskListEl.appendChild(buildTaskLi(task)));
+        });
+        if (pendingNewId) {
+            const newEl = taskListEl.querySelector(`input[data-id="${pendingNewId}"]`)?.closest('.task-item');
+            if (newEl) {
+                requestAnimationFrame(() => {
+                    newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    newEl.classList.add('task-item--new');
+                });
+            }
+        }
+
+        const completedTasks = tasks.filter(t => t.completed && !recentlyCompleted.has(String(t.id)));
+        if (completedTasks.length > 0) {
+            const compHeader = document.createElement('li');
+            compHeader.className = 'task-group-header task-group-header--completed';
+            compHeader.textContent = 'Completed';
+            taskListEl.appendChild(compHeader);
+            completedTasks.forEach(task => taskListEl.appendChild(buildTaskLi(task)));
+        }
+
+        renderHomeSummary();
+    }
+
+    function buildTaskLi(task) {
+        const li = document.createElement('li');
+        li.className = 'task-item';
             if (task.completed) li.classList.add('completed');
             if (task.importance === 'high') li.classList.add('importance-high');
             else if (task.importance === 'low') li.classList.add('importance-low');
@@ -940,9 +1102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             li.appendChild(subtasksContainer);
-            taskListEl.appendChild(li);
-        });
-        renderHomeSummary();
+            return li;
     }
 
     function startEditingDate(task) {
@@ -1096,6 +1256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = { id: Date.now(), text: cleanText, completed: false, createdAt: Date.now(), dueDate: dueDate || null, importance: null, repeat: null, reminder: null, reminderFired: false };
         tasks.unshift(task);
         saveTasks();
+        taskHighlightId = task.id;
         renderTasks();
         renderCalendar();
     }
@@ -1103,6 +1264,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleTask(id, completed) {
         const idx = tasks.findIndex(t => String(t.id) === String(id));
         if (idx === -1) return;
+        const strId = String(tasks[idx].id);
         if (completed && tasks[idx].repeat) {
             const src = tasks[idx];
             const anchorDate = src.dueDate || ymdFromDate(now);
@@ -1132,10 +1294,21 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             tasks[idx].completed = !!completed;
         }
+        if (completed) {
+            recentlyCompleted.add(strId);
+        } else {
+            recentlyCompleted.delete(strId);
+        }
         saveTasks();
         renderTasks();
         renderCalendar();
         renderDayTasks();
+        if (completed) {
+            setTimeout(() => {
+                recentlyCompleted.delete(strId);
+                renderTasks();
+            }, 1000);
+        }
     }
 
     function deleteTask(id) {
@@ -1535,6 +1708,26 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'months': d.setMonth(d.getMonth() + n); break;
         }
         return ymdFromDate(d);
+    }
+
+    // Group-by / sort-by controls
+    const groupByEl = document.getElementById('task-group-by');
+    const sortByEl = document.getElementById('task-sort-by');
+    if (groupByEl) {
+        groupByEl.addEventListener('change', () => {
+            taskGroupBy = groupByEl.value;
+            groupByEl.classList.toggle('active', !!taskGroupBy);
+            renderTasks();
+            saveViewPrefs();
+        });
+    }
+    if (sortByEl) {
+        sortByEl.addEventListener('change', () => {
+            taskSortBy = sortByEl.value;
+            sortByEl.classList.toggle('active', !!taskSortBy);
+            renderTasks();
+            saveViewPrefs();
+        });
     }
 
     // load & initial render
